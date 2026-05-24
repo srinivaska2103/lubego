@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fully fixed and URL-encoded Inline SVG Favicon Component -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z' fill='%23D97706' fill-opacity='0.15'/%3E%3Cpath d='M12 18V10' /%3E%3Cpath d='M9 13l3-3 3 3' /%3E%3C/svg%3E" />
+    <title>Coming Soon | LubeGo Services</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#D97706', /* Single unique branding color accent: Amber 600 */
+                            dark: '#B45309',
+                            light: '#FBBF24'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between transition-colors duration-300 overflow-x-hidden">
+
+    <!-- TOP CONTROL HEADER: Brand redirection and localized controls -->
+    <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between z-50">
+        <!-- Brand Name & Custom Droplet SVG Logo - Top Left Corner Redirect to Home -->
+        <a href="index.html" class="flex items-center gap-2 group focus:outline-none" aria-label="Redirect to Homepage">
+            <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 group-hover:rotate-12">
+                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                    <path d="M12 18V10" />
+                    <path d="M9 13L12 10L15 13" />
+                </svg>
+            </div>
+            <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                Lube<span class="text-brand">Go</span>
+            </span>
+        </a>
+
+        <!-- Top Right Utility Buttons (Maintained to be identical height/width) -->
+        <div class="flex items-center space-x-3">
+            <!-- Theme Toggle -->
+            <button id="auth-theme-toggle" aria-label="Toggle Theme Mode" class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all shadow-sm">
+                <span id="theme-light-icon" class="hidden">☀️</span>
+                <span id="theme-dark-icon">🌙</span>
+            </button>
+            <!-- Layout Direction Toggle -->
+            <button id="auth-dir-toggle" aria-label="Toggle Layout Direction" class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all shadow-sm">
+                LTR
+            </button>
+        </div>
+    </header>
+
+    <!-- CORE COMING SOON INTERFACE PANEL: Optimized for 360px up to widescreen monitors -->
+    <main class="flex-grow flex items-center justify-center px-4 py-12 relative">
+        <!-- Structural background ambient decorative glow mask -->
+        <div class="absolute w-96 h-96 bg-brand/5 dark:bg-brand/10 rounded-full blur-[100px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"></div>
+
+        <div class="w-full max-w-2xl text-center space-y-10 relative z-10">
+            
+            <!-- Context Messaging Stack -->
+            <div class="space-y-4 max-w-xl mx-auto px-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block animate-pulse">
+                    Next-Gen Fleet Engine Upgrades
+                </span>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Our Automated Fleet Management Portal is Powering Up
+                </h1>
+                <p class="text-xs sm:text-sm md:text-base text-slate-500 dark:text-slate-400 font-normal leading-relaxed max-w-md mx-auto">
+                    We are engineering a premium tracking system designed to calibrate scheduled corporate logistics checks and mobile driver updates in real-time.
+                </p>
+            </div>
+
+            <!-- Precision Math Countdown Clock Component (4 Grid Elements) -->
+            <div class="grid grid-cols-4 gap-3 sm:gap-4 max-w-md mx-auto font-mono text-left select-none">
+                <!-- Days Element -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-3 sm:p-4 text-center shadow-sm">
+                    <span id="countdown-days" class="block text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-none">14</span>
+                    <span class="text-[9px] sm:text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-wider font-sans font-medium mt-1.5 block">Days</span>
+                </div>
+                <!-- Hours Element -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-3 sm:p-4 text-center shadow-sm">
+                    <span id="countdown-hours" class="block text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-none">08</span>
+                    <span class="text-[9px] sm:text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-wider font-sans font-medium mt-1.5 block">Hrs</span>
+                </div>
+                <!-- Minutes Element -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-3 sm:p-4 text-center shadow-sm">
+                    <span id="countdown-minutes" class="block text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-none">42</span>
+                    <span class="text-[9px] sm:text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-wider font-sans font-medium mt-1.5 block">Mins</span>
+                </div>
+                <!-- Seconds Element -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-3 sm:p-4 text-center shadow-sm border-brand/30 dark:border-brand/40">
+                    <span id="countdown-seconds" class="block text-xl sm:text-2xl md:text-3xl font-bold text-brand leading-none">59</span>
+                    <span class="text-[9px] sm:text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-wider font-sans font-medium mt-1.5 block">Secs</span>
+                </div>
+            </div>
+
+            <!-- Integrated Micro Registration Form -->
+            <div class="max-w-md mx-auto space-y-3 px-2">
+                <form id="notify-form" class="flex flex-col sm:flex-row gap-2" onsubmit="event.preventDefault(); triggerNotificationSuccess();">
+                    <input type="email" placeholder="Enter your work email address" required 
+                        class="flex-grow text-xs sm:text-sm px-4 py-3 rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-brand dark:focus:border-brand transition-all shadow-sm" />
+                    <button type="submit" id="notify-submit-btn" class="bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm px-6 py-3 rounded-xl transition-all shadow-md shadow-brand/10 hover:shadow-lg whitespace-nowrap">
+                        Notify Me on Launch
+                    </button>
+                </form>
+                
+                <!-- Feedback success trace notification element hidden by default -->
+                <p id="notify-success-msg" class="text-xs text-emerald-500 font-medium hidden items-center justify-center gap-1.5 animate-fade-in">
+                    <span>✓</span> Channel locked down. We will alert you the moment systems deploy online.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER PANEL OVERLAY REGULATION -->
+    <footer class="w-full h-14 border-t border-slate-200/60 dark:border-slate-900 text-center flex items-center justify-center text-[11px] text-slate-400 select-none">
+        &copy; 2026 LubeGo Services Inc. All connection ports protected via secure token tracking.
+    </footer>
+
+    <!-- INTERACTIVE CONTROL SCRIPT: Controls Theme, Layout Direction, and Countdown Mathematics Sync -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // DOM Target Core Selection Nodes
+            const themeBtn = document.getElementById('auth-theme-toggle');
+            const dirBtn = document.getElementById('auth-dir-toggle');
+            const htmlElement = document.documentElement;
+
+            // --- 1. THEME STORAGE MANAGEMENT ENGINE ---
+            function syncThemeDisplayState() {
+                const activePreference = localStorage.getItem('theme');
+                const OSPreferenceDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                
+                if (activePreference === 'dark' || (!activePreference && OSPreferenceDark)) {
+                    htmlElement.classList.add('dark');
+                    document.getElementById('theme-light-icon').classList.remove('hidden');
+                    document.getElementById('theme-dark-icon').classList.add('hidden');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    document.getElementById('theme-light-icon').classList.add('hidden');
+                    document.getElementById('theme-dark-icon').classList.remove('hidden');
+                }
+            }
+
+            themeBtn.addEventListener('click', () => {
+                const containsDarkNow = htmlElement.classList.contains('dark');
+                if (containsDarkNow) {
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+                syncThemeDisplayState();
+            });
+
+            // --- 2. LAYOUT DIRECTION STORAGE ENGINE (LTR/RTL Sync) ---
+            function syncLayoutDirection() {
+                const storedDirection = localStorage.getItem('direction') || 'ltr';
+                htmlElement.setAttribute('dir', storedDirection);
+                dirBtn.innerText = storedDirection.toUpperCase();
+            }
+
+            dirBtn.addEventListener('click', () => {
+                const currentDir = htmlElement.getAttribute('dir');
+                const switchedDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                localStorage.setItem('direction', switchedDir);
+                syncLayoutDirection();
+            });
+
+            // --- 3. DYNAMIC COUNTDOWN CALCULATION ENGINE ---
+            // Configure absolute completion destination: 14 days out from current execution threshold
+            let countdownTime = (new Date()).getTime() + (14 * 24 * 60 * 60 * 1000) + (8 * 60 * 60 * 1000);
+
+            function updateCountdownClock() {
+                const now = new Date().getTime();
+                const difference = countdownTime - now;
+
+                if (difference <= 0) {
+                    clearInterval(clockInterval);
+                    return;
+                }
+
+                // Math segment derivations
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                // Inject formatted nodes back to DOM layout parameters safely
+                document.getElementById("countdown-days").innerText = String(days).padStart(2, '0');
+                document.getElementById("countdown-hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("countdown-minutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("countdown-seconds").innerText = String(seconds).padStart(2, '0');
+            }
+
+            const clockInterval = setInterval(updateCountdownClock, 1000);
+            updateCountdownClock(); // Initial cascade execution
+
+            // --- 4. FORM SUCCESS INTERACTION REGULATION ---
+            window.triggerNotificationSuccess = function() {
+                document.getElementById("notify-form").classList.add("hidden");
+                const msgNode = document.getElementById("notify-success-msg");
+                msgNode.classList.remove("hidden");
+                msgNode.classList.add("flex");
+            };
+
+            // Run Core Orchestrations on initial render configurations
+            syncThemeDisplayState();
+            syncLayoutDirection();
+        });
+    </script>
+</body>
+</html>

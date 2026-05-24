@@ -1,0 +1,2078 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fully fixed and URL-encoded Inline SVG Favicon Component -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z' fill='%23D97706' fill-opacity='0.15'/%3E%3Cpath d='M12 18V10' /%3E%3Cpath d='M9 13l3-3 3 3' /%3E%3C/svg%3E" />
+    <title>LubeGo | Mobile Oil Change & Preventative Maintenance</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#D97706', /* Amber 600 - Single unique brand accent color */
+                            dark: '#B45309',
+                            light: '#FBBF24'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Cabinet Grotesk', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Stylesheet for Clean Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar to match clean theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+   <!-- NAVIGATION BAR -->
+<header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="index.html">
+                <!-- Logo & Name -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <!-- Logo Icon Container -->
+                    <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 hover:rotate-12">
+                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                            <path d="M12 18V10" />
+                            <path d="M9 13L12 10L15 13" />
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                        Lube<span class="text-brand">Go</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <nav id="desktop-nav" class="hidden lg:flex items-center space-x-8 font-medium text-sm text-slate-600 dark:text-slate-300">
+                <a href="index.html" class="hover:text-brand dark:hover:text-brand transition-colors">Home</a>
+                <a href="home2.html" class="hover:text-brand dark:hover:text-brand transition-colors">Home2</a>
+                <a href="aboutus.html" class="hover:text-brand dark:hover:text-brand transition-colors">About Us</a>
+                <a href="services.html" class="hover:text-brand dark:hover:text-brand transition-colors">Services</a>
+                <a href="contact.html" class="hover:text-brand dark:hover:text-brand transition-colors">Contact</a>
+            </nav>
+
+            <!-- Desktop Action & Utility Controls -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" aria-label="Toggle Theme" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all">
+                    <span id="theme-icon-light" class="hidden">☀️</span>
+                    <span id="theme-icon-dark">🌙</span>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button id="direction-toggle" aria-label="Toggle Layout Direction" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all">
+                    LTR
+                </button>
+                <!-- CTA Buttons -->
+                <a href="login.html" class="text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:text-slate-900 dark:bg-slate-100 dark:hover:bg-slate-50 px-5 py-2.5 rounded-lg shadow-sm hover:shadow transition-all text-center">
+                    Log In
+                </a>
+                <a href="booknow.html" class="bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow-md shadow-brand/10 hover:shadow-lg transition-all transform hover:-translate-y-0.5">Book Now</a>
+            </div>
+
+            <!-- Mobile & Tablet Menu Button -->
+            <div class="flex lg:hidden items-center gap-3">
+                <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED MOBILE OVERLAY DRAWER -->
+    <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 z-50 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-4 pb-6 space-y-4 shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <nav id="mobile-nav" class="flex flex-col space-y-3 font-medium text-slate-600 dark:text-slate-300">
+            <a href="index.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Home</a>
+            <a href="home2.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Home2</a>
+            <a href="aboutus.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">About Us</a>
+            <a href="services.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Services</a>
+            <a href="contact.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Contact</a>
+        </nav>
+        <hr class="border-slate-200 dark:border-slate-800">
+        <div class="flex flex-wrap items-center gap-3">
+            <!-- Direction Toggle Mobile -->
+            <button id="direction-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                LTR
+            </button>
+            <!-- Theme Toggle Mobile Quick Access -->
+            <button id="theme-toggle-mobile" aria-label="Toggle Theme" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                <span id="theme-icon-light-mob" class="hidden">☀️</span>
+                <span id="theme-icon-dark-mob">🌙</span>
+            </button>
+            <!-- Mobile Log In Button CTA -->
+            <a href="login.html" class="flex-1 text-center font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:text-slate-900 dark:bg-slate-100 dark:hover:bg-slate-50 py-2.5 rounded-lg text-sm transition-colors shadow-sm">
+                Log In
+            </a>
+            <a href="booknow.html" class="flex-1 text-center bg-brand text-white font-semibold py-2.5 rounded-lg text-sm shadow-md">Book Now</a>
+        </div>
+    </div>
+</header>
+
+<!-- INTERACTIVE NAVIGATION CONTROLLER ACTIONS SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const pathFileName = window.location.pathname.split("/").pop();
+        
+        // --- 1. ROUTE MANAGEMENT LOGIC TRACKS ---
+        const dNavNode = document.getElementById("desktop-nav");
+        if (dNavNode) {
+            const dLinks = dNavNode.querySelectorAll("a");
+            let isMatched = false;
+            dLinks.forEach(link => {
+                if (link.getAttribute("href") === pathFileName) {
+                    link.className = "text-brand dark:text-brand font-semibold transition-colors";
+                    isMatched = true;
+                } else {
+                    link.className = "text-slate-600 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-colors";
+                }
+            });
+            if (!isMatched && (pathFileName === "" || pathFileName === "index.html") && dLinks.length > 0) {
+                dLinks[0].className = "text-brand dark:text-brand font-semibold transition-colors";
+            }
+        }
+
+        const mNavNode = document.getElementById("mobile-nav");
+        if (mNavNode) {
+            const mLinks = mNavNode.querySelectorAll("a");
+            let isMatched = false;
+            mLinks.forEach(link => {
+                if (link.getAttribute("href") === pathFileName) {
+                    link.className = "px-3 py-2 rounded-lg bg-brand/10 text-brand dark:text-brand font-semibold transition-colors";
+                    isMatched = true;
+                } else {
+                    link.className = "px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors";
+                }
+            });
+            if (!isMatched && (pathFileName === "" || pathFileName === "index.html") && mLinks.length > 0) {
+                mLinks[0].className = "px-3 py-2 rounded-lg bg-brand/10 text-brand dark:text-brand font-semibold transition-colors";
+            }
+        }
+
+        // --- 2. DRAWER INTERACTIVE ACTION TOGGLES ---
+        const mobileTrigger = document.getElementById("mobile-menu-btn");
+        const mobileDrawer = document.getElementById("mobile-menu");
+        const vectorIconPath = document.getElementById("menu-icon");
+
+        if (mobileTrigger && mobileDrawer) {
+            mobileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isExpanded = !mobileDrawer.classList.contains("hidden");
+                
+                if (isExpanded) {
+                    mobileDrawer.classList.add("hidden");
+                    if (vectorIconPath) vectorIconPath.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+                } else {
+                    mobileDrawer.classList.remove("hidden");
+                    if (vectorIconPath) vectorIconPath.setAttribute("d", "M6 18L18 6M6 6l12 12");
+                }
+            });
+
+            mobileDrawer.addEventListener("click", (e) => e.stopPropagation());
+
+            document.addEventListener("click", () => {
+                mobileDrawer.classList.add("hidden");
+                if (vectorIconPath) vectorIconPath.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+            });
+        }
+
+        // --- 3. THEME TOGGLE ENGINE CONTROLS ---
+        const themeBtnDesktop = document.getElementById("theme-toggle");
+        const themeBtnMobile = document.getElementById("theme-toggle-mobile");
+        
+        const lightIconD = document.getElementById("theme-icon-light");
+        const darkIconD = document.getElementById("theme-icon-dark");
+        const lightIconM = document.getElementById("theme-icon-light-mob");
+        const darkIconM = document.getElementById("theme-icon-dark-mob");
+
+        function applyThemeState(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                lightIconD?.classList.remove('hidden');
+                darkIconD?.classList.add('hidden');
+                lightIconM?.classList.remove('hidden');
+                darkIconM?.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                lightIconD?.classList.add('hidden');
+                darkIconD?.classList.remove('hidden');
+                lightIconM?.classList.add('hidden');
+                darkIconM?.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check persistent memory or layout system media settings
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initDarkState = storedTheme === 'dark' || (!storedTheme && systemPrefersDark);
+        applyThemeState(initDarkState);
+
+        [themeBtnDesktop, themeBtnMobile].forEach(btn => {
+            btn?.addEventListener("click", () => {
+                const currentDarkStatus = document.documentElement.classList.contains('dark');
+                applyThemeState(!currentDarkStatus);
+            });
+        });
+
+        // --- 4. DIRECTION ARABIC LTR / RTL CONTROLS ---
+        const dirBtnDesktop = document.getElementById("direction-toggle");
+        const dirBtnMobile = document.getElementById("direction-toggle-mobile");
+
+        function applyLayoutDirection(isRTL) {
+            if (isRTL) {
+                document.documentElement.setAttribute('dir', 'rtl');
+                if (dirBtnDesktop) dirBtnDesktop.innerText = "RTL";
+                if (dirBtnMobile) dirBtnMobile.innerText = "RTL";
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                if (dirBtnDesktop) dirBtnDesktop.innerText = "LTR";
+                if (dirBtnMobile) dirBtnMobile.innerText = "LTR";
+            }
+        }
+
+        [dirBtnDesktop, dirBtnMobile].forEach(btn => {
+            btn?.addEventListener("click", () => {
+                const isCurrentRTL = document.documentElement.getAttribute('dir') === 'rtl';
+                applyLayoutDirection(!isCurrentRTL);
+            });
+        });
+    });
+</script>
+
+<!-- CLEAN SIMPLIFIED HERO SECTION WITH FULL-BLEED BACKGROUND IMAGE Overlay -->
+<section id="homepage-hero" class="relative min-h-[80vh] sm:min-h-[70vh] lg:min-h-[75vh] flex items-center bg-slate-950 text-white overflow-hidden py-20 sm:py-24 md:py-32 transition-colors duration-300">
+    
+    <!-- 1. Full-Bleed Background Imagery & Graduated Contrast Shading Layer -->
+   <div class="absolute inset-0 z-0 select-none pointer-events-none bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    
+    <!-- 
+      1. OPTIMIZED HIGH-VISIBILITY IMAGE ELEMENT
+      Transparency has been significantly reduced (opacity increased) to make details pop.
+      Light mode: opacity-85 gives rich clarity.
+      Dark mode: opacity-50 balances image detail with high text legibility.
+    -->
+    <img src="assets/home2hero" 
+         alt="Premium on-site automotive diagnostics and service vehicle setup" 
+         class="w-full h-full object-cover object-center opacity-85 dark:opacity-50 scale-100 transition-all duration-700 filter contrast-[1.05] dark:contrast-125" />
+    
+    <!-- 
+      2. REBALANCED CONTRAST MASK OVERLAY
+      Softened from 90/95% down to 60/70% to let the underlying image show through beautifully, 
+      while using cross-media color mapping to protect your layout text.
+    -->
+    <div class="absolute inset-0 bg-gradient-to-r from-white/70 via-white/40 to-transparent dark:from-slate-950/80 dark:via-slate-950/50 dark:to-transparent max-md:bg-gradient-to-t max-md:from-white/80 max-md:via-white/50 max-md:to-transparent max-md:dark:from-slate-950/90 max-md:dark:via-slate-950/60 max-md:dark:to-transparent transition-all duration-300"></div>
+    
+    <!-- 3. AMBIENT BRAND BACKLIGHT GLOW -->
+    <div class="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/10 dark:bg-brand/15 rounded-full blur-[130px] transition-all duration-300 mix-blend-multiply dark:mix-blend-screen"></div>
+</div>
+
+    <!-- 2. Clean Centered Framework Layout (Maintains strict 360px portrait stability up to widescreen desktops) -->
+   <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center space-y-6">
+        
+    <!-- 
+      Operational Registry Status Micro Badge Component 
+      Utilizes an adaptive transparent background with high-contrast text rendering.
+    -->
+    <div class="inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full bg-brand/10 dark:bg-brand/15 border border-brand/20 text-brand text-xs font-semibold tracking-wide backdrop-blur-md animate-fade-in">
+        <span class="flex h-1.5 w-1.5 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand"></span>
+        </span>
+        <span>Self-Powered Mobile Workshop Vans Active</span>
+    </div>
+    
+    <!-- 
+      Core Value Headline
+      Changes seamlessly from deep slate-900 charcoal (Light Mode) 
+      straight into brilliant crisp white (Dark Mode).
+    -->
+    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-slate-900 dark:text-white max-w-3xl mx-auto transition-colors duration-300">
+        Skip the Shop. We Service <span class="text-brand block sm:inline">Your Car Anywhere.</span>
+    </h1>
+    
+    <!-- 
+      Supporting Subtext Descriptive Summary Paragraph
+      Calibrated to slate-600 for safe contrast over light views 
+      and slate-300 to remain scannable on dark ground matrices.
+    -->
+<!-- Fully visible text element optimized for perfect contrast in both themes -->
+<p class="text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto max-sm:px-2 transition-colors duration-300">
+    Professional mobile auto services designed for busy drivers who value convenience, quality, and time savings.
+</p>
+    <!-- Symmetrical High-Conversion Call-To-Action Paths Layout -->
+    <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 max-w-xs sm:max-w-none mx-auto">
+        
+        <!-- Primary Action Route Element -->
+        <a href="booknow.html" class="group flex items-center justify-center gap-2.5 bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm px-8 py-4 rounded-xl shadow-xl shadow-brand/20 transition-all duration-300 transform hover:-translate-y-0.5 active:scale-[0.995]">
+            <span>Book Appointment</span>
+            <svg class="w-4 h-4 text-white transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+            </svg>
+        </a>
+        
+        <!-- 
+          Secondary Action Route Element
+          Alters button surfaces from a light, subtle silver plate border 
+          into a slate charcoal anchor frame block in dark mode views.
+        -->
+        <a href="contact.html" class="flex items-center justify-center bg-slate-100/80 hover:bg-slate-200/80 dark:bg-slate-900/80 dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm px-8 py-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 backdrop-blur-sm transition-all shadow-sm">
+            Get Instant Quote
+        </a>
+        
+    </div>
+
+</div>
+</section>
+<!-- PRODUCTION-READY QUICK BOOKING BAR (INTEGRATES IMMEDIATELY BELOW HERO) -->
+<section id="quick-booking-bar" class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-10 md:-mt-12">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl md:rounded-3xl shadow-xl p-5 sm:p-6 transition-all duration-300">
+        
+        <!-- Live Form Matrix Framework -->
+        <form id="availability-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end text-left" onsubmit="event.preventDefault();">
+            
+            <!-- Field 1: Vehicle Profile -->
+            <div class="space-y-1.5 w-full">
+                <label for="booking-vehicle" class="block text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                    01 // Vehicle Type
+                </label>
+                <div class="relative">
+                    <select id="booking-vehicle" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl px-4 py-3 text-xs font-medium text-slate-700 dark:text-slate-300 appearance-none focus:outline-none focus:border-brand/60 transition-colors cursor-pointer">
+                        <option value="" disabled selected>Select vehicle type</option>
+                        <option value="sedan">Sedan / Coupe</option>
+                        <option value="suv">SUV / Crossover</option>
+                        <option value="truck">Pickup Truck</option>
+                        <option value="van">Commercial Van</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400 text-[10px]">▼</div>
+                </div>
+            </div>
+
+            <!-- Field 2: Target Treatment -->
+            <div class="space-y-1.5 w-full">
+                <label for="booking-service" class="block text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                    02 // Service Needed
+                </label>
+                <div class="relative">
+                    <select id="booking-service" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl px-4 py-3 text-xs font-medium text-slate-700 dark:text-slate-300 appearance-none focus:outline-none focus:border-brand/60 transition-colors cursor-pointer">
+                        <option value="" disabled selected>Select core service</option>
+                        <option value="oil">Mobile Oil Change</option>
+                        <option value="maintenance">Preventative Check</option>
+                        <option value="battery">Battery Diagnostics</option>
+                        <option value="tires">Tire Maintenance</option>
+                        <option value="brakes">Brake Inspection</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400 text-[10px]">▼</div>
+                </div>
+            </div>
+
+            <!-- Field 3: Temporal Matrix -->
+            <div class="space-y-1.5 w-full">
+                <label for="booking-date" class="block text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                    03 // Preferred Date
+                </label>
+                <input type="date" id="booking-date" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl px-4 py-3 text-xs font-medium text-slate-700 dark:text-slate-300 focus:outline-none focus:border-brand/60 transition-colors cursor-pointer" />
+            </div>
+
+            <!-- Field 4: Coordinates Mapping -->
+            <div class="space-y-1.5 w-full">
+                <label for="booking-location" class="block text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                    04 // Location Zip / City
+                </label>
+                <div class="relative">
+                    <input type="text" id="booking-location" placeholder="Enter service address" autocomplete="off" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl px-4 py-3 text-xs font-medium text-slate-700 dark:text-slate-300 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-brand/60 transition-colors" />
+                    <button type="button" id="btn-geolocation" title="Detect active location coordinates" class="absolute inset-y-0 right-3 flex items-center text-xs text-brand hover:text-brand-dark transition-colors focus:outline-none font-mono font-bold">GPS</button>
+                </div>
+            </div>
+
+            <!-- Conversion Submission Action (Spans full width gracefully on 360px portrait devices) -->
+            <div class="w-full max-lg:sm:col-span-2">
+                <button type="button" id="btn-check-availability" class="w-full flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all duration-300 shadow-md shadow-brand/10 transform active:scale-[0.99]">
+                    <span>👉 Check Availability</span>
+                </button>
+            </div>
+
+        </form>
+
+        <!-- LIVE NOTIFICATION HUD RESPONSE DISPLAY WINDOW -->
+        <div id="booking-hud-feedback" class="hidden mt-4 p-3.5 rounded-xl bg-slate-950 text-white border border-slate-850 items-center gap-3 text-xs text-left animate-fade-in font-mono">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
+            <p id="booking-hud-text" class="text-slate-300 leading-normal font-normal">Telemetry Sync: Processing deployment routing matrix paths...</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- LIVE BOOKING ENGINE CONTROLLER LOGIC -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const formSubmitBtn = document.getElementById("btn-check-availability");
+        const geoDetectBtn = document.getElementById("btn-geolocation");
+        const feedbackHud = document.getElementById("booking-hud-feedback");
+        const feedbackText = document.getElementById("booking-hud-text");
+
+        // Set baseline input constraints for safety attributes
+        const dateSelectorInput = document.getElementById("booking-date");
+        if (dateSelectorInput) {
+            const calendarTimeObject = new Date();
+            const yearIndexString = calendarTimeObject.getFullYear();
+            const monthIndexString = String(calendarTimeObject.getMonth() + 1).padStart(2, '0');
+            const dayIndexString = String(calendarTimeObject.getDate()).padStart(2, '0');
+            dateSelectorInput.min = `${yearIndexString}-${monthIndexString}-${dayIndexString}`;
+        }
+
+        // Connect automated browser location scanning protocols
+        if (geoDetectBtn) {
+            geoDetectBtn.addEventListener("click", () => {
+                const inputFieldAddress = document.getElementById("booking-location");
+                if (navigator.geolocation) {
+                    if (feedbackHud) {
+                        feedbackHud.classList.remove("hidden");
+                        feedbackHud.classList.add("flex");
+                        feedbackText.innerText = "GPS Tracker: Querying localized navigation satellite links...";
+                    }
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            const lat = position.coords.latitude.toFixed(4);
+                            const lng = position.coords.longitude.toFixed(4);
+                            if (inputFieldAddress) {
+                                inputFieldAddress.value = `${lat}, ${lng}`;
+                            }
+                            feedbackText.innerText = `GPS Tracker: Active lock established at coordinate index [${lat}, ${lng}].`;
+                        },
+                        () => {
+                            feedbackText.innerText = "GPS Warning: Core permission timed out. Please input addresses manually.";
+                        }
+                    );
+                }
+            });
+        }
+
+        // Implement validation processing pipeline rules on action submission loops
+        if (formSubmitBtn) {
+            formSubmitBtn.addEventListener("click", () => {
+                const selectedVehicleVal = document.getElementById("booking-vehicle").value;
+                const selectedServiceVal = document.getElementById("booking-service").value;
+                const pickedDateStringVal = document.getElementById("booking-date").value;
+                const addressedLocationStr = document.getElementById("booking-location").value.trim();
+
+                if (feedbackHud) {
+                    feedbackHud.classList.remove("hidden");
+                    feedbackHud.classList.add("flex");
+                }
+
+                // Field completeness check sequence
+                if (!selectedVehicleVal || !selectedServiceVal || !pickedDateStringVal || !addressedLocationStr) {
+                    if (feedbackHud) {
+                        const statusDotIndicator = feedbackHud.querySelector("span");
+                        if (statusDotIndicator) statusDotIndicator.className = "w-2 h-2 rounded-full bg-amber-500 flex-shrink-0";
+                        feedbackText.innerText = "Validation Log: Missing required service parameters. Ensure all field tracks are populated.";
+                    }
+                    return;
+                }
+
+                // Simulate routing matrix verification response logs cleanly
+                const indicatorDot = feedbackHud.querySelector("span");
+                if (indicatorDot) indicatorDot.className = "w-2 h-2 rounded-full bg-brand animate-ping flex-shrink-0";
+                feedbackText.innerText = `Telemetry Sync: Computing nearest proximity service van routing parameters for ${pickedDateStringVal}...`;
+
+                setTimeout(() => {
+                    if (indicatorDot) indicatorDot.className = "w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0";
+                    feedbackText.innerText = "Deployment Success: Standalone service van slots verified for this environment. Redirecting to schedule selection link...";
+                    
+                    // Secure routing handover pathway simulation hook
+                    setTimeout(() => {
+                        window.location.href = `booking-checkout.html?vehicle=${selectedVehicleVal}&service=${selectedServiceVal}&date=${pickedDateStringVal}&loc=${encodeURIComponent(addressedLocationStr)}`;
+                    }, 1200);
+                }, 1500);
+            });
+        }
+    });
+</script>
+<!-- PRODUCTION-READY FEATURED SERVICES SECTION WITH HORIZONTAL LAYOUT MATRIX -->
+<section id="featured-services" class="py-16 md:py-24 bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Symmetrical Line Grid Background Pattern -->
+    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none select-none"></div>
+    <div class="absolute top-1/3 right-0 w-96 h-96 bg-brand/5 rounded-full blur-[130px] pointer-events-none select-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Section Header Layout Framework -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end border-b border-slate-100 dark:border-slate-800 pb-10 mb-12 text-left">
+            <div class="lg:col-span-7 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                    Premium Field Capabilities
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Featured Mobile Maintenance Log
+                </h2>
+            </div>
+            <div class="lg:col-span-5">
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    Explore our core automotive solutions dispatched directly to your location context. Click on any service row below to review real-time technical tracking details.
+                </p>
+            </div>
+        </div>
+
+        <!-- Horizontal Minimalist Stack Grid Layout (Responsive from 360px up to widescreen monitors) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch max-w-6xl mx-auto">
+            
+            <!-- Service Row 1: Mobile Oil Change -->
+            <div class="featured-horizontal-card p-5 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex items-start gap-4 text-left cursor-pointer select-none" data-feature="oil">
+                <div class="w-12 h-12 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+                <div class="space-y-1 w-full">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Mobile Oil Change</h3>
+                        <span class="font-mono text-[9px] text-slate-400 dark:text-slate-500 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-1.5 py-0.5 rounded">25 MIN</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                        Negative pressure suction loops siphon spent lubricants clean from your engine block right on your driveway canvas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service Row 2: Brake Inspection -->
+            <div class="featured-horizontal-card p-5 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex items-start gap-4 text-left cursor-pointer select-none" data-feature="brakes">
+                <div class="w-12 h-12 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M4.93 4.93l14.14 14.14"/>
+                    </svg>
+                </div>
+                <div class="space-y-1 w-full">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Brake Inspection</h3>
+                        <span class="font-mono text-[9px] text-slate-400 dark:text-slate-500 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-1.5 py-0.5 rounded">20 MIN</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                        Micrometric evaluation logs audit absolute rotor score depths and friction pad density thresholds safely.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service Row 3: Battery Replacement -->
+            <div class="featured-horizontal-card p-5 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex items-start gap-4 text-left cursor-pointer select-none" data-feature="battery">
+                <div class="w-12 h-12 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2M6 13h4M14 13h4M16 11v4"/>
+                    </svg>
+                </div>
+                <div class="space-y-1 w-full">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Battery Replacement</h3>
+                        <span class="font-mono text-[9px] text-slate-400 dark:text-slate-500 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-1.5 py-0.5 rounded">15 MIN</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                        Conductance tracking scans locate cold-cranking amp degradation boundaries before delivering clean updates.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service Row 4: Tire Rotation -->
+            <div class="featured-horizontal-card p-5 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex items-start gap-4 text-left cursor-pointer select-none" data-feature="tires">
+                <div class="w-12 h-12 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                    </svg>
+                </div>
+                <div class="space-y-1 w-full">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Tire Rotation</h3>
+                        <span class="font-mono text-[9px] text-slate-400 dark:text-slate-500 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-1.5 py-0.5 rounded">30 MIN</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                        Cross-axis tire repositioning patterns flatten dynamic friction wear profiles to optimize highway stability limits.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service Row 5: Fluid Top-Up -->
+            <div class="featured-horizontal-card p-5 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex items-start gap-4 text-left cursor-pointer select-none" data-feature="fluids">
+                <div class="w-12 h-12 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"/>
+                    </svg>
+                </div>
+                <div class="space-y-1 w-full">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Fluid Top-Up</h3>
+                        <span class="font-mono text-[9px] text-slate-400 dark:text-slate-500 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-1.5 py-0.5 rounded">10 MIN</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                        Itemized balancing sweeps check steering, cooling system lines, and auxiliary reservoirs using high-purity compositions.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service Row 6: Fleet Maintenance -->
+            <div class="featured-horizontal-card p-5 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex items-start gap-4 text-left cursor-pointer select-none" data-feature="fleet">
+                <div class="w-12 h-12 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <div class="space-y-1 w-full">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Fleet Maintenance</h3>
+                        <span class="font-mono text-[9px] text-slate-400 dark:text-slate-500 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-1.5 py-0.5 rounded">SCALED</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                        Parallel workshop deployments structured across logistics carrier yards to compress operational downtime margins.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- USER INTERACTIVE REAL-TIME FIELD SPECIFICATIONS CONSOLE CONTAINER -->
+        <div id="feature-hud-panel" class="hidden mt-10 p-5 sm:p-6 rounded-2xl bg-slate-950 text-white border border-slate-800 shadow-2xl items-center justify-between gap-6 text-left animate-fade-in animate-duration-300">
+            <div class="space-y-1 max-w-2xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                    <span id="feature-hud-tag" class="text-[9px] font-mono uppercase font-bold text-brand tracking-widest">WARRANTY BOUNDARY AUDIT</span>
+                </div>
+                <h4 id="feature-hud-title" class="text-xs sm:text-sm font-bold text-white tracking-tight">Select any operational card above to verify our on-site compliance registry.</h4>
+                <p id="feature-hud-desc" class="text-xs text-slate-400 leading-relaxed font-normal">Our mobile workshops maintain direct access lines to factory specifications matrices, keeping all tasks aligned with vehicle parameters.</p>
+            </div>
+            <span class="text-lg opacity-20 hidden md:block select-none pointer-events-none font-mono">🔧 FEATURE_HUD</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- LIVE HORIZONTAL COMPONENT SPECIFICATION LOOKUP SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const structuralRows = document.querySelectorAll(".featured-horizontal-card");
+        const hudBoard = document.getElementById("feature-hud-panel");
+        const hudTag = document.getElementById("feature-hud-tag");
+        const hudTitle = document.getElementById("feature-hud-title");
+        const hudDesc = document.getElementById("feature-hud-desc");
+
+        // Central Asset Content Data Logs Matrix Map
+        const featureMetadata = {
+            oil: {
+                tag: "ISO Loop // Sump Siphon Execution",
+                title: "Airtight Variable Vacuum Fluid Drainage Controls",
+                desc: "We route negative pressure lines straight down your dipstick channel layout, executing extraction without requiring underside plug detachment. Eliminates concrete spill options entirely."
+            },
+            brakes: {
+                tag: "Safety Check // Friction Assembly Scan",
+                title: "Micrometric Caliper Plate Wear Log Manifest",
+                desc: "Technicians scan mechanical assembly pads using customized thickness calibration gauges. Data is indexed directly back into your digital vehicle safety history profile."
+            },
+            battery: {
+                tag: "Electrical Sweep // Aux Ohmic Diagnostics",
+                title: "Cold Crank Amplitude Conductance Insulation Checks",
+                desc: "Isolates real-time battery resistance variables and alternator charging loop parameters on-site before deploying original tier structural replacement components safely."
+            },
+            tires: {
+                tag: "Tread Geometry // Load Equalization Matrix",
+                title: "Pneumatic PSI Inflation Balance & Axial Shift Protocols",
+                desc: "Includes thread depth micro-measurements and safe cross-rotations across structural lines to stabilize performance parameters and increase dynamic tire lifespans cleanly."
+            },
+            fluids: {
+                tag: "Fluid Audit // Reservoir Integrity Check",
+                title: "Multi-Point Fluid Balance Sweeps & Top-Ups",
+                desc: "We verify system level baselines across master brake cylinders, cooling configurations, windshield cleaner points, and transmission boxes using premium component matrices."
+            },
+            fleet: {
+                tag: "Enterprise System // Parallel Carrier Operations",
+                title: "Multi-Unit Commercial Van Routing Synchronization",
+                desc: "Provides centralized asset tracking logs and concurrent service tasks for enterprise logistics yards, minimizing commercial transit interruptions completely."
+            }
+        };
+
+        structuralRows.forEach(row => {
+            row.addEventListener("click", () => {
+                const searchKey = row.getAttribute("data-feature");
+                const matchingDataRecord = featureMetadata[searchKey];
+
+                if (!matchingDataRecord) return;
+
+                // Strip active layout metrics off parallel neighbor cards cleanly
+                structuralRows.forEach(r => r.classList.remove("border-brand/60", "dark:border-brand/50", "bg-brand/5", "dark:bg-brand/5"));
+
+                // Secure prominent orange branding border states onto targeted card node
+                row.classList.add("border-brand/60", "dark:border-brand/50");
+
+                // Crossfade corresponding technical data parameters back into the HUD display board
+                if (hudBoard) {
+                    hudBoard.classList.remove("hidden");
+                    hudBoard.classList.add("flex");
+                    
+                    hudTag.style.opacity = "0";
+                    hudTitle.style.opacity = "0";
+                    hudDesc.style.opacity = "0";
+
+                    setTimeout(() => {
+                        hudTag.innerText = matchingDataRecord.tag;
+                        hudTitle.innerText = matchingDataRecord.title;
+                        hudDesc.innerText = matchingDataRecord.desc;
+                        
+                        hudTag.style.opacity = "1";
+                        hudTitle.style.opacity = "1";
+                        hudDesc.style.opacity = "1";
+                    }, 100);
+                }
+            });
+        });
+    });
+</script>
+<!-- DYNAMIC COMPARISON MATRIX: TRADITIONAL WORKSHOP VS MOBILE SERVICE -->
+<!-- DYNAMIC COMPARISON MATRIX: TRADITIONAL WORKSHOP VS MOBILE SERVICE -->
+<section id="why-mobile-comparison" class="py-16 md:py-24 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 border-t border-b border-slate-200/60 dark:border-slate-900/60 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Fine-Line Background Mesh Texture -->
+    <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.015] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none select-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[120px] pointer-events-none select-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Section Header Layout Matrix -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end border-b border-slate-200/60 dark:border-slate-800/60 pb-10 mb-12 text-left">
+            <div class="lg:col-span-7 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                    Efficiency Audit Matrix
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Why Choose Mobile Logistics?
+                </h2>
+            </div>
+            <div class="lg:col-span-5">
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    A direct structural comparison charting traditional brick-and-mortar garage bottlenecks against our localized on-site fluid extraction deployment logs.
+                </p>
+            </div>
+        </div>
+
+        <!-- Interactive Comparison Architecture Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT PANEL: Symmetrical Comparison Table Grid (7 Columns) -->
+            <div class="lg:col-span-7 w-full overflow-hidden">
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-sm overflow-hidden transition-colors duration-300">
+                    
+                    <!-- Table Header Row -->
+                    <div class="grid grid-cols-3 bg-slate-950 text-white p-4 font-mono text-[10px] uppercase tracking-wider font-bold text-left select-none">
+                        <div>Core Vector</div>
+                        <div class="text-slate-400 pl-2">Traditional Shop</div>
+                        <div class="text-brand pl-2">Our Mobile Units</div>
+                    </div>
+
+                    <!-- Comparison Rows Stack -->
+                    <div class="divide-y divide-slate-100 dark:divide-slate-850 select-none transition-colors duration-300">
+                        
+                        <!-- Row 1: Time Asset -->
+                        <div id="comp-row-time" class="comp-matrix-row grid grid-cols-3 items-center p-4 text-left cursor-pointer transition-all duration-300 border-l-2 border-transparent hover:bg-slate-50/80 dark:hover:bg-slate-950/40" data-metric="time">
+                            <div class="text-xs font-bold text-slate-800 dark:text-white transition-colors">Time Allocation</div>
+                            <div class="text-xs text-slate-400 dark:text-slate-500 pl-2 font-normal line-through">Waiting hours</div>
+                            <div class="text-xs text-brand font-semibold pl-2">Service at home</div>
+                        </div>
+
+                        <!-- Row 2: Transit Overhead -->
+                        <div id="comp-row-transit" class="comp-matrix-row grid grid-cols-3 items-center p-4 text-left cursor-pointer transition-all duration-300 border-l-2 border-transparent hover:bg-slate-50/80 dark:hover:bg-slate-950/40" data-metric="transit">
+                            <div class="text-xs font-bold text-slate-800 dark:text-white transition-colors">Transit Requirement</div>
+                            <div class="text-xs text-slate-400 dark:text-slate-500 pl-2 font-normal line-through">Travel required</div>
+                            <div class="text-xs text-brand font-semibold pl-2">We come to you</div>
+                        </div>
+
+                        <!-- Row 3: Attention Density -->
+                        <div id="comp-row-attention" class="comp-matrix-row grid grid-cols-3 items-center p-4 text-left cursor-pointer transition-all duration-300 border-l-2 border-transparent hover:bg-slate-50/80 dark:hover:bg-slate-950/40" data-metric="attention">
+                            <div class="text-xs font-bold text-slate-800 dark:text-white transition-colors">Attention Density</div>
+                            <div class="text-xs text-slate-400 dark:text-slate-500 pl-2 font-normal line-through">Busy workshops</div>
+                            <div class="text-xs text-brand font-semibold pl-2">Personalized care</div>
+                        </div>
+
+                        <!-- Row 4: Pricing Model -->
+                        <div id="comp-row-pricing" class="comp-matrix-row grid grid-cols-3 items-center p-4 text-left cursor-pointer transition-all duration-300 border-l-2 border-transparent hover:bg-slate-50/80 dark:hover:bg-slate-950/40" data-metric="pricing">
+                            <div class="text-xs font-bold text-slate-800 dark:text-white transition-colors">Pricing Framework</div>
+                            <div class="text-xs text-slate-400 dark:text-slate-500 pl-2 font-normal line-through">Hidden costs</div>
+                            <div class="text-xs text-brand font-semibold pl-2">Transparent pricing</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT PANEL: Live Technical Diagnostic Summary HUD Box (5 Columns) -->
+            <div class="lg:col-span-5 bg-white border border-slate-200 text-slate-900 dark:bg-slate-950 dark:text-white dark:border-slate-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden shadow-xl text-left min-h-[320px] transition-colors duration-300">
+                <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+
+                <div class="space-y-5 relative z-10">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-3.5">
+                        <span id="comp-hud-tag" class="text-[9px] font-mono uppercase font-bold text-brand tracking-widest block">System Metric // Time Optimization</span>
+                        <h3 id="comp-hud-headline" class="text-sm font-bold text-slate-900 dark:text-white tracking-tight mt-0.5">Time Allocation Analysis</h3>
+                    </div>
+
+                    <p id="comp-hud-description" class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-normal leading-relaxed min-h-[100px] transition-opacity duration-200">
+                        Select any matrix row item on the left panel grid layout to analyze specific operational benchmarks and parameter differences instantly.
+                    </p>
+
+                    <!-- Real-Time Metric Indicators Footer Row -->
+                    <div class="grid grid-cols-2 gap-4 font-mono text-[10px] text-slate-400 dark:text-slate-500 pt-4 border-t border-slate-100 dark:border-slate-900">
+                        <div>
+                            <span class="block text-[8px] uppercase font-sans font-medium text-slate-400 dark:text-slate-500">Efficiency Multiplier</span>
+                            <span id="comp-metric-1" class="text-slate-800 dark:text-slate-200 font-bold block mt-0.5">Select a row</span>
+                        </div>
+                        <div class="border-l border-slate-100 dark:border-slate-900 pl-4">
+                            <span class="block text-[8px] uppercase font-sans font-medium text-slate-400 dark:text-slate-500">Cost Protection</span>
+                            <span id="comp-metric-2" class="text-emerald-600 dark:text-emerald-500 font-bold block mt-0.5">Vexa Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Verification Badge Container -->
+                <div class="pt-6 border-t border-slate-100 dark:border-slate-900 relative z-10 flex items-center gap-3">
+                    <span class="text-base select-none">🛡️</span>
+                    <p class="text-[10px] text-slate-500 font-normal leading-normal">
+                        Operational comparison matrices adhere strictly to standardized consumer diagnostic time tables.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- REAL-TIME REGISTER COMPARISON CONTROLLER SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const structuralRowsList = document.querySelectorAll(".comp-matrix-row");
+        const tagHudElement = document.getElementById("comp-hud-tag");
+        const headlineHudElement = document.getElementById("comp-hud-headline");
+        const descriptionHudElement = document.getElementById("comp-hud-description");
+        const dynamicMetricLabel1 = document.getElementById("comp-metric-1");
+
+        // Central Manifest Database Lookup Map Logs
+        const comparisonManifestLogs = {
+            time: {
+                tag: "System Metric // Time Optimization",
+                title: "Time Allocation Analysis",
+                desc: "Traditional brick garages isolate your car inside parallel back-logged queues, generating extensive lobby delays. Our mobile dispatch truck eliminates wait steps entirely by executing the task on your plot layout.",
+                m1: "+4.5 Hrs Saved"
+            },
+            transit: {
+                tag: "Logistics Framework // Route Vectors",
+                title: "Transit Requirement Audit",
+                desc: "Ditch complex highway routing and multi-car drop orchestration overheads completely. Vexa Tech mobile workshops use standalone GPS positioning tools to home directly straight onto your vehicle coordinates.",
+                m1: "0 km Driven"
+            },
+            attention: {
+                tag: "Personnel Density // Care Metrics",
+                title: "Attention Density Allocation",
+                desc: "Avoid mechanics rushing under flat-rate book speed protocols down parallel service bays. Our localized deployment model ensures a dedicated fluid system expert manages your vehicle calibration explicitly.",
+                m1: "1:1 Tech Focus"
+            },
+            pricing: {
+                tag: "Ledger Audit // Transparency Lock",
+                title: "Pricing Framework Integrity",
+                desc: "Traditional physical garages often compound baseline invoices with facilities overhead parameters or diagnostic access margins. Vexa systems preserve absolute transparency with predictable fixed-price costs.",
+                m1: "100% Flat Rate"
+            }
+        };
+
+        function activateMatrixRow(rowElement) {
+            const metricKey = rowElement.getAttribute("data-metric");
+            const matchedLogRecord = comparisonManifestLogs[metricKey];
+
+            if (!matchedLogRecord) return;
+
+            // Safely clear highlight configurations across all rows clean
+            structuralRowsList.forEach(r => {
+                r.classList.remove("bg-brand/5", "dark:bg-brand/10", "border-brand");
+                r.classList.add("border-transparent");
+            });
+
+            // Apply proper theme support highlights onto target row element context
+            rowElement.classList.remove("border-transparent");
+            rowElement.classList.add("bg-brand/5", "dark:bg-brand/10", "border-brand");
+
+            // Crossfade content smoothly into HUD diagnostic text blocks
+            tagHudElement.style.opacity = "0";
+            headlineHudElement.style.opacity = "0";
+            descriptionHudElement.style.opacity = "0";
+
+            setTimeout(() => {
+                tagHudElement.innerText = matchedLogRecord.tag;
+                headlineHudElement.innerText = matchedLogRecord.title;
+                descriptionHudElement.innerText = matchedLogRecord.desc;
+                dynamicMetricLabel1.innerText = matchedLogRecord.m1;
+
+                tagHudElement.style.opacity = "1";
+                headlineHudElement.style.opacity = "1";
+                descriptionHudElement.style.opacity = "1";
+            }, 100);
+        }
+
+        // Initialize active highlights profile dynamically on viewport boot
+        const defaultActiveRow = document.getElementById("comp-row-time");
+        if (defaultActiveRow) {
+            activateMatrixRow(defaultActiveRow);
+        }
+
+        structuralRowsList.forEach(row => {
+            row.addEventListener("click", () => {
+                activateMatrixRow(row);
+            });
+        });
+    });
+</script>
+
+<!-- REAL-TIME REGISTER COMPARISON CONTROLLER SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const structuralRowsList = document.querySelectorAll(".comp-matrix-row");
+        const tagHudElement = document.getElementById("comp-hud-tag");
+        const headlineHudElement = document.getElementById("comp-hud-headline");
+        const descriptionHudElement = document.getElementById("comp-hud-description");
+        const dynamicMetricLabel1 = document.getElementById("comp-metric-1");
+
+        // Central Manifest Database Lookup Map Logs
+        const comparisonManifestLogs = {
+            time: {
+                tag: "System Metric // Time Optimization",
+                title: "Time Allocation Analysis",
+                desc: "Traditional brick garages isolate your car inside parallel back-logged queues, generating extensive lobby delays. Our mobile dispatch truck eliminates wait steps entirely by executing the task on your plot layout.",
+                m1: "+4.5 Hrs Saved"
+            },
+            transit: {
+                tag: "Logistics Framework // Route Vectors",
+                title: "Transit Requirement Audit",
+                desc: "Ditch complex highway routing and multi-car drop orchestration overheads completely. Vexa Tech mobile workshops use standalone GPS positioning tools to home directly straight onto your vehicle coordinates.",
+                m1: "0 km Driven"
+            },
+            attention: {
+                tag: "Personnel Density // Care Metrics",
+                title: "Attention Density Allocation",
+                desc: "Avoid mechanics rushing under flat-rate book speed protocols down parallel service bays. Our localized deployment model ensures a dedicated fluid system expert manages your vehicle calibration explicitly.",
+                m1: "1:1 Tech Focus"
+            },
+            pricing: {
+                tag: "Ledger Audit // Transparency Lock",
+                title: "Pricing Framework Integrity",
+                desc: "Traditional physical garages often compound baseline invoices with facilities overhead parameters or diagnostic access margins. Vexa systems preserve absolute transparency with predictable fixed-price costs.",
+                m1: "100% Flat Rate"
+            }
+        };
+
+        // Initialize active focus highlights on the first table item initially
+        const defaultActiveRow = document.getElementById("comp-row-time");
+        if (defaultActiveRow) {
+            defaultActiveRow.classList.add("bg-brand/5", "dark:bg-brand/5", "border-l-2", "border-brand");
+            const structuralRecord = comparisonManifestLogs.time;
+            descriptionHudElement.innerText = structuralRecord.desc;
+            dynamicMetricLabel1.innerText = structuralRecord.m1;
+        }
+
+        structuralRowsList.forEach(row => {
+            row.addEventListener("click", () => {
+                const metricKey = row.getAttribute("data-metric");
+                const matchedLogRecord = comparisonManifestLogs[metricKey];
+
+                if (!matchedLogRecord) return;
+
+                // Safely extract formatting classes across neighboring loop options
+                structuralRowsList.forEach(r => {
+                    r.classList.remove("bg-brand/5", "dark:bg-brand/5", "border-l-2", "border-brand");
+                });
+
+                // Attach premium contrast orange properties explicitly over selected line container
+                row.classList.add("bg-brand/5", "dark:bg-brand/5", "border-l-2", "border-brand");
+
+                // Crossfade corresponding technical diagnostic content entries safely onto HUD card
+                tagHudElement.style.opacity = "0";
+                headlineHudElement.style.opacity = "0";
+                descriptionHudElement.style.opacity = "0";
+
+                setTimeout(() => {
+                    tagHudElement.innerText = matchedLogRecord.tag;
+                    headlineHudElement.innerText = matchedLogRecord.title;
+                    descriptionHudElement.innerText = matchedLogRecord.desc;
+                    dynamicMetricLabel1.innerText = matchedLogRecord.m1;
+
+                    tagHudElement.style.opacity = "1";
+                    headlineHudElement.style.opacity = "1";
+                    descriptionHudElement.style.opacity = "1";
+                }, 100);
+            });
+        });
+    });
+</script>
+<!-- METRIC PERFORMANCE CONSOLE GRID WITH LIVE INCREMENTING INTERACTIVE LOGIC -->
+<section id="operational-stats" class="py-16 md:py-24 bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Fine Geometric Backdrop Vector Lattice Layer -->
+    <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.015] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none select-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[130px] pointer-events-none select-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Section Header Layout Matrix -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end border-b border-slate-100 dark:border-slate-900 pb-10 mb-12 text-left">
+            <div class="lg:col-span-7 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                    Verified Performance Metrics
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Our Operational Footprint in Numbers
+                </h2>
+            </div>
+            <div class="lg:col-span-5">
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    Every tally profile below is drawn straight from our centralized client dispatch register logs. Real data points demonstrating our ongoing commitment to professional car care consistency.
+                </p>
+            </div>
+        </div>
+
+        <!-- 4-Column Stat Display Matrix (Maintains smooth 360px portrait stacks up to widescreen desktops) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            
+            <!-- Stat Item 1: Cars Serviced -->
+            <div class="stat-interactive-card p-6 bg-slate-50 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-850 rounded-2xl flex flex-col justify-between text-left transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group cursor-pointer select-none">
+                <div class="space-y-2">
+                    <div class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-baseline gap-0.5">
+                        <span class="count-target text-4xl sm:text-5xl font-bold font-mono text-brand" data-target="5000">0</span>
+                        <span class="text-xl font-bold text-brand font-mono">+</span>
+                    </div>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">Cars Serviced</h3>
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-normal">Total consumer models run through our fluid extraction systems safely across regional..</p>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-600 border-t border-slate-200/40 dark:border-slate-900 mt-4">
+                    Registry Log: Live Sync
+                </div>
+            </div>
+
+            <!-- Stat Item 2: Years Experience -->
+            <div class="stat-interactive-card p-6 bg-slate-50 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-850 rounded-2xl flex flex-col justify-between text-left transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group cursor-pointer select-none">
+                <div class="space-y-2">
+                    <div class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-baseline gap-0.5">
+                        <span class="count-target text-4xl sm:text-5xl font-bold font-mono text-brand" data-target="10">0</span>
+                        <span class="text-xl font-bold text-brand font-mono">+</span>
+                    </div>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">Years Experience</h3>
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-normal">A decade mastering clean vacuum extraction workflows, calibrations, and containment.</p>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-600 border-t border-slate-200/40 dark:border-slate-900 mt-4">
+                    Continuous Operation
+                </div>
+            </div>
+
+            <!-- Stat Item 3: Customer Rating -->
+            <div class="stat-interactive-card p-6 bg-slate-50 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-850 rounded-2xl flex flex-col justify-between text-left transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group cursor-pointer select-none">
+                <div class="space-y-2">
+                    <div class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-baseline gap-1">
+                        <span class="text-4xl sm:text-5xl font-bold font-mono text-brand">4.9</span>
+                        <span class="text-lg font-bold text-brand">★</span>
+                    </div>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">Customer Rating</h3>
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-normal">Verified evaluation points compiled directly over residential driveway handover logs.</p>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-600 border-t border-slate-200/40 dark:border-slate-900 mt-4">
+                    Satisfied Care Ratio
+                </div>
+            </div>
+
+            <!-- Stat Item 4: Same-Day Service -->
+            <div class="stat-interactive-card p-6 bg-slate-50 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-850 rounded-2xl flex flex-col justify-between text-left transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group cursor-pointer select-none">
+                <div class="space-y-2">
+                    <div class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-baseline gap-1">
+                        <span class="text-2xl sm:text-3xl font-bold text-brand">Available</span>
+                    </div>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">Same-Day Service</h3>
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-normal">Our localized routing logic maps mobile service van coordinates for instant diagnostics drops.</p>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-emerald-500 font-bold border-t border-slate-200/40 dark:border-slate-900 mt-4">
+                    ● Dispatch Hub Active
+                </div>
+            </div>
+
+        </div>
+
+        <!-- USER INTERACTIVE VERIFICATION PANEL PANEL -->
+        <div id="stats-hud-panel" class="mt-10 p-5 sm:p-6 rounded-2xl bg-slate-950 text-white border border-slate-800 shadow-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-6 text-left animate-fade-in">
+            <div class="space-y-1 max-w-xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                    <span class="text-[9px] font-mono uppercase font-bold text-brand tracking-widest">Central Server Link</span>
+                </div>
+                <h4 class="text-xs sm:text-sm font-bold text-white tracking-tight">Interactive Analytical Counter Engine Active</h4>
+                <p class="text-xs text-slate-400 leading-relaxed font-normal">Hover or click individual metric tiles above to re-trigger count computations. Data updates feed continuously from localized territory tracking modules.</p>
+            </div>
+            <button id="retrigger-counters" class="text-[10px] font-mono px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand/50 text-slate-300 transition-all focus:outline-none flex-shrink-0">
+                ↺ Re-Run Diagnostics
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- REAL-TIME INCREMENTING COUNTER ENGINE SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const valueNodes = document.querySelectorAll(".count-target");
+        const triggerBtn = document.getElementById("retrigger-counters");
+
+        function executeCounterSequence() {
+            valueNodes.forEach(node => {
+                const absoluteLimit = parseInt(node.getAttribute("data-target"), 10);
+                let processingValue = 0;
+                
+                // Formulate appropriate velocity scaling variables based on overall metrics size
+                const dynamicIncrementStep = absoluteLimit > 100 ? Math.ceil(absoluteLimit / 45) : 1;
+                node.innerText = "0";
+
+                const progressionLoop = setInterval(() => {
+                    processingValue += dynamicIncrementStep;
+                    
+                    if (processingValue >= absoluteLimit) {
+                        node.innerText = absoluteLimit.toLocaleString();
+                        clearInterval(progressionLoop);
+                    } else {
+                        node.innerText = processingValue.toLocaleString();
+                    }
+                }, 20);
+            });
+        }
+
+        // Connect automated run hook over viewport load properties
+        executeCounterSequence();
+
+        // Bind interactive user control button to reset tallies on query command
+        if (triggerBtn) {
+            triggerBtn.addEventListener("click", () => {
+                executeCounterSequence();
+            });
+        }
+    });
+</script>
+<!-- SAAS TESTIMONIALS SECTION WITH DYNAMIC CORPORATE KPI METRIC FILTERING -->
+<section id="saas-testimonials" class="py-16 md:py-24 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 border-t border-b border-slate-200/60 dark:border-slate-900/60 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header Layout -->
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                Enterprise Case Log Ecosystem
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+                Validated Performance Across Commercial Hubs
+            </h2>
+            <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-normal max-w-xl mx-auto">
+                See how operations teams, corporate fleet managers, and residential commuters leverage our structural tech platform to minimize lifecycle friction.
+            </p>
+
+            <!-- User Interactive KPI Filter Controls Matrix -->
+            <div class="pt-6 flex flex-wrap items-center justify-center gap-2 max-sm:px-2">
+                <button id="kpi-all" class="text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-brand text-white shadow-md shadow-brand/10">
+                    All Enterprise Reviews
+                </button>
+                <button id="kpi-efficiency" class="text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-white text-slate-600 dark:bg-slate-900 dark:text-slate-300 hover:text-brand border border-slate-200 dark:border-slate-800">
+                    ⚡ Operational Efficiency
+                </button>
+                <button id="kpi-convenience" class="text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-white text-slate-600 dark:bg-slate-900 dark:text-slate-300 hover:text-brand border border-slate-200 dark:border-slate-800">
+                    🏠 Driveway Convenience
+                </button>
+            </div>
+        </div>
+
+      <!-- 3-Card SaaS Grid Layout Structure (Optimized for 360px mobile, 768px tablet, 1024px, and monitor viewports) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-none mx-auto">
+    
+    <!-- SaaS Testimonial Card 1 -->
+    <div class="saas-review-card group bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 cursor-pointer" data-kpi="efficiency">
+        <div class="space-y-4">
+            <!-- Brand / Company Validation Vector Row -->
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold tracking-wider text-slate-400 dark:text-slate-500">APEX LOGISTICS INC.</span>
+                <div class="flex gap-0.5 text-brand text-xs select-none">⭐⭐⭐⭐⭐</div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-normal leading-relaxed italic">
+                “Managing a delivery network of 12 local vans meant constant downtime overhead at garages. This service integrated directly into our warehouse yard layout, handling parallel oil drops perfectly while our team completed documentation inside.”
+            </p>
+        </div>
+
+        <!-- Rich Media User Context Footprint Block -->
+        <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3.5">
+            <div class="relative w-11 h-11 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-950 flex-shrink-0 border border-slate-200 dark:border-slate-700 shadow-inner">
+                <img src="assets/t1" alt="Executive fleet director verified headshot portrait log profile" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <div class="space-y-0.5 text-left">
+                <h4 class="text-sm font-bold text-slate-900 dark:text-white leading-none">Devon Lane</h4>
+                <p class="text-[11px] text-slate-400 font-normal">Chief Operations Controller</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SaaS Testimonial Card 2 -->
+    <div class="saas-review-card group bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 cursor-pointer" data-kpi="convenience">
+        <div class="space-y-4">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold tracking-wider text-slate-400 dark:text-slate-500">RESIDENTIAL DRIVEWAY</span>
+                <div class="flex gap-0.5 text-brand text-xs select-none">⭐⭐⭐⭐⭐</div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-normal leading-relaxed italic">
+                “The pure convenience threshold of this app stack is unmatched. Booked an advanced full synthetic diagnostic cycle from my laptop. The dispatch truck appeared right on time on my driveway, handled everything clean tech, and routed the metrics straight.”
+            </p>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3.5">
+            <div class="relative w-11 h-11 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-950 flex-shrink-0 border border-slate-200 dark:border-slate-700 shadow-inner">
+                <img src="assets/t2" alt="Verified professional commuter customer portrait image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <div class="space-y-0.5 text-left">
+                <h4 class="text-sm font-bold text-slate-900 dark:text-white leading-none">Marcus Vance</h4>
+                <p class="text-[11px] text-slate-400 font-normal">Senior Tech Infrastructure Engineer</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+      SaaS Testimonial Card 3 
+      'md:col-span-2 lg:col-span-1' handles the 768px tablet layout strategy beautifully.
+      Instead of cramming three cards side-by-side, Card 3 neatly spans the full lower row width on tablet,
+      maintaining clean geometric line symmetry across all device viewports.
+    -->
+    <div class="saas-review-card group bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 cursor-pointer md:col-span-2 lg:col-span-1">
+        <div class="space-y-4">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold tracking-wider text-slate-400 dark:text-slate-500">VERTIX COURIERS GLOBAL</span>
+                <div class="flex gap-0.5 text-brand text-xs select-none">⭐⭐⭐⭐⭐</div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-normal leading-relaxed italic md:max-w-2xl">
+                “Our dispatch loops cannot stand logjam delays inside commercial workshops. Having a dedicated mobile service dispatch frame check oil density, brake linings, and reset system alerts at our storage yards completely modernized our fulfillment cycles.”
+            </p>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3.5">
+            <div class="relative w-11 h-11 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-950 flex-shrink-0 border border-slate-200 dark:border-slate-700 shadow-inner">
+                <img src="assets/t3" alt="Operations logistics partner profile image verified icon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <div class="space-y-0.5 text-left">
+                <h4 class="text-sm font-bold text-slate-900 dark:text-white leading-none">Rohan Das</h4>
+                <p class="text-[11px] text-slate-400 font-normal">Regional Fleet Asset Controller</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+</section>
+
+<!-- LIVE INLINE JAVASCRIPT CONTROLLER FOR KPI FILTERING -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const btnAll = document.getElementById("kpi-all");
+        const btnEff = document.getElementById("kpi-efficiency");
+        const btnConv = document.getElementById("kpi-convenience");
+        const cards = document.querySelectorAll(".saas-review-card");
+
+        function filterReviews(targetKpi, clickedBtn) {
+            // Reset state borders on selector list nodes
+            [btnAll, btnEff, btnConv].forEach(btn => {
+                btn.className = "text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-white text-slate-600 dark:bg-slate-900 dark:text-slate-300 hover:text-brand border border-slate-200 dark:border-slate-800";
+            });
+
+            // Set active focus style weights on selected choice
+            clickedBtn.className = "text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-brand text-white shadow-md shadow-brand/10";
+
+            // Loop card elements and toggle structural visibility parameters smoothly
+            cards.forEach(card => {
+                const cardKpi = card.getAttribute("data-kpi");
+                if (targetKpi === "all" || cardKpi === targetKpi) {
+                    card.style.display = "flex";
+                    // Add smooth micro translation entry
+                    setTimeout(() => {
+                        card.style.opacity = "1";
+                        card.style.transform = "scale(1)";
+                    }, 10);
+                } else {
+                    card.style.display = "none";
+                    card.style.opacity = "0";
+                    card.style.transform = "scale(0.98)";
+                }
+            });
+        }
+
+        btnAll.addEventListener("click", () => filterReviews("all", btnAll));
+        btnEff.addEventListener("click", () => filterReviews("efficiency", btnEff));
+        btnConv.addEventListener("click", () => filterReviews("convenience", btnConv));
+    });
+</script>
+<!-- DYNAMIC PROCESS TIMELINE MATRIX - MINIMALIST FLOOR PLAN LAYOUT -->
+<section id="process-timeline" class="py-16 md:py-24 bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 border-t border-b border-slate-200/60 dark:border-slate-900/60 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Fine-Line Background Mesh Layer Overlay -->
+    <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none select-none"></div>
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[120px] pointer-events-none select-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Redesigned Asymmetric Section Header Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end border-b border-slate-200/60 dark:border-slate-800/60 pb-10 mb-12 text-left">
+            <div class="lg:col-span-7 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                    Linear Logistics Map
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    How Our Mobile Service Works
+                </h2>
+            </div>
+            <div class="lg:col-span-5">
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    We have removed linking lines entirely to emphasize independent operational milestones. Click on any block node to update the central tracking summary below.
+                </p>
+            </div>
+        </div>
+
+        <!-- Lineless Blocks Matrix Layout (Seamlessly adapts from 360px portrait devices up to large desktop screens) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch max-w-6xl mx-auto">
+            
+            <!-- Step Card 1: Booking -->
+            <div id="timeline-step-1" class="timeline-interactive-card p-6 bg-slate-50 dark:bg-slate-900 border border-brand/40 shadow-sm rounded-2xl flex flex-col justify-between text-left cursor-pointer select-none transition-all duration-300 hover:shadow-xl group" data-step="booking">
+                <div class="space-y-4">
+                    <span class="timeline-badge w-9 h-9 rounded-xl bg-brand text-white font-mono text-xs font-bold flex items-center justify-center transition-colors shadow-sm">1</span>
+                    <div class="space-y-1">
+                        <h3 class="timeline-title text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Book Online</h3>
+                        <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Input your vehicle profile and select your preferred fluid intervals inside our online dashboard framework.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-brand tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-800/60 mt-5 flex justify-between items-center">
+                    <span>Step Active</span>
+                    <span class="timeline-chevron opacity-100 transition-opacity">➔</span>
+                </div>
+            </div>
+
+            <!-- Step Card 2: Arrival -->
+            <div id="timeline-step-2" class="timeline-interactive-card p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl flex flex-col justify-between text-left cursor-pointer select-none transition-all duration-300 hover:shadow-xl group" data-step="arrival">
+                <div class="space-y-4">
+                    <span class="timeline-badge w-9 h-9 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-400 font-mono text-xs font-bold flex items-center justify-center transition-colors">2</span>
+                    <div class="space-y-1">
+                        <h3 class="timeline-title text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 group-hover:text-brand transition-colors">Technician Arrives</h3>
+                        <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Our mobile logistics platform dispatches a fully self-powered service van right directly to your coordinates.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-500 tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-800/60 mt-5 flex justify-between items-center">
+                    <span>Standby Status</span>
+                    <span class="timeline-chevron opacity-0 transition-opacity">➔</span>
+                </div>
+            </div>
+
+            <!-- Step Card 3: Execution -->
+            <div id="timeline-step-3" class="timeline-interactive-card p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl flex flex-col justify-between text-left cursor-pointer select-none transition-all duration-300 hover:shadow-xl group" data-step="service">
+                <div class="space-y-4">
+                    <span class="timeline-badge w-9 h-9 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-400 font-mono text-xs font-bold flex items-center justify-center transition-colors">3</span>
+                    <div class="space-y-1">
+                        <h3 class="timeline-title text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 group-hover:text-brand transition-colors">Vehicle Serviced</h3>
+                        <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Certified mechanics perform airtight fluid siphoning and filter swaps on-site with zero masonry trace.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-500 tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-800/60 mt-5 flex justify-between items-center">
+                    <span>Standby Status</span>
+                    <span class="timeline-chevron opacity-0 transition-opacity">➔</span>
+                </div>
+            </div>
+
+            <!-- Step Card 4: Delivery -->
+            <div id="timeline-step-4" class="timeline-interactive-card p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl flex flex-col justify-between text-left cursor-pointer select-none transition-all duration-300 hover:shadow-xl group" data-step="confidence">
+                <div class="space-y-4">
+                    <span class="timeline-badge w-9 h-9 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-400 font-mono text-xs font-bold flex items-center justify-center transition-colors">4</span>
+                    <div class="space-y-1">
+                        <h3 class="timeline-title text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 group-hover:text-brand transition-colors">Drive with Confidence</h3>
+                        <p class="text-[11px] text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Itemized digital receipts update your registry history. Spent oils are securely stored for green recycling loops.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-500 tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-800/60 mt-5 flex justify-between items-center">
+                    <span>Standby Status</span>
+                    <span class="timeline-chevron opacity-0 transition-opacity">➔</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- REAL-TIME TRACKING HUD CONSOLE INTERFACE -->
+        <div id="timeline-hud-board" class="mt-10 p-5 sm:p-6 rounded-2xl bg-slate-950 text-white border border-slate-800 shadow-2xl items-center justify-between gap-6 text-left flex animate-fade-in">
+            <div class="space-y-1 max-w-xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                    <span id="timeline-hud-tag" class="text-[9px] font-mono uppercase font-bold text-brand tracking-widest">DISPATCH REGISTER // LOG 01</span>
+                </div>
+                <h4 id="timeline-hud-title" class="text-xs sm:text-sm font-bold text-white tracking-tight">Book Online Setup Parameters</h4>
+                <p id="timeline-hud-desc" class="text-xs text-slate-400 leading-relaxed font-normal">Our central server checks API plate values instantly. Pricing calculations remain locked from this initial connection step forward against dynamic regional market price surges.</p>
+            </div>
+            <span class="text-xl opacity-25 hidden md:block select-none pointer-events-none font-mono">📋 TIMELINE_HUD</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- LIVE TIMELINE METRICS COORDINATION SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const stepCards = document.querySelectorAll(".timeline-interactive-card");
+        const boardHud = document.getElementById("timeline-hud-board");
+        const tagHud = document.getElementById("timeline-hud-tag");
+        const titleHud = document.getElementById("timeline-hud-title");
+        const descHud = document.getElementById("timeline-hud-desc");
+
+        // Central Asset Content Data Logs Matrix
+        const timelineMetadata = {
+            booking: {
+                tag: "DISPATCH REGISTER // LOG 01",
+                title: "Book Online Setup Parameters",
+                desc: "Our central server checks API plate values instantly. Pricing calculations remain locked from this initial connection step forward against dynamic regional market price surges."
+            },
+            arrival: {
+                tag: "FLEET RADAR // LOG 02",
+                title: "Mobile Workshop Van Dispatch Vectors",
+                desc: "Geo-fencing tracking loops compute exact route densities and traffic factors. Our mechanics alert you via SMS automated triggers exactly 15 minutes before landing on your driveway."
+            },
+            service: {
+                tag: "CALIBRATION LOOP // LOG 03",
+                title: "Closed-Circuit Multi-Point Tuning Execution",
+                desc: "Technicians extract depleted lubricants via clean negative pressure paths, inspect brake pad wear arrays with micro-calipers, and verify voltage insulation boundaries securely."
+            },
+            confidence: {
+                tag: "LEDGER CLOSE // LOG 04",
+                title: "Warranty Certification & Material Recycling",
+                desc: "Your updated engine performance data logs sync straight back to our central cloud registry. Spent fluids are securely transferred into localized eco-safe refinement pipelines."
+            }
+        };
+
+        stepCards.forEach(card => {
+            card.addEventListener("click", () => {
+                const targetKey = card.getAttribute("data-step");
+                const currentDataRecord = timelineMetadata[targetKey];
+
+                if (!currentDataRecord) return;
+
+                // Revert highlight configurations over parallel card nodes cleanly
+                stepCards.forEach(c => {
+                    c.className = "timeline-interactive-card p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl flex flex-col justify-between text-left cursor-pointer select-none transition-all duration-300 hover:shadow-xl group";
+                    
+                    const badge = c.querySelector(".timeline-badge");
+                    badge.className = "timeline-badge w-9 h-9 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-400 font-mono text-xs font-bold flex items-center justify-center transition-colors";
+                    
+                    const title = c.querySelector(".timeline-title");
+                    title.className = "timeline-title text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 group-hover:text-brand transition-colors";
+
+                    const statusContainer = c.querySelector(".pt-3");
+                    statusContainer.className = "pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-500 tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-800/60 mt-5 flex justify-between items-center";
+                    statusContainer.querySelector("span").innerText = "Standby Status";
+
+                    const chevron = c.querySelector(".timeline-chevron");
+                    chevron.className = "timeline-chevron opacity-0 transition-opacity";
+                });
+
+                // Attach sharp orange brand accents onto the selected active card item
+                card.className = "timeline-interactive-card p-6 bg-slate-50 dark:bg-slate-900 border border-brand/40 shadow-sm rounded-2xl flex flex-col justify-between text-left cursor-pointer select-none transition-all duration-300 hover:shadow-xl group";
+                
+                const activeBadge = card.querySelector(".timeline-badge");
+                activeBadge.className = "timeline-badge w-9 h-9 rounded-xl bg-brand text-white font-mono text-xs font-bold flex items-center justify-center transition-colors shadow-sm";
+                
+                const activeTitle = card.querySelector(".timeline-title");
+                activeTitle.className = "timeline-title text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors";
+
+                const activeStatusContainer = card.querySelector(".pt-3");
+                activeStatusContainer.className = "pt-3 font-mono text-[9px] text-brand tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-800/60 mt-5 flex justify-between items-center";
+                activeStatusContainer.querySelector("span").innerText = "Step Active";
+
+                const activeChevron = card.querySelector(".timeline-chevron");
+                activeChevron.className = "timeline-chevron opacity-100 transition-opacity transform translate-x-0.5";
+
+                // Crossfade data text layers smoothly onto telemetry description banner board
+                if (boardHud) {
+                    tagHud.style.opacity = "0";
+                    titleHud.style.opacity = "0";
+                    descHud.style.opacity = "0";
+
+                    setTimeout(() => {
+                        tagHud.innerText = currentDataRecord.tag;
+                        titleHud.innerText = currentDataRecord.title;
+                        descHud.innerText = currentDataRecord.desc;
+                        
+                        tagHud.style.opacity = "1";
+                        titleHud.style.opacity = "1";
+                        descHud.style.opacity = "1";
+                    }, 100);
+                }
+            });
+        });
+    });
+</script>
+<!-- PRODUCTION-READY PROMOTIONAL OFFER BANNER WITH FULL LIGHT/DARK MULTI-LAYOUT COVERAGE -->
+<section id="promo-banner" class="relative overflow-hidden bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 border-b border-slate-200 dark:border-brand/20 transition-colors duration-300">
+    
+    <!-- 
+      1. Geometric Blueprint Background 
+      Adaptive single-color vector grid mesh pattern tracking layout systems cleanly.
+    -->
+    <div class="absolute inset-0 z-0 opacity-5 dark:opacity-10 select-none pointer-events-none">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="promo-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#D97706" stroke-width="0.5"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#promo-grid)" />
+        </svg>
+        <div class="absolute inset-0 bg-[radial-gradient(transparent_0%,rgba(248,250,252,0.8)_80%)] dark:bg-[radial-gradient(transparent_0%,rgba(8,12,24,0.8)_80%)]"></div>
+    </div>
+
+    <!-- 
+      2. Content Containment Grid 
+      12-Column matrix framework adapting dynamically across small, medium, and wide desktop views.
+    -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 xs:px-6 md:px-8 py-12 sm:py-16 lg:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- LEFT COLUMN: Interactive Offer HUD (Adaptive Typography Module) -->
+            <div class="lg:col-span-5 text-center lg:text-left space-y-6">
+                <div class="inline-flex items-center gap-2.5 py-1.5 px-3 rounded-lg bg-brand/10 border border-brand/20 text-brand text-xs font-semibold tracking-wide backdrop-blur-md">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                    </span>
+                    <span class="font-mono uppercase tracking-widest text-[10px]">OPERATIONAL // LIMITED TIME OFFER</span>
+                </div>
+                
+                <!-- Headline Geometry (Adaptive contrast styles across light/dark surfaces) -->
+                <h2 class="text-4xl xs:text-5xl sm:text-6xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-none text-slate-800 dark:text-slate-200">
+                    STATUS: <span class="text-brand">ACTIVE</span>
+                </h2>
+
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-normal leading-relaxed max-w-lg mx-auto lg:mx-0">
+                    Select a core vector track below to synchronize localized deployment parameters and lock guarantee thresholds entirely.
+                </p>
+
+                <!-- Interactive Offer Switcher Matrix (Optimized for 360px portrait up to widescreen stacks) -->
+                <div class="pt-2 flex flex-col sm:flex-row lg:flex-col flex-wrap justify-center lg:justify-start gap-3 text-left select-none w-full max-w-md mx-auto lg:mx-0">
+                    
+                    <!-- Offer Option 1 (Active Initially) -->
+                    <div id="promo-track-first" class="promo-trigger-card p-3 rounded-xl bg-white dark:bg-slate-900 border border-brand/50 cursor-pointer transition-all duration-300 flex items-center justify-between group shadow-md" data-offer="first">
+                        <div class="flex items-center gap-3">
+                            <span class="track-dot w-2 h-2 rounded-full bg-brand"></span>
+                            <span class="text-xs font-semibold text-slate-900 dark:text-white tracking-tight">15% OFF (First Svc)</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400 group-hover:text-brand transition-colors pl-4">➔</span>
+                    </div>
+
+                    <!-- Offer Option 2 -->
+                    <div id="promo-track-inspect" class="promo-trigger-card p-3 rounded-xl bg-white/40 dark:bg-transparent border border-slate-200 dark:border-slate-800 hover:border-brand/40 cursor-pointer transition-all duration-300 flex items-center justify-between group" data-offer="inspect">
+                        <div class="flex items-center gap-3">
+                            <span class="track-dot w-2 h-2 rounded-full bg-slate-400 dark:bg-slate-600 transition-colors"></span>
+                            <span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors tracking-tight">Free Inspection Bundle</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 group-hover:text-brand transition-colors pl-4">➔</span>
+                    </div>
+
+                    <!-- Offer Option 3 -->
+                    <div id="promo-track-fleet" class="promo-trigger-card p-3 rounded-xl bg-white/40 dark:bg-transparent border border-slate-200 dark:border-slate-800 hover:border-brand/40 cursor-pointer transition-all duration-300 flex items-center justify-between group" data-offer="fleet">
+                        <div class="flex items-center gap-3">
+                            <span class="track-dot w-2 h-2 rounded-full bg-slate-400 dark:bg-slate-600 transition-colors"></span>
+                            <span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors tracking-tight">Fleet Log Volume Discount</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 group-hover:text-brand transition-colors pl-4">➔</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 
+              RIGHT COLUMN: OFFER DETAILS & TELEMETRY HUD MONITOR
+              Configured with adaptive structural card panel surfaces.
+            -->
+            <div class="lg:col-span-7 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-8 lg:p-10 flex flex-col justify-between relative overflow-hidden shadow-xl backdrop-blur-md transition-all">
+                
+                <!-- Display Detail Track Content Components -->
+                <div class="space-y-4 sm:space-y-6 text-left">
+                    <h3 id="offer-headline" class="text-2xl sm:text-3xl font-bold tracking-tight text-brand leading-tight">
+                        First Service: 15% OFF
+                    </h3>
+                    
+                    <p id="offer-subtext" class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-normal leading-relaxed max-w-2xl">
+                        A unique opportunity matrix assigns immediate localized fluid loops. Secure your custom oil service or preventative Multi-Point Check and validate this limited calibration guarantee directly.
+                    </p>
+
+                    <!-- CTA Action Routing Elements -->
+                    <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full">
+                        <a href="booking.html" class="flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-md shadow-brand/10 transition-colors duration-300 transform active:scale-[0.98]">
+                            <span>Lock Svc Track</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                        </a>
+                        <a href="quotes.html" class="flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 dark:bg-slate-950 dark:hover:bg-slate-900 dark:text-slate-200 font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-xl border border-slate-200 dark:border-slate-850 transition-colors">
+                            Request Quote Matrix
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 
+                  COUNTDOWN TELEMETRY HUD MODULE
+                  Integrated numeric tracking interface using standard mono elements.
+                -->
+                <div id="timer-hud" class="mt-8 sm:mt-10 pt-6 border-t border-slate-100 dark:border-slate-850 text-left font-mono w-full">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        
+                        <div class="space-y-1 max-w-md">
+                            <span class="block text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 tracking-wider">Calibration Guarantee Window</span>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-normal leading-normal">Our system assigned log entry locks localized deployment slots based on immediate fleet coordinate density metrics.</p>
+                        </div>
+                        
+                        <!-- Numerical Data Target Readouts -->
+                        <div class="flex-shrink-0 flex items-center justify-center gap-1.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 text-center shadow-inner self-start sm:self-center">
+                            <div class="space-y-0.5">
+                                <span id="timer-days" class="block text-xl sm:text-2xl font-bold font-mono text-brand">00</span>
+                                <span class="block text-[8px] uppercase font-bold text-slate-400 dark:text-slate-500 tracking-wider">DAYS</span>
+                            </div>
+                            <span class="text-base font-bold text-brand opacity-60">:</span>
+                            <div class="space-y-0.5">
+                                <span id="timer-hours" class="block text-xl sm:text-2xl font-bold font-mono text-brand">00</span>
+                                <span class="block text-[8px] uppercase font-bold text-slate-400 dark:text-slate-500 tracking-wider">HRS</span>
+                            </div>
+                            <span class="text-base font-bold text-brand opacity-60">:</span>
+                            <div class="space-y-0.5">
+                                <span id="timer-mins" class="block text-xl sm:text-2xl font-bold font-mono text-brand">00</span>
+                                <span class="block text-[8px] uppercase font-bold text-slate-400 dark:text-slate-500 tracking-wider">MINS</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <p class="mt-4 text-[9px] sm:text-[10px] text-slate-400 dark:text-slate-500 font-normal leading-normal truncate">
+                        &gt; LOG_SYS: Assigned coordinate sector matrix locks guaranteed pricing thresholds until termination sequence.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- LIVE SCRIPT CONTENT CONTROLLER LOGIC PACK -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const functionalTriggersList = document.querySelectorAll(".promo-trigger-card");
+        const headingOutputNode = document.getElementById("offer-headline");
+        const descriptionOutputNode = document.getElementById("offer-subtext");
+        
+        // Central Manifest Database Lookup Map Logs
+        const dynamicOffersDataLogs = {
+            first: {
+                title: "First Service: 15% OFF",
+                desc: "A unique opportunity matrix assigns immediate localized fluid loops. Secure your custom oil service or preventative Multi-Point Check and validate this limited calibration guarantee directly."
+            },
+            inspect: {
+                title: "Inspection Bundle: Verified Compliant",
+                desc: "Locking this vector path assigns immediate diagnostic sweeps during your primary fluid extraction session entirely. Verify cooling configurations, electrical insulation, and tire tread depth profiles via localized on-site sensors."
+            },
+            fleet: {
+                title: "Fleet Volume: Logistics Discount Matrix",
+                desc: "Enterprise solutions deploy multiple service units structured across logistical carrier corridors simultaneously entirely. Optimize multi-vehicle operational windows entirely with our standalone power grid configuration entirely."
+            }
+        };
+
+        function switchPromoActiveState(chosenRowElement) {
+            const dataSearchKey = chosenRowElement.getAttribute("data-offer");
+            const structuralRecord = dynamicOffersDataLogs[dataSearchKey];
+
+            if (!structuralRecord) return;
+
+            // Clean active classes off neighbor tracking elements smoothly
+            functionalTriggersList.forEach(row => {
+                row.className = "promo-trigger-card p-3 rounded-xl bg-white/40 dark:bg-transparent border border-slate-200 dark:border-slate-800 hover:border-brand/40 cursor-pointer transition-all duration-300 flex items-center justify-between group";
+                
+                const dot = row.querySelector(".track-dot");
+                if (dot) dot.className = "track-dot w-2 h-2 rounded-full bg-slate-400 dark:bg-slate-600 transition-colors";
+                
+                const label = row.querySelector("span:nth-child(2)");
+                if (label) {
+                    label.className = "text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors tracking-tight";
+                }
+            });
+
+            // Set precise layout parameters over targeted selection node
+            chosenRowElement.className = "promo-trigger-card p-3 rounded-xl bg-white dark:bg-slate-900 border border-brand/50 cursor-pointer transition-all duration-300 flex items-center justify-between group shadow-md";
+            
+            const targetedDot = chosenRowElement.querySelector(".track-dot");
+            if (targetedDot) targetedDot.className = "track-dot w-2 h-2 rounded-full bg-brand transition-colors";
+            
+            const targetedLabel = chosenRowElement.querySelector("span:nth-child(2)");
+            if (targetedLabel) {
+                targetedLabel.className = "text-xs font-semibold text-slate-900 dark:text-white tracking-tight";
+            }
+
+            // Crossfade content indicators cleanly into description panels
+            if (headingOutputNode && descriptionOutputNode) {
+                headingOutputNode.style.opacity = "0";
+                descriptionOutputNode.style.opacity = "0";
+
+                setTimeout(() => {
+                    headingOutputNode.innerText = structuralRecord.title;
+                    descriptionOutputNode.innerText = structuralRecord.desc;
+                    headingOutputNode.style.opacity = "1";
+                    descriptionOutputNode.style.opacity = "1";
+                }, 100);
+            }
+        }
+
+        functionalTriggersList.forEach(triggerBtn => {
+            triggerBtn.addEventListener("click", () => switchPromoActiveState(triggerBtn));
+        });
+
+        // --- TEMPORAL ENGINE LOGIC TRACKS ---
+        const dValBox = document.getElementById("timer-days");
+        const hValBox = document.getElementById("timer-hours");
+        const mValBox = document.getElementById("timer-mins");
+
+        function calculateRemainingWindow() {
+            // Evaluates countdown sequence based on target year metrics
+            const targetedDateObject = new Date("2026-12-31T23:59:59Z");
+            const activeSystemDateObject = new Date();
+            const logTemporalDelta_ms = targetedDateObject - activeSystemDateObject;
+
+            if (logTemporalDelta_ms <= 0) {
+                if (dValBox) dValBox.innerText = "00";
+                if (hValBox) hValBox.innerText = "00";
+                if (mValBox) mValBox.innerText = "00";
+                clearInterval(clockIntervalLoop);
+                return;
+            }
+
+            const daysPart = Math.floor(logTemporalDelta_ms / (1000 * 60 * 60 * 24));
+            const hoursPart = Math.floor((logTemporalDelta_ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minsPart = Math.floor((logTemporalDelta_ms % (1000 * 60 * 60)) / (1000 * 60));
+
+            if (dValBox) dValBox.innerText = String(daysPart).padStart(2, "0");
+            if (hValBox) hValBox.innerText = String(hoursPart).padStart(2, "0");
+            if (mValBox) mValBox.innerText = String(minsPart).padStart(2, "0");
+        }
+
+        calculateRemainingWindow();
+        const clockIntervalLoop = setInterval(calculateRemainingWindow, 60000);
+    });
+</script>
+
+<!-- 
+  SECTION SCRIPTING 
+  Handles Offer Switching and the Live Countdown Timer entirely.
+-->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        
+        // --- PROMOTIONAL OFFER SCRIPTING ---
+        const structuralRows = document.querySelectorAll(".promo-trigger-card");
+        const offerHeadline = document.getElementById("offer-headline");
+        const offerSubtext = document.getElementById("offer-subtext");
+        
+        // Central Manifest Database: Unique offers strictly following single-color constraints
+        const offerMetadataManifest = {
+            first: {
+                title: "First Service: 15% OFF",
+                desc: "A unique opportunity matrix assigns immediate localized fluid loops. Secure your custom oil service or preventative Multi-Point Check and validate this limited calibration guarantee directly."
+            },
+            inspect: {
+                title: "Inspection Bundle: Verified Compliant",
+                desc: "Locking this vector path assign immediate diagnostic sweeps during your primary fluid extraction session entirely. Verify cooling configurations, electrical insulation, and tire tread depth profiles via localized on-site sensors."
+            },
+            fleet: {
+                title: "Fleet Volume: Logistics Discount Matrix",
+                desc: "Enterprise solutions deploy multiple service units structured across logistical carrier corridors simultaneously entirely. Optimize multi-vehicle operational windows entirely with our standalone power grid configuration entirely."
+            }
+        };
+
+        structuralRows.forEach(row => {
+            row.addEventListener("click", () => {
+                const searchKey = row.getAttribute("data-offer");
+                const matchingDataRecord = offerMetadataManifest[searchKey];
+
+                if (!matchingDataRecord) return;
+
+                // Strip unique single-color highlights off alternative partners entirely safely
+                structuralRows.forEach(r => {
+                    r.className = "promo-trigger-card p-3 rounded-xl bg-transparent border border-slate-700/60 hover:border-brand/40 cursor-pointer transition-all duration-300 flex items-center justify-between group";
+                    const internalDotMarker = r.querySelector(".track-dot");
+                    internalDotMarker.className = "track-dot w-2 h-2 rounded-full bg-slate-600 transition-colors";
+                });
+
+                // Set unique single-color highlights on selected target node explicitly
+                row.className = "promo-trigger-card p-3 rounded-xl bg-slate-850 border border-brand/40 cursor-pointer transition-all duration-300 flex items-center justify-between group shadow-lg hub-active-glow";
+                const activeDotMarker = row.querySelector(".track-dot");
+                activeDotMarker.className = "track-dot w-2 h-2 rounded-full bg-brand transition-colors";
+
+                // Crossfade corresponding technical data entries safely entirely onto description terminal entirely
+                if (offerHeadline) {
+                    offerHeadline.style.opacity = "0";
+                    offerSubtext.style.opacity = "0";
+
+                    setTimeout(() => {
+                        offerHeadline.innerText = matchingDataRecord.title;
+                        offerSubtext.innerText = matchingDataRecord.desc;
+                        offerHeadline.style.opacity = "1";
+                        offerSubtext.style.opacity = "1";
+                    }, 100);
+                }
+            });
+        });
+
+        // --- LIVE COUNTDOWN TIMER SCRIPTING entirely entirely entirely ---
+        // Integrated design using the unique monospace font entirely for numeric entirely geometric clarity
+        const timerDaysVal = document.getElementById("timer-days");
+        const timerHoursVal = document.getElementById("timer-hours");
+        const timerMinsVal = document.getElementById("timer-mins");
+
+        function updateCountdownTelemetry() {
+            // Formulaic time calculation ensures strictly geometric data readout entirely
+            const targetCalendarDateTime = new Date("2026-12-31T00:00:00Z"); 
+            const currentCalendarDateTime = new Date();
+            const absoluteLogTimeDelta_ms = targetCalendarDateTime - currentCalendarDateTime;
+
+            if (absoluteLogTimeDelta_ms <= 0) {
+                if (timerDaysVal) timerDaysVal.innerText = "00";
+                if (timerHoursVal) timerHoursVal.innerText = "00";
+                if (timerMinsVal) timerMinsVal.innerText = "00";
+                clearInterval(countInterval);
+                return;
+            }
+
+            // Strictly geometric time matrix partitioning entirely
+            const logDaysRemaining_abs = Math.floor(absoluteLogTimeDelta_ms / (1000 * 60 * 60 * 24));
+            const logHoursRemaining_abs = Math.floor((absoluteLogTimeDelta_ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const logMinsRemaining_abs = Math.floor((absoluteLogTimeDelta_ms % (1000 * 60 * 60)) / (1000 * 60));
+
+            // Strictly geometric padding ensures uniform geometric data readouts entirely entirely entirely
+            if (timerDaysVal) timerDaysVal.innerText = String(logDaysRemaining_abs).padStart(2, "0");
+            if (timerHoursVal) timerHoursVal.innerText = String(logHoursRemaining_abs).padStart(2, "0");
+            if (timerMinsVal) timerMinsVal.innerText = String(logMinsRemaining_abs).padStart(2, "0");
+        }
+
+        updateCountdownTelemetry(); // Automated run hook entirely over parameters entirely
+        const countInterval = setInterval(updateCountdownTelemetry, 60000); // 1-minute temporal resolution loop entirely
+    });
+</script>
+<!-- CLEAN SIMPLIFIED FINAL CALL TO ACTION SECTION -->
+<!-- CLEAN SIMPLIFIED FINAL CALL TO ACTION SECTION (WITH FULL LIGHT/DARK MULTI-LAYOUT COVERAGE) -->
+<section id="strong-final-cta" class="relative bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 border-t border-b border-slate-200/60 dark:border-slate-900/60 transition-colors duration-300 py-16 sm:py-20 md:py-24">
+    
+    <!-- Ambient Structural Grid Overlay Elements -->
+    <div class="absolute inset-0 z-0 select-none pointer-events-none opacity-[0.04] dark:opacity-[0.02] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:20px_20px]"></div>
+
+    <!-- Core Layout Content Wrapper (Symmetrical Widescreen Centered) -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        
+        <!-- Trust Verification Micro Badge -->
+        <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 px-3.5 py-1.5 rounded-full inline-block animate-fade-in">
+            Get Started Safely
+        </span>
+        
+        <!-- Main Core Headline (Enforces strict font weight boundaries 400-600) -->
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight transition-colors duration-300">
+            Experience Hassle-Free <span class="text-brand">Mobile Car Care</span>
+        </h2>
+        
+        <!-- Supporting Description Paragraph (Restricted to clean 400 weight framework) -->
+        <p class="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto max-sm:px-2 transition-colors duration-300">
+            Skip the workshop lines completely. Secure a dedicated mobile fluid treatment loop or preventative service drop window at your preferred coordinate point today.
+        </p>
+
+        <!-- Symmetrical High-Conversion Conversion Button Layout Track -->
+        <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 max-w-xs sm:max-w-none mx-auto">
+            
+            <!-- Primary Service Track Call-To-Action -->
+            <a href="booknow.html" class="group flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm px-8 py-4 rounded-xl shadow-lg shadow-brand/20 transition-all duration-300 transform hover:-translate-y-0.5 active:scale-[0.995]">
+                <span>Schedule Today</span>
+                <svg class="w-4 h-4 text-white transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+                </svg>
+            </a>
+            
+            <!-- Secondary Inquiry Call-To-Action -->
+            <a href="contact.html" class="flex items-center justify-center bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-850 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm px-8 py-4 rounded-xl border border-slate-200 dark:border-slate-800 transition-all shadow-sm">
+                <span>Contact Us</span>
+            </a>
+
+            <!-- Direct Voice Path Call-To-Action -->
+            <a href="tel:+918005550199" class="flex items-center justify-center gap-2 bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-850 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm px-8 py-4 rounded-xl border border-slate-200 dark:border-slate-800 transition-all shadow-sm group">
+                <svg class="w-4 h-4 text-slate-500 dark:text-slate-400 group-hover:text-brand transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.387a12.035 12.035 0 0 1-7.147-7.147c-.155-.441.011-.928.387-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25z"/>
+                </svg>
+                <span>Call Now</span>
+            </a>
+            
+        </div>
+
+    </div>
+</section>
+
+
+
+    <!-- FOOTER SECTION WITH INTEGRATED NEWSLETTER -->
+<footer id="contact" class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-12 text-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-8 lg:gap-12">
+            
+            <!-- Brand Info Block -->
+            <div class="sm:col-span-2 md:col-span-4 lg:col-span-4 space-y-4">
+                <a href="index.html" class="inline-block">
+                    <div class="flex items-center gap-2">
+                        <!-- Logo Icon Container -->
+                        <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 hover:rotate-12">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <!-- Modern Droplet fused with an upward/forward motion arrow -->
+                                <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                                <path d="M12 18V10" />
+                                <path d="M9 13L12 10L15 13" />
+                            </svg>
+                        </div>
+                        <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Lube<span class="text-brand">Go</span></span>
+                    </div>
+                </a>
+                
+                <p class="text-slate-500 dark:text-slate-400 max-w-xs text-xs leading-relaxed">
+                    On-demand residential and corporate fleet diagnostics, custom oil formulation filtration changes, and structural preventative vehicular engineering.
+                </p>
+                
+                <!-- Social Icons Panel -->
+                <div class="flex items-center space-x-5 text-slate-400 dark:text-slate-500">
+                    <!-- Facebook -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="Facebook">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+
+                    <!-- X (Twitter) -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="X (formerly Twitter)">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="Instagram">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links Column 1 -->
+            <div class="lg:col-span-2">
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-4 uppercase tracking-wider text-xs">Navigation</h4>
+                <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                    <li><a href="index.html" class="hover:text-brand transition-colors">Home</a></li>
+                    <li><a href="home2.html" class="hover:text-brand transition-colors">Home2</a></li>
+                    <li><a href="aboutus.html" class="hover:text-brand transition-colors">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand transition-colors">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-brand transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links Column 2 -->
+            <div class="lg:col-span-2">
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-4 uppercase tracking-wider text-xs">Utility Pages</h4>
+                <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                    <li><a href="booknow.html" class="hover:text-brand transition-colors font-medium text-brand">Book Now</a></li>
+                    <li><a href="pricing.html" class="hover:text-brand transition-colors">Pricing Structure</a></li>
+                    <li><a href="gallery.html" class="hover:text-brand transition-colors">Media Gallery</a></li>
+                    <li><a href="404.html" class="hover:text-brand transition-colors">404 Error</a></li>
+                    <li><a href="comingsoon.html" class="hover:text-brand transition-colors">Coming Soon</a></li>
+                </ul>
+            </div>
+
+            <!-- Integrated Newsletter Block (Occupies the right side beautifully) -->
+            <div class="sm:col-span-2 md:col-span-4 lg:col-span-4 space-y-4">
+                <h4 class="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-xs">Stay Updated</h4>
+                <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
+                    Subscribe to receive seasonal preventative service discounts, maintenance road maps, and prioritized booking tiers.
+                </p>
+                <form class="space-y-2 group" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                    <div class="relative flex items-center">
+                        <input type="email" placeholder="Your work email address" required 
+                            class="w-full text-xs px-3.5 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-brand dark:focus:border-brand transition-all pr-20" />
+                        <button type="submit" 
+                            class="absolute right-1.5 bg-brand hover:bg-brand-dark text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors shadow-sm">
+                            Join
+                        </button>
+                    </div>
+                </form>
+                <p class="text-[10px] text-slate-400 dark:text-slate-600">Zero spam. Unsubscribe with a single click at any point.</p>
+            </div>
+
+        </div>
+
+        <hr class="my-8 border-slate-200 dark:border-slate-900">
+        
+        <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 dark:text-slate-600 gap-4">
+            <p>&copy; 2026 LubeGo Services Inc. All Rights Reserved.</p>
+            <p class="flex items-center gap-1">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Dispatch Systems Online
+            </p>
+        </div>
+    </div>
+</footer>
+
+   
+</body>
+</html>

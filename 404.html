@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fully fixed and URL-encoded Inline SVG Favicon Component -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z' fill='%23D97706' fill-opacity='0.15'/%3E%3Cpath d='M12 18V10' /%3E%3Cpath d='M9 13l3-3 3 3' /%3E%3C/svg%3E" />
+    <title>404 - Page Not Found | LubeGo Services</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#D97706', /* Single unique branding color accent: Amber 600 */
+                            dark: '#B45309',
+                            light: '#FBBF24'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between transition-colors duration-300 overflow-x-hidden">
+
+    <!-- TOP CONTROL HEADER: Brand redirection and localized controls -->
+    <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between z-50">
+        <!-- Brand Name & Custom Droplet SVG Logo - Top Left Corner Redirect to Home -->
+        <a href="index.html" class="flex items-center gap-2 group focus:outline-none" aria-label="Redirect to Homepage">
+            <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 group-hover:rotate-12">
+                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                    <path d="M12 18V10" />
+                    <path d="M9 13L12 10L15 13" />
+                </svg>
+            </div>
+            <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                Lube<span class="text-brand">Go</span>
+            </span>
+        </a>
+
+        <!-- Top Right Utility Buttons (Maintained to be identical height/width) -->
+        <div class="flex items-center space-x-3">
+            <!-- Theme Toggle -->
+            <button id="auth-theme-toggle" aria-label="Toggle Theme Mode" class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all shadow-sm">
+                <span id="theme-light-icon" class="hidden">☀️</span>
+                <span id="theme-dark-icon">🌙</span>
+            </button>
+            <!-- Layout Direction Toggle -->
+            <button id="auth-dir-toggle" aria-label="Toggle Layout Direction" class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all shadow-sm">
+                LTR
+            </button>
+        </div>
+    </header>
+
+    <!-- CORE 404 INTERFACE PANEL: Optimized for 360px up to widescreen monitors -->
+    <main class="flex-grow flex items-center justify-center px-4 py-12 relative">
+        <!-- Structural background ambient decorative glow mask -->
+        <div class="absolute w-96 h-96 bg-brand/5 dark:bg-brand/10 rounded-full blur-[100px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"></div>
+
+        <div class="w-full max-w-xl text-center space-y-8 relative z-10">
+            
+            <!-- Asymmetrical Creative Typography Layer -->
+            <div class="relative inline-block select-none group">
+                <!-- Large abstract blurred error shadow backdrop -->
+                <div class="absolute inset-0 text-[120px] sm:text-[160px] md:text-[200px] font-bold text-brand/10 dark:text-brand/5 blur-md tracking-tighter select-none">404</div>
+                
+                <!-- Main crisp foreground display -->
+                <h1 id="error-code" class="text-[110px] sm:text-[150px] md:text-[185px] font-bold tracking-tighter text-slate-900 dark:text-white leading-none cursor-default transition-all duration-500 hover:tracking-wide">
+                    4<span class="text-brand inline-block animate-bounce duration-1000">0</span>4
+                </h1>
+            </div>
+
+            <!-- Context Messaging Stack -->
+            <div class="space-y-3 max-w-md mx-auto px-2">
+                <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                    Engine Stalled. Page Not Found.
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    The mechanical route you are searching for has been decommissioned, relocated, or temporarily drained from our data servers.
+                </p>
+            </div>
+
+            <!-- Double-Action Interactive Navigation System -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 max-w-xs sm:max-w-none mx-auto pt-4">
+                <!-- Primary Action Button: Return Home -->
+                <a href="index.html" class="group flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-md shadow-brand/10 hover:shadow-lg transition-all duration-300 transform active:scale-[0.99]">
+                    <svg class="w-4 h-4 text-white transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/>
+                    </svg>
+                    <span>Back to Homepage</span>
+                </a>
+                
+                <!-- Secondary Action Button: Interactive Quick Repair Trigger -->
+                <button id="repair-trigger" type="button" class="group flex items-center justify-center gap-2 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-brand/40 dark:hover:border-brand/40 transition-all shadow-sm">
+                    <span id="repair-icon" class="text-brand">🔧</span>
+                    <span id="repair-text">Run Diagnostic Check</span>
+                </button>
+            </div>
+
+            <!-- Hidden Micro-Interactive Diagnostic Logs Output Frame (Revealed via JS) -->
+            <div id="diagnostic-log-frame" class="max-w-md mx-auto bg-slate-900 text-slate-300 border border-slate-800 rounded-2xl p-4 font-mono text-[11px] text-left space-y-1.5 hidden opacity-0 transition-all duration-500 shadow-inner">
+                <div class="flex items-center justify-between text-slate-500 border-b border-slate-800 pb-1.5 mb-2">
+                    <span>LUBEGO CORE ENGINE DIAGNOSTIC LOGS</span>
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                </div>
+                <p class="text-slate-500">> Initiating systemic port tracking query... [OK]</p>
+                <p class="text-slate-500">> Scanning dynamic endpoint index parameters... [FAILED]</p>
+                <p class="text-rose-400">> Error 404: Requested asset pointer structure is NULL.</p>
+                <p class="text-brand">> Recommendation: Reroute operations package to domain root.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER PANEL OVERLAY REGULATION -->
+    <footer class="w-full h-14 border-t border-slate-200/60 dark:border-slate-900 text-center flex items-center justify-center text-[11px] text-slate-400 select-none">
+        &copy; 2026 LubeGo Services Inc. Asset relocation maps optimized automatically.
+    </footer>
+
+    <!-- INTERACTIVE CONTROL SCRIPT: Controls Theme, Layout Direction, and Dynamic Diagnostic Logs Simulation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // DOM Target Core Selection Nodes
+            const themeBtn = document.getElementById('auth-theme-toggle');
+            const dirBtn = document.getElementById('auth-dir-toggle');
+            const repairBtn = document.getElementById('repair-trigger');
+            const repairIcon = document.getElementById('repair-icon');
+            const repairText = document.getElementById('repair-text');
+            const logFrame = document.getElementById('diagnostic-log-frame');
+            const htmlElement = document.documentElement;
+
+            // --- 1. THEME STORAGE MANAGEMENT ENGINE ---
+            function syncThemeDisplayState() {
+                const activePreference = localStorage.getItem('theme');
+                const OSPreferenceDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                
+                if (activePreference === 'dark' || (!activePreference && OSPreferenceDark)) {
+                    htmlElement.classList.add('dark');
+                    document.getElementById('theme-light-icon').classList.remove('hidden');
+                    document.getElementById('theme-dark-icon').classList.add('hidden');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    document.getElementById('theme-light-icon').classList.add('hidden');
+                    document.getElementById('theme-dark-icon').classList.remove('hidden');
+                }
+            }
+
+            themeBtn.addEventListener('click', () => {
+                const containsDarkNow = htmlElement.classList.contains('dark');
+                if (containsDarkNow) {
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+                syncThemeDisplayState();
+            });
+
+            // --- 2. LAYOUT DIRECTION STORAGE ENGINE (LTR/RTL Sync) ---
+            function syncLayoutDirection() {
+                const storedDirection = localStorage.getItem('direction') || 'ltr';
+                htmlElement.setAttribute('dir', storedDirection);
+                dirBtn.innerText = storedDirection.toUpperCase();
+            }
+
+            dirBtn.addEventListener('click', () => {
+                const currentDir = htmlElement.getAttribute('dir');
+                const switchedDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                localStorage.setItem('direction', switchedDir);
+                syncLayoutDirection();
+            });
+
+            // --- 3. MICRO-INTERACTIVE DIAGNOSTIC RUNNER RUNNER ---
+            repairBtn.addEventListener('click', () => {
+                // Instantly cycle button styles to show active system scanning
+                repairText.innerText = "Scanning System Matrix...";
+                repairIcon.className = "inline-block animate-spin text-brand";
+                repairBtn.disabled = true;
+
+                setTimeout(() => {
+                    // Update button tracking values back on completion
+                    repairText.innerText = "Diagnostic Generated";
+                    repairIcon.className = "text-emerald-400";
+                    repairIcon.innerText = "✓";
+                    
+                    // Seamlessly slide out code print block terminal logs
+                    logFrame.classList.remove('hidden');
+                    setTimeout(() => {
+                        logFrame.classList.remove('opacity-0');
+                        logFrame.classList.add('opacity-100');
+                    }, 50);
+                }, 1200);
+            });
+
+            // Run Core Orchestrations on initial render configurations
+            syncThemeDisplayState();
+            syncLayoutDirection();
+        });
+    </script>
+</body>
+</html>

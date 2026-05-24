@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fully fixed and URL-encoded Inline SVG Favicon Component -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z' fill='%23D97706' fill-opacity='0.15'/%3E%3Cpath d='M12 18V10' /%3E%3Cpath d='M9 13l3-3 3 3' /%3E%3C/svg%3E" />
+    <title>LubeGo | Mobile Oil Change & Preventative Maintenance</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#D97706', /* Amber 600 - Single unique brand accent color */
+                            dark: '#B45309',
+                            light: '#FBBF24'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Cabinet Grotesk', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Stylesheet for Clean Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar to match clean theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+     <!-- NAVIGATION BAR -->
+<header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="index.html">
+                <!-- Logo & Name -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <!-- Logo Icon Container -->
+                    <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 hover:rotate-12">
+                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                            <path d="M12 18V10" />
+                            <path d="M9 13L12 10L15 13" />
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                        Lube<span class="text-brand">Go</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <nav id="desktop-nav" class="hidden lg:flex items-center space-x-8 font-medium text-sm text-slate-600 dark:text-slate-300">
+                <a href="index.html" class="hover:text-brand dark:hover:text-brand transition-colors">Home</a>
+                <a href="home2.html" class="hover:text-brand dark:hover:text-brand transition-colors">Home2</a>
+                <a href="aboutus.html" class="hover:text-brand dark:hover:text-brand transition-colors">About Us</a>
+                <a href="services.html" class="hover:text-brand dark:hover:text-brand transition-colors">Services</a>
+                <a href="contact.html" class="hover:text-brand dark:hover:text-brand transition-colors">Contact</a>
+            </nav>
+
+            <!-- Desktop Action & Utility Controls -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" aria-label="Toggle Theme" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all">
+                    <span id="theme-icon-light" class="hidden">☀️</span>
+                    <span id="theme-icon-dark">🌙</span>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button id="direction-toggle" aria-label="Toggle Layout Direction" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all">
+                    LTR
+                </button>
+                <!-- CTA Buttons -->
+                <a href="login.html" class="text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:text-slate-900 dark:bg-slate-100 dark:hover:bg-slate-50 px-5 py-2.5 rounded-lg shadow-sm hover:shadow transition-all text-center">
+                    Log In
+                </a>
+                <a href="booknow.html" class="bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow-md shadow-brand/10 hover:shadow-lg transition-all transform hover:-translate-y-0.5">Book Now</a>
+            </div>
+
+            <!-- Mobile & Tablet Menu Button -->
+            <div class="flex lg:hidden items-center gap-3">
+                <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED MOBILE OVERLAY DRAWER -->
+    <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 z-50 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-4 pb-6 space-y-4 shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <nav id="mobile-nav" class="flex flex-col space-y-3 font-medium text-slate-600 dark:text-slate-300">
+            <a href="index.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Home</a>
+            <a href="home2.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Home2</a>
+            <a href="aboutus.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">About Us</a>
+            <a href="services.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Services</a>
+            <a href="contact.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Contact</a>
+        </nav>
+        <hr class="border-slate-200 dark:border-slate-800">
+        <div class="flex flex-wrap items-center gap-3">
+            <!-- Direction Toggle Mobile -->
+            <button id="direction-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                LTR
+            </button>
+            <!-- Theme Toggle Mobile Quick Access -->
+            <button id="theme-toggle-mobile" aria-label="Toggle Theme" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                <span id="theme-icon-light-mob" class="hidden">☀️</span>
+                <span id="theme-icon-dark-mob">🌙</span>
+            </button>
+            <!-- Mobile Log In Button CTA -->
+            <a href="login.html" class="flex-1 text-center font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:text-slate-900 dark:bg-slate-100 dark:hover:bg-slate-50 py-2.5 rounded-lg text-sm transition-colors shadow-sm">
+                Log In
+            </a>
+            <a href="booknow.html" class="flex-1 text-center bg-brand text-white font-semibold py-2.5 rounded-lg text-sm shadow-md">Book Now</a>
+        </div>
+    </div>
+</header>
+
+<!-- INTERACTIVE NAVIGATION CONTROLLER ACTIONS SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const pathFileName = window.location.pathname.split("/").pop();
+        
+        // --- 1. ROUTE MANAGEMENT LOGIC TRACKS ---
+        const dNavNode = document.getElementById("desktop-nav");
+        if (dNavNode) {
+            const dLinks = dNavNode.querySelectorAll("a");
+            let isMatched = false;
+            dLinks.forEach(link => {
+                if (link.getAttribute("href") === pathFileName) {
+                    link.className = "text-brand dark:text-brand font-semibold transition-colors";
+                    isMatched = true;
+                } else {
+                    link.className = "text-slate-600 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-colors";
+                }
+            });
+            if (!isMatched && (pathFileName === "" || pathFileName === "index.html") && dLinks.length > 0) {
+                dLinks[0].className = "text-brand dark:text-brand font-semibold transition-colors";
+            }
+        }
+
+        const mNavNode = document.getElementById("mobile-nav");
+        if (mNavNode) {
+            const mLinks = mNavNode.querySelectorAll("a");
+            let isMatched = false;
+            mLinks.forEach(link => {
+                if (link.getAttribute("href") === pathFileName) {
+                    link.className = "px-3 py-2 rounded-lg bg-brand/10 text-brand dark:text-brand font-semibold transition-colors";
+                    isMatched = true;
+                } else {
+                    link.className = "px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors";
+                }
+            });
+            if (!isMatched && (pathFileName === "" || pathFileName === "index.html") && mLinks.length > 0) {
+                mLinks[0].className = "px-3 py-2 rounded-lg bg-brand/10 text-brand dark:text-brand font-semibold transition-colors";
+            }
+        }
+
+        // --- 2. DRAWER INTERACTIVE ACTION TOGGLES ---
+        const mobileTrigger = document.getElementById("mobile-menu-btn");
+        const mobileDrawer = document.getElementById("mobile-menu");
+        const vectorIconPath = document.getElementById("menu-icon");
+
+        if (mobileTrigger && mobileDrawer) {
+            mobileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isExpanded = !mobileDrawer.classList.contains("hidden");
+                
+                if (isExpanded) {
+                    mobileDrawer.classList.add("hidden");
+                    if (vectorIconPath) vectorIconPath.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+                } else {
+                    mobileDrawer.classList.remove("hidden");
+                    if (vectorIconPath) vectorIconPath.setAttribute("d", "M6 18L18 6M6 6l12 12");
+                }
+            });
+
+            mobileDrawer.addEventListener("click", (e) => e.stopPropagation());
+
+            document.addEventListener("click", () => {
+                mobileDrawer.classList.add("hidden");
+                if (vectorIconPath) vectorIconPath.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+            });
+        }
+
+        // --- 3. THEME TOGGLE ENGINE CONTROLS ---
+        const themeBtnDesktop = document.getElementById("theme-toggle");
+        const themeBtnMobile = document.getElementById("theme-toggle-mobile");
+        
+        const lightIconD = document.getElementById("theme-icon-light");
+        const darkIconD = document.getElementById("theme-icon-dark");
+        const lightIconM = document.getElementById("theme-icon-light-mob");
+        const darkIconM = document.getElementById("theme-icon-dark-mob");
+
+        function applyThemeState(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                lightIconD?.classList.remove('hidden');
+                darkIconD?.classList.add('hidden');
+                lightIconM?.classList.remove('hidden');
+                darkIconM?.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                lightIconD?.classList.add('hidden');
+                darkIconD?.classList.remove('hidden');
+                lightIconM?.classList.add('hidden');
+                darkIconM?.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check persistent memory or layout system media settings
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initDarkState = storedTheme === 'dark' || (!storedTheme && systemPrefersDark);
+        applyThemeState(initDarkState);
+
+        [themeBtnDesktop, themeBtnMobile].forEach(btn => {
+            btn?.addEventListener("click", () => {
+                const currentDarkStatus = document.documentElement.classList.contains('dark');
+                applyThemeState(!currentDarkStatus);
+            });
+        });
+
+        // --- 4. DIRECTION ARABIC LTR / RTL CONTROLS ---
+        const dirBtnDesktop = document.getElementById("direction-toggle");
+        const dirBtnMobile = document.getElementById("direction-toggle-mobile");
+
+        function applyLayoutDirection(isRTL) {
+            if (isRTL) {
+                document.documentElement.setAttribute('dir', 'rtl');
+                if (dirBtnDesktop) dirBtnDesktop.innerText = "RTL";
+                if (dirBtnMobile) dirBtnMobile.innerText = "RTL";
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                if (dirBtnDesktop) dirBtnDesktop.innerText = "LTR";
+                if (dirBtnMobile) dirBtnMobile.innerText = "LTR";
+            }
+        }
+
+        [dirBtnDesktop, dirBtnMobile].forEach(btn => {
+            btn?.addEventListener("click", () => {
+                const isCurrentRTL = document.documentElement.getAttribute('dir') === 'rtl';
+                applyLayoutDirection(!isCurrentRTL);
+            });
+        });
+    });
+</script>
+
+<!-- CLEAN SIMPLIFIED HERO SECTION WITH FULL-BLEED BACKGROUND IMAGE Overlay -->
+<section id="homepage-hero" class="relative min-h-[80vh] sm:min-h-[70vh] lg:min-h-[75vh] flex items-center bg-slate-950 text-white overflow-hidden py-20 sm:py-24 md:py-32 transition-colors duration-300">
+    
+    <!-- 1. Full-Bleed Background Imagery & Graduated Contrast Shading Layer -->
+   <div class="absolute inset-0 z-0 select-none pointer-events-none bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    
+    <!-- 
+      1. OPTIMIZED HIGH-VISIBILITY IMAGE ELEMENT
+      Transparency has been significantly reduced (opacity increased) to make details pop.
+      Light mode: opacity-85 gives rich clarity.
+      Dark mode: opacity-50 balances image detail with high text legibility.
+    -->
+    <img src="assets/aboutsusher01" 
+         alt="Premium on-site automotive diagnostics and service vehicle setup" 
+         class="w-full h-full object-cover object-center opacity-85 dark:opacity-50 scale-100 transition-all duration-700 filter contrast-[1.05] dark:contrast-125" />
+    
+    <!-- 
+      2. REBALANCED CONTRAST MASK OVERLAY
+      Softened from 90/95% down to 60/70% to let the underlying image show through beautifully, 
+      while using cross-media color mapping to protect your layout text.
+    -->
+    <div class="absolute inset-0 bg-gradient-to-r from-white/70 via-white/40 to-transparent dark:from-slate-950/80 dark:via-slate-950/50 dark:to-transparent max-md:bg-gradient-to-t max-md:from-white/80 max-md:via-white/50 max-md:to-transparent max-md:dark:from-slate-950/90 max-md:dark:via-slate-950/60 max-md:dark:to-transparent transition-all duration-300"></div>
+    
+    <!-- 3. AMBIENT BRAND BACKLIGHT GLOW -->
+    <div class="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/10 dark:bg-brand/15 rounded-full blur-[130px] transition-all duration-300 mix-blend-multiply dark:mix-blend-screen"></div>
+</div>
+
+    <!-- 2. Clean Centered Framework Layout (Maintains strict 360px portrait stability up to widescreen desktops) -->
+   <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center space-y-6">
+        
+    <!-- 
+      Operational Registry Status Micro Badge Component 
+      Utilizes an adaptive transparent background with high-contrast text rendering.
+    -->
+    <div class="inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full bg-brand/10 dark:bg-brand/15 border border-brand/20 text-brand text-xs font-semibold tracking-wide backdrop-blur-md animate-fade-in">
+        <span class="flex h-1.5 w-1.5 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand"></span>
+        </span>
+        <span>Self-Powered Mobile Workshop Vans Active</span>
+    </div>
+    
+    <!-- 
+      Core Value Headline
+      Changes seamlessly from deep slate-900 charcoal (Light Mode) 
+      straight into brilliant crisp white (Dark Mode).
+    -->
+    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-slate-900 dark:text-white max-w-3xl mx-auto transition-colors duration-300">
+        Skip the Shop. We Service <span class="text-brand block sm:inline">Your Car Anywhere.</span>
+    </h1>
+    
+    <!-- 
+      Supporting Subtext Descriptive Summary Paragraph
+      Calibrated to slate-600 for safe contrast over light views 
+      and slate-300 to remain scannable on dark ground matrices.
+    -->
+<!-- Fully visible text element optimized for perfect contrast in both themes -->
+<p class="text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto max-sm:px-2 transition-colors duration-300">
+    Professional mobile auto services designed for busy drivers who value convenience, quality, and time savings.
+</p>
+    <!-- Symmetrical High-Conversion Call-To-Action Paths Layout -->
+    <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 max-w-xs sm:max-w-none mx-auto">
+        
+        <!-- Primary Action Route Element -->
+        <a href="booknow.html" class="group flex items-center justify-center gap-2.5 bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm px-8 py-4 rounded-xl shadow-xl shadow-brand/20 transition-all duration-300 transform hover:-translate-y-0.5 active:scale-[0.995]">
+            <span>Book Appointment</span>
+            <svg class="w-4 h-4 text-white transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+            </svg>
+        </a>
+        
+        <!-- 
+          Secondary Action Route Element
+          Alters button surfaces from a light, subtle silver plate border 
+          into a slate charcoal anchor frame block in dark mode views.
+        -->
+        <a href="contact.html" class="flex items-center justify-center bg-slate-100/80 hover:bg-slate-200/80 dark:bg-slate-900/80 dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm px-8 py-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 backdrop-blur-sm transition-all shadow-sm">
+            Get Instant Quote
+        </a>
+        
+    </div>
+
+</div>
+</section>
+<!-- CORPORATE MISSION & ORIGIN HISTORY SECTION WITH INTERACTIVE TIMELINE MILESTONES -->
+<section id="our-story" class="py-16 md:py-24 bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Decorative Layout Ambient Lighting Spot -->
+    <div class="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-brand/5 rounded-full blur-[120px] pointer-events-none select-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Structural Matrix Asymmetrical Double Pane Split Grid (12 Columns) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            <!-- LEFT MODULE: Narrative Storyboard & Brand Values (7 Columns) -->
+            <div class="lg:col-span-7 space-y-6 text-center sm:text-left">
+                <div class="space-y-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                        The Origin Matrix Log
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                        We Started with One Mission To Make Vehicle Maintenance Easier
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                        Instead of wasting hours waiting inside outdated waiting rooms at traditional brick-and-mortar repair shops, our customers enjoy professional car care delivered directly to their current location parameters. 
+                    </p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                        Engineered from a deep, multi-generational passion for automotive mechanics and precision fluid engineering, we scaled our entire infrastructure around a single fundamental rule: continuous driver uptime calibration.
+                    </p>
+                </div>
+
+                <!-- 4-Core Structural Pillars Micro Layout Grid -->
+                <div class="grid grid-cols-2 gap-4 pt-2">
+                    <!-- Pillar 1 -->
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800/60 text-left">
+                        <span class="text-xl">⚙️</span>
+                        <h4 class="text-xs font-bold text-slate-900 dark:text-white mt-2 uppercase tracking-wider">Automotive Passion</h4>
+                        <p class="text-[11px] text-slate-400 font-normal mt-1 leading-normal">Technicians certified to factory specifications handles all liquid loops.</p>
+                    </div>
+                    <!-- Pillar 2 -->
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800/60 text-left">
+                        <span class="text-xl">🏡</span>
+                        <h4 class="text-xs font-bold text-slate-900 dark:text-white mt-2 uppercase tracking-wider">Total Convenience</h4>
+                        <p class="text-[11px] text-slate-400 font-normal mt-1 leading-normal">Your home driveway, office lot, or logistics yard turns into an active bay.</p>
+                    </div>
+                    <!-- Pillar 3 -->
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800/60 text-left">
+                        <span class="text-xl">⚖️</span>
+                        <h4 class="text-xs font-bold text-slate-900 dark:text-white mt-2 uppercase tracking-wider">Honest Pricing</h4>
+                        <p class="text-[11px] text-slate-400 font-normal mt-1 leading-normal">Flat baseline system rates with zero hidden fluid disposal markup fees.</p>
+                    </div>
+                    <!-- Pillar 4 -->
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800/60 text-left">
+                        <span class="text-xl">🛡️</span>
+                        <h4 class="text-xs font-bold text-slate-900 dark:text-white mt-2 uppercase tracking-wider">Quality Service</h4>
+                        <p class="text-[11px] text-slate-400 font-normal mt-1 leading-normal">Closed vacuum extraction lines securely lock out potential ground leaks.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT MODULE: Interactive Progress Track Console Panel (5 Columns) -->
+            <div class="lg:col-span-5 relative w-full max-w-md mx-auto">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand/15 to-transparent rounded-3xl filter blur-xl opacity-40 pointer-events-none"></div>
+                
+                <!-- Timeline Core Presentation Shell -->
+                <div class="relative bg-slate-950 text-white border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-2xl">
+                    <div class="border-b border-slate-800 pb-3.5 mb-5 flex items-center justify-between">
+                        <div class="space-y-0.5 text-left">
+                            <span class="text-[10px] uppercase font-bold text-brand tracking-widest block">Operational Roadmap Logs</span>
+                            <h3 class="text-xs font-bold text-white tracking-tight">Infrastructure Milestones</h3>
+                        </div>
+                        <span class="text-[9px] bg-brand/20 text-brand border border-brand/30 px-2.5 py-0.5 rounded font-mono font-bold tracking-wider">HISTORIC FEED</span>
+                    </div>
+
+                    <!-- Interactive Step Line List (User can click rows to reveal history context data) -->
+                    <div class="space-y-3 select-none text-left">
+                        
+                        <!-- Milestone Row 1 (Active Initially) -->
+                        <div id="story-step-1" class="story-timeline-row p-3 rounded-xl bg-slate-900 border border-brand/40 cursor-pointer transition-all duration-300">
+                            <div class="flex items-center justify-between text-xs font-semibold text-white">
+                                <div class="flex items-center gap-3">
+                                    <span class="timeline-dot w-2 h-2 rounded-full bg-brand transition-all"></span>
+                                    <span>Phase One: The Single Mobile Unit Launch</span>
+                                </div>
+                                <span class="text-[10px] font-mono text-brand">LAUNCH</span>
+                            </div>
+                            <p class="timeline-desc text-[11px] text-slate-400 mt-2 pl-5 font-normal leading-relaxed">
+                                We hit the tarmac with one heavily modified custom cargo van carrying experimental independent vacuum extraction suction arrays to test roadside clean-tech parameters.
+                            </p>
+                        </div>
+
+                        <!-- Milestone Row 2 -->
+                        <div id="story-step-2" class="story-timeline-row p-3 rounded-xl bg-transparent border border-slate-950 hover:border-slate-850 cursor-pointer transition-all duration-300">
+                            <div class="flex items-center justify-between text-xs font-medium text-slate-400">
+                                <div class="flex items-center gap-3">
+                                    <span class="timeline-dot w-2 h-2 rounded-full bg-slate-700 transition-all"></span>
+                                    <span>Phase Two: Scaling the Chennai Grid</span>
+                                </div>
+                                <span class="text-[10px] font-mono text-slate-500">EXPANSION</span>
+                            </div>
+                            <p class="timeline-desc text-[11px] text-slate-400 mt-2 pl-5 font-normal leading-relaxed hidden">
+                                Transitioning infrastructure patterns to include specialized industrial fleet networks, deploying multiple parallel dispatch vans serving logistical sorting depots.
+                            </p>
+                        </div>
+
+                        <!-- Milestone Row 3 -->
+                        <div id="story-step-3" class="story-timeline-row p-3 rounded-xl bg-transparent border border-slate-950 hover:border-slate-850 cursor-pointer transition-all duration-300">
+                            <div class="flex items-center justify-between text-xs font-medium text-slate-400">
+                                <div class="flex items-center gap-3">
+                                    <span class="timeline-dot w-2 h-2 rounded-full bg-slate-700 transition-all"></span>
+                                    <span>Phase Three: Next-Gen Zero Trace Protocols</span>
+                                </div>
+                                <span class="text-[10px] font-mono text-slate-500">PRESTIGE</span>
+                            </div>
+                            <p class="timeline-desc text-[11px] text-slate-400 mt-2 pl-5 font-normal leading-relaxed hidden">
+                                Integrating full cloud-linked vehicle diagnostic telemetries alongside 100% closed eco-filtration material capture loops directly into client digital dashboards.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- INTERACTIVE TIMELINE SELECTION NAVIGATION LOGIC SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const structuralRows = document.querySelectorAll(".story-timeline-row");
+
+        structuralRows.forEach(clickedRow => {
+            clickedRow.addEventListener("click", () => {
+                // Collapse and strip active branding rules off sibling milestone blocks
+                structuralRows.forEach(row => {
+                    row.classList.remove("bg-slate-900", "border-brand/40");
+                    row.classList.add("bg-transparent", "border-slate-950");
+                    
+                    const dotNode = row.querySelector(".timeline-dot");
+                    if (dotNode) {
+                        dotNode.classList.remove("bg-brand");
+                        dotNode.classList.add("bg-slate-700");
+                    }
+
+                    const innerHeader = row.querySelector("div");
+                    if (innerHeader) {
+                        innerHeader.classList.remove("text-white", "font-semibold");
+                        innerHeader.classList.add("text-slate-400", "font-medium");
+                    }
+
+                    const expansionDesc = row.querySelector(".timeline-desc");
+                    if (expansionDesc) expansionDesc.classList.add("hidden");
+                });
+
+                // Apply premium active focus layout parameters into selected timeline coordinate
+                clickedRow.classList.remove("bg-transparent", "border-slate-950");
+                clickedRow.classList.add("bg-slate-900", "border-brand/40");
+
+                const targetDot = clickedRow.querySelector(".timeline-dot");
+                if (targetDot) {
+                    targetDot.classList.remove("bg-slate-700");
+                    targetDot.classList.add("bg-brand");
+                }
+
+                const targetHeader = clickedRow.querySelector("div");
+                if (targetHeader) {
+                    targetHeader.classList.remove("text-slate-400", "font-medium");
+                    targetHeader.classList.add("text-white", "font-semibold");
+                }
+
+                const targetDesc = clickedRow.querySelector(".timeline-desc");
+                if (targetDesc) targetDesc.classList.remove("hidden");
+            });
+        });
+    });
+</script>
+<!-- WHAT WE DO SECTION WITH INTERACTIVE RADAR BLUEPRINT VIEWPORT -->
+<section id="what-we-do" class="py-16 md:py-24 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 border-t border-b border-slate-200/60 dark:border-slate-900/60 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Ambient Graphic Background System -->
+    <div class="absolute inset-0 z-0 select-none pointer-events-none">
+        <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand/5 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Section Header Layout Matrix -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end border-b border-slate-200/60 dark:border-slate-800/60 pb-10 mb-12 text-left">
+            <div class="lg:col-span-7 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                    Operational Core Menu
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    On-Demand Technical Capabilities
+                </h2>
+            </div>
+            <div class="lg:col-span-5">
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    We bring fully loaded, independent mobile workshop units straight to your vehicle layout coordinates. Explore our individual system treatment capabilities.
+                </p>
+            </div>
+        </div>
+
+        <!-- 6-Tier Grid Layout Matrix (Handles 360px portrait stacks gracefully up to desktops) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+            
+            <!-- Service Card 1: Mobile Oil Changes -->
+            <div class="service-capability-card p-6 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex flex-col justify-between text-left cursor-pointer" data-service="oil">
+                <div class="space-y-4">
+                    <!-- Custom SVG Icon Block with Integrated Ambient Glow -->
+                    <div class="w-11 h-11 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-sm">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white transition-colors group-hover:text-brand">Mobile Oil Changes</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Clean, dry-coupling vacuum extraction that pumps spent motor oils through the dipstick line straight into closed vehicle tanks. Zero driveway mess.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-4 font-mono text-[10px] text-slate-400 uppercase tracking-wider border-t border-slate-50 dark:border-slate-850 mt-4 flex justify-between items-center">
+                    <span>Est. Time: 25 Mins</span>
+                    <span class="text-brand opacity-0 group-hover:opacity-100 transition-opacity">Inspect ➔</span>
+                </div>
+            </div>
+
+            <!-- Service Card 2: Preventative Maintenance -->
+            <div class="service-capability-card p-6 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex flex-col justify-between text-left cursor-pointer" data-service="maintenance">
+                <div class="space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-sm">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white transition-colors group-hover:text-brand">Preventative Maintenance</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Proactive on-site element tuning, spark plug resets, and system air cartridge adjustments configured precisely around factory interval schedules.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-4 font-mono text-[10px] text-slate-400 uppercase tracking-wider border-t border-slate-50 dark:border-slate-850 mt-4 flex justify-between items-center">
+                    <span>Est. Time: 35 Mins</span>
+                    <span class="text-brand opacity-0 group-hover:opacity-100 transition-opacity">Inspect ➔</span>
+                </div>
+            </div>
+
+            <!-- Service Card 3: Brake Inspections -->
+            <div class="service-capability-card p-6 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex flex-col justify-between text-left cursor-pointer" data-service="brakes">
+                <div class="space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-sm">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white transition-colors group-hover:text-brand">Brake Inspections</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Micrometric measuring parameters that monitor slider tracking, caliper expansion gates, and brake friction pad assembly wear depth.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-4 font-mono text-[10px] text-slate-400 uppercase tracking-wider border-t border-slate-50 dark:border-slate-850 mt-4 flex justify-between items-center">
+                    <span>Est. Time: 20 Mins</span>
+                    <span class="text-brand opacity-0 group-hover:opacity-100 transition-opacity">Inspect ➔</span>
+                </div>
+            </div>
+
+            <!-- Service Card 4: Battery Services -->
+            <div class="service-capability-card p-6 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex flex-col justify-between text-left cursor-pointer" data-service="battery">
+                <div class="space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-sm">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="12" rx="2" ry="2"/>
+                            <inline line x1="6" y1="7" x2="6" y2="3"/>
+                            <inline line x1="18" y1="7" x2="18" y2="3"/>
+                            <inline line x1="5" y1="13" x2="9" y2="13"/>
+                            <inline line x1="13" y1="13" x2="17" y2="13"/>
+                            <inline line x1="15" y1="11" x2="15" y2="15"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white transition-colors group-hover:text-brand">Battery Services</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Cold-cranking amp conductance testing and precision terminal rust clearance loops paired with premium swap-out selections.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-4 font-mono text-[10px] text-slate-400 uppercase tracking-wider border-t border-slate-50 dark:border-slate-850 mt-4 flex justify-between items-center">
+                    <span>Est. Time: 15 Mins</span>
+                    <span class="text-brand opacity-0 group-hover:opacity-100 transition-opacity">Inspect ➔</span>
+                </div>
+            </div>
+
+            <!-- Service Card 5: Fluid Checks -->
+            <div class="service-capability-card p-6 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex flex-col justify-between text-left cursor-pointer" data-service="fluids">
+                <div class="space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-sm">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white transition-colors group-hover:text-brand">Fluid Checks</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Density analysis parameters mapping windshield spray reserves, radiator coolants, and brake master hydraulic reservoirs.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-4 font-mono text-[10px] text-slate-400 uppercase tracking-wider border-t border-slate-50 dark:border-slate-850 mt-4 flex justify-between items-center">
+                    <span>Est. Time: 15 Mins</span>
+                    <span class="text-brand opacity-0 group-hover:opacity-100 transition-opacity">Inspect ➔</span>
+                </div>
+            </div>
+
+            <!-- Service Card 6: Tire Maintenance -->
+            <div class="service-capability-card p-6 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex flex-col justify-between text-left cursor-pointer" data-service="tires">
+                <div class="space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-sm">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                            <circle cx="12" cy="12" r="2"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white transition-colors group-hover:text-brand">Tire Maintenance</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Tread depth safety auditing and metric pressure adjustments paired with on-site geometric tire rotation steps.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-4 font-mono text-[10px] text-slate-400 uppercase tracking-wider border-t border-slate-50 dark:border-slate-850 mt-4 flex justify-between items-center">
+                    <span>Est. Time: 25 Mins</span>
+                    <span class="text-brand opacity-0 group-hover:opacity-100 transition-opacity">Inspect ➔</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- LIVE OVERLAID TECHNICAL BLUEPRINT HUD OVERVIEW MODAL BOX (Triggers elegantly on card select loops) -->
+        <div id="capability-hud-panel" class="hidden mt-10 p-5 sm:p-6 rounded-2xl bg-slate-950 text-white border border-slate-800 shadow-2xl items-center justify-between gap-6 text-left animate-fade-in">
+            <div class="space-y-1 max-w-xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brand animate-ping"></span>
+                    <span id="hud-system-tag" class="text-[9px] font-mono uppercase font-bold text-brand tracking-widest">SYSTEM DATA LINK</span>
+                </div>
+                <h4 id="hud-system-title" class="text-sm font-bold text-white tracking-tight">Select any card row item above to calibrate live system diagnostics.</h4>
+                <p id="hud-system-desc" class="text-xs text-slate-400 leading-relaxed font-normal">Our mobile terminal rigs maintain direct telemetry logs. Tapping an action profile displays its exact ISO maintenance baseline guidelines.</p>
+            </div>
+            <span class="text-2xl opacity-20 hidden md:block select-none pointer-events-none font-mono">🛠️ CORE_SYSTEMS_HUD</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- LIVE CAPABILITY INTERACTION LOGGER LOGIC SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const capabilityCards = document.querySelectorAll(".service-capability-card");
+        const hudPanel = document.getElementById("capability-hud-panel");
+        const hudTag = document.getElementById("hud-system-tag");
+        const hudTitle = document.getElementById("hud-system-title");
+        const hudDesc = document.getElementById("hud-system-desc");
+
+        // Central Database Framework Matrix containing operational ISO specs
+        const capabilityMetadata = {
+            oil: {
+                tag: "ISO SPEC Loop // Sump Fluid Drainage",
+                title: "Advanced Clean-Tech Port Siphon Parameters",
+                desc: "Our vacuum extraction tools create an airtight negative pressure circuit, completely drawing old oils into sealed tanks. Meets environmental zero trace driveway requirements."
+            },
+            maintenance: {
+                tag: "Interval Matrix // Mechanical Tune-up",
+                title: "Programmatic Component Optimization Parameters",
+                desc: "Technicians use electronic diagnostics to verify engine timing parameters, intake airflow boundaries, and valve tracking states to preserve long-term fuel efficiency ratios."
+            },
+            brakes: {
+                tag: "Safety Check // Caliper Friction Path",
+                title: "Micrometric Stopping Threshold Evaluation",
+                desc: "Measures actual thickness logs down to fractions of a millimeter. Reports terminal wear limits immediately via your secure client service history portal."
+            },
+            battery: {
+                tag: "Electrical Scan // Auxiliary Cold Crank",
+                title: "Conductance Amplitude Electronic Diagnostics",
+                desc: "Simulates actual load drop curves to chart battery cell degradation thresholds. Prevents sudden alternator collapse and hidden discharge issues."
+            },
+            fluids: {
+                tag: "Density Review // Reservoir Balance",
+                title: "Refractive Chemical Composition Matrix Analysis",
+                desc: "Tests actual moisture absorption variables inside old brake fluids and checks cooling point boundaries in anti-freeze reservoirs before balance top-ups."
+            },
+            tires: {
+                tag: "Tread Geometry // Axle Load Equalization",
+                title: "Cross Directional Inflation & Tread Profiling",
+                desc: "Balances loading stress profiles across your vehicle's structural layout. Extends performance durability parameters and stabilizes highway friction factors."
+            }
+        };
+
+        capabilityCards.forEach(card => {
+            card.addEventListener("click", () => {
+                const itemKey = card.getAttribute("data-service");
+                const metricData = capabilityMetadata[itemKey];
+
+                if (!metricData) return;
+
+                // Strip down selected border states from sister components safely
+                capabilityCards.forEach(c => c.classList.remove("border-brand/60", "dark:border-brand/50", "bg-brand/5", "dark:bg-brand/5"));
+
+                // Inject prominent active border focus elements into chosen selector
+                card.classList.add("border-brand/60", "dark:border-brand/50");
+
+                // Activate floating blueprint informational summary loop gracefully
+                if (hudPanel) {
+                    hudPanel.classList.remove("hidden");
+                    hudPanel.classList.add("flex");
+                    
+                    hudTag.style.opacity = "0";
+                    hudTitle.style.opacity = "0";
+                    hudDesc.style.opacity = "0";
+
+                    setTimeout(() => {
+                        hudTag.innerText = metricData.tag;
+                        hudTitle.innerText = metricData.title;
+                        hudDesc.innerText = metricData.desc;
+                        
+                        hudTag.style.opacity = "1";
+                        hudTitle.style.opacity = "1";
+                        hudDesc.style.opacity = "1";
+                    }, 100);
+                }
+            });
+        });
+    });
+</script>
+<!-- WHY CHOOSE US SECTION WITH REAL-TIME COMPONENT PROFILE INSPECTOR -->
+<section id="why-choose-us" class="py-16 md:py-24 bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Fine-Line Vector Grid Texture Background Overlay -->
+    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none select-none"></div>
+    <div class="absolute top-1/4 left-0 w-96 h-96 bg-brand/5 rounded-full blur-[130px] pointer-events-none select-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Section Header Layout Matrix -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end border-b border-slate-100 dark:border-slate-800 pb-10 mb-12 text-left">
+            <div class="lg:col-span-7 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                    Operational Integrity Baseline
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Engineered to Maximize Driver Convenience
+                </h2>
+            </div>
+            <div class="lg:col-span-5">
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    We skip traditional workshop overhead bottlenecks entirely. Explore the core professional frameworks that define our doorstep mechanical service delivery logs.
+                </p>
+            </div>
+        </div>
+
+        <!-- 6-Tier Trust Grid Layout (Handles 360px portrait stacks up to widescreen desktops seamlessly) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+            
+            <!-- Trust Core 1: Certified Technicians -->
+            <div class="trust-profile-card p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 group flex flex-col justify-between text-left cursor-pointer" data-trust="tech">
+                <div class="space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Certified Technicians</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Every team specialist possesses full industrial credentials and continuous manufacturer compliance training loops to handle delicate.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-500 tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-900 mt-4 flex items-center justify-between">
+                    <span>Standard Log: Verified</span>
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brand text-[11px]">➔</span>
+                </div>
+            </div>
+
+            <!-- Trust Core 2: On-Site Convenience -->
+            <div class="trust-profile-card p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 group flex flex-col justify-between text-left cursor-pointer" data-trust="convenience">
+                <div class="space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">On-Site Convenience</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            We bring full workspace capability straight to your home driveway, secure office park lot, or warehouse compound. Work or rest uninterrupted.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-500 tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-900 mt-4 flex items-center justify-between">
+                    <span>Standard Log: Verified</span>
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brand text-[11px]">➔</span>
+                </div>
+            </div>
+
+            <!-- Trust Core 3: Transparent Pricing -->
+            <div class="trust-profile-card p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 group flex flex-col justify-between text-left cursor-pointer" data-trust="pricing">
+                <div class="space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Transparent Pricing</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Zero call-out variables, travel markups, or dynamic dispatch diagnostic fees. The itemized price logs you select on-screen are exactly what you fulfill.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-500 tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-900 mt-4 flex items-center justify-between">
+                    <span>Standard Log: Verified</span>
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brand text-[11px]">➔</span>
+                </div>
+            </div>
+
+            <!-- Trust Core 4: Fast Response Times -->
+            <div class="trust-profile-card p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 group flex flex-col justify-between text-left cursor-pointer" data-trust="response">
+                <div class="space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Fast Response Times</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            Our geographic zoning allocation software tracks terminal locations cleanly, anchoring service window dispatches to tight, predictable time.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-500 tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-900 mt-4 flex items-center justify-between">
+                    <span>Standard Log: Verified</span>
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brand text-[11px]">➔</span>
+                </div>
+            </div>
+
+            <!-- Trust Core 5: Quality Products -->
+            <div class="trust-profile-card p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 group flex flex-col justify-between text-left cursor-pointer" data-trust="products">
+                <div class="space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/>
+                            <line x1="12" y1="22" x2="12" y2="12"/>
+                            <line x1="12" y1="12" x2="22" y2="8.5"/>
+                            <line x1="12" y1="12" x2="2" y2="8.5"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Quality Products</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            We carry exclusively high-tier API-certified synthetic oils, robust structural elements, and replacement filters sourced directly from verified.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-500 tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-900 mt-4 flex items-center justify-between">
+                    <span>Standard Log: Verified</span>
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brand text-[11px]">➔</span>
+                </div>
+            </div>
+
+            <!-- Trust Core 6: Eco-Friendly Disposal -->
+            <div class="trust-profile-card p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 group flex flex-col justify-between text-left cursor-pointer" data-trust="disposal">
+                <div class="space-y-4">
+                    <div class="w-11 h-11 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 border-slate-200 dark:border-slate-800 text-brand flex items-center justify-center transition-colors group-hover:bg-brand group-hover:text-white group-hover:border-transparent shadow-xs">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5">
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand transition-colors">Eco-Friendly Disposal</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-normal leading-relaxed">
+                            100% of extracted engine fluids are vacuumed safely straight into closed bulk transport canisters for verified purification recycling.
+                        </p>
+                    </div>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-400 dark:text-slate-500 tracking-wider uppercase border-t border-slate-200/40 dark:border-slate-900 mt-4 flex items-center justify-between">
+                    <span>Standard Log: Verified</span>
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-brand text-[11px]">➔</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- LIVE COMPONENT INSIGHTS PANEL (Triggers on card selection clicks) -->
+        <div id="trust-hud-panel" class="hidden mt-10 p-5 sm:p-6 rounded-2xl bg-slate-950 text-white border border-slate-800 shadow-2xl items-center justify-between gap-6 text-left animate-fade-in animate-duration-300">
+            <div class="space-y-1 max-w-xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brand animate-ping"></span>
+                    <span id="trust-hud-tag" class="text-[9px] font-mono uppercase font-bold text-brand tracking-widest">REGULATORY METRIC COMPLIANCE</span>
+                </div>
+                <h4 id="trust-hud-title" class="text-xs sm:text-sm font-bold text-white tracking-tight">Select any operational metric card above to verify our on-site compliance registry.</h4>
+                <p id="trust-hud-desc" class="text-xs text-slate-400 leading-relaxed font-normal">Our field dispatch units operate under strict environmental and structural guidelines to protect vehicle warranty constraints completely.</p>
+            </div>
+            <span class="text-xl opacity-20 hidden md:block select-none pointer-events-none font-mono">🛡️ COMPLIANCE_HUD</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- LIVE TRUST PROFILE HOVER & SELECTION SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const trustCards = document.querySelectorAll(".trust-profile-card");
+        const hudPanel = document.getElementById("trust-hud-panel");
+        const hudTag = document.getElementById("trust-hud-tag");
+        const hudTitle = document.getElementById("trust-hud-title");
+        const hudDesc = document.getElementById("trust-hud-desc");
+
+        // Central Database Matrix containing operational credentials
+        const trustMetadata = {
+            tech: {
+                tag: "ISO STANDARD // Technical Competence Registry",
+                title: "Certified Professional Automotive Execution",
+                desc: "Every deployed field team mechanic undergoes rigid vetting checks and possesses comprehensive practical certifications to safely run oil drainage loops without voiding manufacturer warranties."
+            },
+            convenience: {
+                tag: "Logistics Optimization // Spatial Allocation",
+                title: "Zero-Downtime Workspace Transformation",
+                desc: "Our self-contained vans bypass municipal grid connections completely. We carry onboard power generation assets, allowing fluid treatments to proceed smoothly in any valid parking lot slot."
+            },
+            pricing: {
+                tag: "Consumer Assurance // Pricing Safeguards",
+                title: "Flat-Rate Matrix Integrity Verification",
+                desc: "We enforce total cost transparency. No surge pricing loops during high-demand rainy intervals, and zero unitemized environmental or tool handling line items on final statements."
+            },
+            response: {
+                tag: "Routing Telemetry // Dispatch Time Blocks",
+                title: "Geographic Smart-Zoning Scheduling Blocks",
+                desc: "Our regional routing algorithms compute actual route density to provide tight, reliable arrival tracks, keeping you completely informed via push telemetry notifications."
+            },
+            products: {
+                tag: "Supply Chain Audit // Fluid Standard",
+                title: "Direct Distributor-Sourced API Lubricants",
+                desc: "We do not store or dispense unbranded bulk multi-grade fluids. Every single lubricant profile container is opened on-site in front of the vehicle owner to verify standard composition specs."
+            },
+            disposal: {
+                tag: "Eco Management // Hazardous Fluid Recovery",
+                title: "Closed-Circuit Containment Safe Extraction",
+                desc: "All spent lubricants are safely siphoned directly from engine blocks into sealed storage bins on our vans. The waste is transferred exclusively to authorized regional processing plants for recycling."
+            }
+        };
+
+        trustCards.forEach(card => {
+            card.addEventListener("click", () => {
+                const itemKey = card.getAttribute("data-trust");
+                const trustRecord = trustMetadata[itemKey];
+
+                if (!trustRecord) return;
+
+                // Reset sibling border accent structures back to normal safely
+                trustCards.forEach(c => c.classList.remove("border-brand/50", "bg-brand/5", "dark:bg-brand/5"));
+
+                // Apply active branding colors directly over the chosen trigger node
+                card.classList.add("border-brand/50");
+
+                // Cascade dynamic text logs smoothly back into the summary HUD console block
+                if (hudPanel) {
+                    hudPanel.classList.remove("hidden");
+                    hudPanel.classList.add("flex");
+                    
+                    hudTag.style.opacity = "0";
+                    hudTitle.style.opacity = "0";
+                    hudDesc.style.opacity = "0";
+
+                    setTimeout(() => {
+                        hudTag.innerText = trustRecord.tag;
+                        hudTitle.innerText = trustRecord.title;
+                        hudDesc.innerText = trustRecord.desc;
+                        
+                        hudTag.style.opacity = "1";
+                        hudTitle.style.opacity = "1";
+                        hudDesc.style.opacity = "1";
+                    }, 100);
+                }
+            });
+        });
+    });
+</script>
+<!-- MOBILE CONVENIENCE SECTION WITH INTERACTIVE DISPATCH HUD MATRIX -->
+<section id="mobile-convenience" class="py-16 md:py-24 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 border-t border-b border-slate-200/60 dark:border-slate-900/60 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Ambient Geometric Mesh Accent Background -->
+    <div class="absolute inset-0 z-0 select-none pointer-events-none">
+        <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[120px]"></div>
+    </div>
+
+    <!-- Main 12-Column Grid Matrix Layout -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- LEFT PANEL: Interactive Location Parameter Hub (5 Columns) -->
+            <div class="lg:col-span-5 relative order-2 lg:order-1 w-full max-w-md mx-auto">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand/15 to-transparent rounded-3xl filter blur-xl opacity-40 pointer-events-none"></div>
+                
+                <!-- Console Base Frame -->
+                <div class="relative bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-5 sm:p-6 shadow-xl">
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-3.5 mb-5 text-left">
+                        <span class="text-[10px] font-mono uppercase font-bold text-brand tracking-widest block">Geographic Target Selector</span>
+                        <h3 class="text-xs font-bold text-slate-900 dark:text-white mt-0.5">Toggle Your Active Target Coordinates</h3>
+                    </div>
+
+                    <!-- Interactive Switcher Rows Stack -->
+                    <div class="space-y-2 select-none text-left">
+                        
+                        <!-- Location Row 1: Driveway -->
+                        <div id="target-driveway" class="convenience-tracker-row p-3.5 rounded-xl bg-white dark:bg-slate-950 border border-brand/40 shadow-xs cursor-pointer transition-all duration-300 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="convenience-badge w-7 h-7 rounded-lg bg-brand text-white font-mono text-xs flex items-center justify-center font-bold">01</span>
+                                <span class="convenience-title text-xs font-bold text-slate-900 dark:text-white">Residential Driveway</span>
+                            </div>
+                            <span class="convenience-marker font-mono text-[9px] bg-brand/10 text-brand px-2 py-0.5 rounded font-bold">ACTIVE LOCK</span>
+                        </div>
+
+                        <!-- Location Row 2: Office Lot -->
+                        <div id="target-office" class="convenience-tracker-row p-3.5 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-850 hover:border-brand/30 transition-all duration-300 cursor-pointer flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="convenience-badge w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-400 font-mono text-xs flex items-center justify-center font-semibold">02</span>
+                                <span class="convenience-title text-xs font-medium text-slate-600 dark:text-slate-400">Office Parking Lot</span>
+                            </div>
+                            <span class="convenience-marker font-mono text-[9px] bg-slate-100 dark:bg-slate-900 text-slate-400 px-2 py-0.5 rounded font-normal">STDBY</span>
+                        </div>
+
+                        <!-- Location Row 3: Business Hub -->
+                        <div id="target-business" class="convenience-tracker-row p-3.5 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-850 hover:border-brand/30 transition-all duration-300 cursor-pointer flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="convenience-badge w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-400 font-mono text-xs flex items-center justify-center font-semibold">03</span>
+                                <span class="convenience-title text-xs font-medium text-slate-600 dark:text-slate-400">Commercial Compound</span>
+                            </div>
+                            <span class="convenience-marker font-mono text-[9px] bg-slate-100 dark:bg-slate-900 text-slate-400 px-2 py-0.5 rounded font-normal">STDBY</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT PANEL: Narrative Copy Propositions (7 Columns) -->
+            <div class="lg:col-span-7 text-center sm:text-left space-y-6 max-w-2xl mx-auto sm:mx-0 order-1 lg:order-2 flex flex-col justify-center">
+                
+                <div class="space-y-4">
+                    <span id="convenience-hud-tag" class="text-xs font-brand font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                        Home Logistics Module
+                    </span>
+                    <h2 id="convenience-hud-title" class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                        Our Fully Equipped Mobile Service Vehicles Bring Maintenance Directly to Your Driveway
+                    </h2>
+                    <p id="convenience-hud-desc" class="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                        Saving you time and eliminating workshop waiting lines. Relax comfortably inside your living room while our standalone service trucks execute full fluid flushes right on your home plot, bypassing grid links completely.
+                    </p>
+                </div>
+
+                <!-- Structural Multi-Point Metric Matrix Row -->
+                <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-200/60 dark:border-slate-800 text-left font-mono text-[11px] text-slate-400">
+                    <div>
+                        <span class="block text-[9px] text-slate-400 font-sans font-medium uppercase tracking-wider">Spatial Need</span>
+                        <span id="convenience-metric-1" class="text-slate-900 dark:text-slate-200 font-bold block mt-0.5">1 Standard Stall</span>
+                    </div>
+                    <div class="border-l border-slate-200 dark:border-slate-800 pl-3 sm:pl-6">
+                        <span class="block text-[9px] text-slate-400 font-sans font-medium uppercase tracking-wider">Grid Linkage</span>
+                        <span id="convenience-metric-2" class="text-brand font-bold block mt-0.5">100% Self-Powered</span>
+                    </div>
+                    <div class="border-l border-slate-200 dark:border-slate-800 pl-3 sm:pl-6">
+                        <span class="block text-[9px] text-slate-400 font-sans font-medium uppercase tracking-wider">Surface Safety</span>
+                        <span id="convenience-metric-3" class="text-emerald-500 font-bold block mt-0.5">Zero Leak Shield</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- REAL-TIME CONVENIENCE TRACKER RECALCULATION ENGINE SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Element trigger layout containers
+        const rowDriveway = document.getElementById("target-driveway");
+        const rowOffice = document.getElementById("target-office");
+        const rowBusiness = document.getElementById("target-business");
+
+        // Informational description field components
+        const textTag = document.getElementById("convenience-hud-tag");
+        const textTitle = document.getElementById("convenience-hud-title");
+        const textDesc = document.getElementById("convenience-hud-desc");
+        const metric1 = document.getElementById("convenience-metric-1");
+        const metric2 = document.getElementById("convenience-metric-2");
+        const metric3 = document.getElementById("convenience-metric-3");
+
+        const layoutRows = [rowDriveway, rowOffice, rowBusiness];
+
+        // Central Database Log Map Dictionary
+        const convenienceMetadata = {
+            driveway: {
+                tag: "Home Logistics Module",
+                title: "Our Fully Equipped Mobile Service Vehicles Bring Maintenance Directly to Your Driveway",
+                desc: "Saving you time and eliminating workshop waiting lines. Relax comfortably inside your living room while our standalone service trucks execute full fluid flushes right on your home plot, bypassing grid links completely.",
+                m1: "1 Standard Stall",
+                m2: "100% Self-Powered",
+                m3: "Zero Leak Shield"
+            },
+            office: {
+                tag: "Corporate Workspace Hub",
+                title: "Transform Office Parking Infrastructure into Active Preventative Service Bays",
+                desc: "Maximize personal efficiency while conquering deadlines. Our certified technicians locate your locked vehicle coordinates inside corporate lots, executing systematic checks silently during work hours.",
+                m1: "Open Lot Parking",
+                m2: "Silent Compressors",
+                m3: "Fully Insured Track"
+            },
+            business: {
+                tag: "Enterprise Commercial Compound",
+                title: "Parallel On-Demand Support Configured for Industrial Storage Hubs",
+                desc: "Eliminate logjam routing overheads completely. We dispatch parallel mobile trucks down distribution points, running oil changes and multi-point diagnostics simultaneously across high-volume carrier pools.",
+                m1: "Central Depot Yard",
+                m2: "Parallel Van Units",
+                m3: "API Mileage Sync"
+            }
+        };
+
+        function switchConvenienceParameter(key, activatedRow) {
+            // Strip structural focus parameters off sibling row items safely
+            layoutRows.forEach(row => {
+                row.className = "convenience-tracker-row p-3.5 rounded-xl bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-850 hover:border-brand/30 transition-all duration-300 cursor-pointer flex items-center justify-between";
+                
+                const badge = row.querySelector(".convenience-badge");
+                badge.className = "convenience-badge w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-400 font-mono text-xs flex items-center justify-center font-semibold transition-colors";
+                
+                const title = row.querySelector(".convenience-title");
+                title.className = "convenience-title text-xs font-medium text-slate-600 dark:text-slate-400 transition-colors";
+                
+                const marker = row.querySelector(".convenience-marker");
+                marker.className = "convenience-marker font-mono text-[9px] bg-slate-100 dark:bg-slate-900 text-slate-400 px-2 py-0.5 rounded font-normal";
+                marker.innerText = "STDBY";
+            });
+
+            // Apply high contrast brand orange parameters directly to active target block
+            activatedRow.className = "convenience-tracker-row p-3.5 rounded-xl bg-white dark:bg-slate-950 border border-brand/40 shadow-xs cursor-pointer transition-all duration-300 flex items-center justify-between";
+            
+            const activeBadge = activatedRow.querySelector(".convenience-badge");
+            activeBadge.className = "convenience-badge w-7 h-7 rounded-lg bg-brand text-white font-mono text-xs flex items-center justify-center font-bold transition-colors";
+            
+            const activeTitle = activatedRow.querySelector(".convenience-title");
+            activeTitle.className = "convenience-title text-xs font-bold text-slate-900 dark:text-white transition-colors";
+            
+            const activeMarker = activatedRow.querySelector(".convenience-marker");
+            activeMarker.className = "convenience-marker font-mono text-[9px] bg-brand/10 text-brand px-2 py-0.5 rounded font-bold";
+            activeMarker.innerText = "ACTIVE LOCK";
+
+            // Crossfade narrative textual layouts back smoothly using dynamic lookups
+            const targetedLog = convenienceMetadata[key];
+            
+            textTag.style.opacity = "0";
+            textTitle.style.opacity = "0";
+            textDesc.style.opacity = "0";
+
+            setTimeout(() => {
+                textTag.innerText = targetedLog.tag;
+                textTitle.innerText = targetedLog.title;
+                textDesc.innerText = targetedLog.desc;
+                metric1.innerText = targetedLog.m1;
+                metric2.innerText = targetedLog.m2;
+                metric3.innerText = targetedLog.m3;
+
+                textTag.style.opacity = "1";
+                textTitle.style.opacity = "1";
+                textDesc.style.opacity = "1";
+            }, 100);
+        }
+
+        // Bind interactive event loop observers safely across structural blocks
+        if (rowDriveway) rowDriveway.addEventListener("click", () => switchConvenienceParameter("driveway", rowDriveway));
+        if (rowOffice) rowOffice.addEventListener("click", () => switchConvenienceParameter("office", rowOffice));
+        if (rowBusiness) rowBusiness.addEventListener("click", () => switchConvenienceParameter("business", rowBusiness));
+    });
+</script>
+<!-- METRIC CONTEXT WIDGET GRID WITH LIVE INCREMENTING INTERACTIVE LOGIC -->
+<section id="company-stats" class="py-16 md:py-24 bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Light-Contrast Geometric Background Mask -->
+    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none select-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[130px] pointer-events-none select-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Asymmetric Section Header Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end border-b border-slate-100 dark:border-slate-800 pb-10 mb-12 text-left">
+            <div class="lg:col-span-7 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                    Verified Performance Metrics
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Our Operational Footprint in Numbers
+                </h2>
+            </div>
+            <div class="lg:col-span-5">
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    Every tally profile below is drawn straight from our centralized client dispatch register logs. Real data points demonstrating our ongoing commitment to professional car care consistency.
+                </p>
+            </div>
+        </div>
+
+        <!-- 4-Column Stat Display Matrix (Maintains smooth 360px portrait stacks up to widescreen desktops) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            
+            <!-- Stat Item 1: Vehicles Serviced -->
+            <div class="stat-interactive-card p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl flex flex-col justify-between text-left transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group cursor-pointer">
+                <div class="space-y-2">
+                    <div class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-baseline gap-0.5">
+                        <span class="count-target text-4xl sm:text-5xl font-bold font-mono text-brand" data-target="5000">0</span>
+                        <span class="text-xl font-bold text-brand font-mono">+</span>
+                    </div>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">Vehicles Serviced</h3>
+                    <p class="text-[11px] text-slate-400 font-normal leading-normal">Total separate consumer models and commercial logistics trucks run through our fluid extraction systems safely.</p>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-500 border-t border-slate-200/40 dark:border-slate-900 mt-4">
+                    Registry Log: Live Sync
+                </div>
+            </div>
+
+            <!-- Stat Item 2: Customer Rating -->
+            <div class="stat-interactive-card p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl flex flex-col justify-between text-left transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group cursor-pointer">
+                <div class="space-y-2">
+                    <div class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-baseline gap-1">
+                        <span class="text-4xl sm:text-5xl font-bold font-mono text-brand">4.9</span>
+                        <span class="text-lg font-bold text-brand">★</span>
+                    </div>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">Customer Rating</h3>
+                    <p class="text-[11px] text-slate-400 font-normal leading-normal">Verified evaluation points compiled directly over residential driveway handovers and verified corporate accounts.</p>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-500 border-t border-slate-200/40 dark:border-slate-900 mt-4">
+                    Satisfied Care Ratio
+                </div>
+            </div>
+
+            <!-- Stat Item 3: Years Experience -->
+            <div class="stat-interactive-card p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl flex flex-col justify-between text-left transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group cursor-pointer">
+                <div class="space-y-2">
+                    <div class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-baseline gap-0.5">
+                        <span class="count-target text-4xl sm:text-5xl font-bold font-mono text-brand" data-target="10">0</span>
+                        <span class="text-xl font-bold text-brand font-mono">+</span>
+                    </div>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">Years Experience</h3>
+                    <p class="text-[11px] text-slate-400 font-normal leading-normal">A decade mastering clean vacuum extraction workflows, equipment calibrations, and on-site asset protection standards.</p>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-slate-500 border-t border-slate-200/40 dark:border-slate-900 mt-4">
+                    Continuous Operation
+                </div>
+            </div>
+
+            <!-- Stat Item 4: Same-Day Appointments -->
+            <div class="stat-interactive-card p-6 bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-850/80 rounded-2xl flex flex-col justify-between text-left transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group cursor-pointer">
+                <div class="space-y-2">
+                    <div class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-baseline gap-1">
+                        <span class="text-2xl sm:text-3xl font-bold text-brand">Available</span>
+                    </div>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">Same-Day Openings</h3>
+                    <p class="text-[11px] text-slate-400 font-normal leading-normal">Our localized routing logic maps mobile service van coordinates instantly, securing immediate diagnostic drops.</p>
+                </div>
+                <div class="pt-3 font-mono text-[9px] text-emerald-500 font-bold border-t border-slate-200/40 dark:border-slate-900 mt-4">
+                    ● Dispatch Hub Active
+                </div>
+            </div>
+
+        </div>
+
+        <!-- LIVE TELEMETRY LOG READOUT STATUS BOX (User Interactive Verification Panel) -->
+        <div id="stats-hud-panel" class="mt-10 p-5 sm:p-6 rounded-2xl bg-slate-950 text-white border border-slate-800 shadow-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-6 text-left animate-fade-in">
+            <div class="space-y-1 max-w-xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                    <span class="text-[9px] font-mono uppercase font-bold text-brand tracking-widest">Central Server Link</span>
+                </div>
+                <h4 class="text-xs sm:text-sm font-bold text-white tracking-tight">Interactive Analytical Counter Engine Active</h4>
+                <p class="text-xs text-slate-400 leading-relaxed font-normal">Hover or click individual metric tiles above to re-trigger count computations. Data updates feed continuously from localized territory tracking modules.</p>
+            </div>
+            <button id="retrigger-counters" class="text-[10px] font-mono px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand/50 text-slate-300 transition-all focus:outline-none flex-shrink-0">
+                ↺ Re-Run Diagnostics
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- REAL-TIME INCREMENTING COUNTER ENGINE SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const valueNodes = document.querySelectorAll(".count-target");
+        const triggerBtn = document.getElementById("retrigger-counters");
+
+        function executeCounterSequence() {
+            valueNodes.forEach(node => {
+                const absoluteLimit = parseInt(node.getAttribute("data-target"), 10);
+                let processingValue = 0;
+                
+                // Formulate appropriate velocity scaling based on overall size metrics
+                const dynamicIncrementStep = absoluteLimit > 100 ? Math.ceil(absoluteLimit / 45) : 1;
+                node.innerText = "0";
+
+                const progressionLoop = setInterval(() => {
+                    processingValue += dynamicIncrementStep;
+                    
+                    if (processingValue >= absoluteLimit) {
+                        node.innerText = absoluteLimit.toLocaleString();
+                        clearInterval(progressionLoop);
+                    } else {
+                        node.innerText = processingValue.toLocaleString();
+                    }
+                }, 20);
+            });
+        }
+
+        // Connect automated run hook over viewport load properties
+        executeCounterSequence();
+
+        // Bind interactive user control button to reset tallies on query command
+        if (triggerBtn) {
+            triggerBtn.addEventListener("click", () => {
+                executeCounterSequence();
+            });
+        }
+    });
+</script>
+<!-- DYNAMIC MEET THE TEAM CONSOLE WITH INTERACTIVE SYSTEM CERTIFICATE HUD -->
+<section id="meet-the-team" class="py-16 md:py-24 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 border-t border-b border-slate-200/60 dark:border-slate-900/60 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Fine-Line Background Circuit Grid Texture Overlay -->
+    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none select-none"></div>
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand/5 rounded-full blur-[120px] pointer-events-none select-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Redesigned Asymmetric Section Header Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end border-b border-slate-200/60 dark:border-slate-800/60 pb-10 mb-12 text-left">
+            <div class="lg:col-span-7 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                    Verified Field Personnel
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    The Certified Minds Executing Your Care
+                </h2>
+            </div>
+            <div class="lg:col-span-5">
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    Meet the automotive specialists routing directly to your location coordinates. Fully vetted background clearances, active industrial credentials, and a dedication to clean workspace execution come standard.
+                </p>
+            </div>
+        </div>
+
+    <!-- Team Roster Profile Matrix (Optimized for 360px mobile, 768px tablet, 1024px, and large desktop layout viewports) -->
+<!-- Team Roster Profile Matrix (Enforced 3-Column Row Configuration at 768px Tablet Viewports) -->
+<!-- THEME-ADAPTIVE FULL-WIDTH ROSTER GRID (RE-ENGINEERED ASPECT MATRIX LOGS) -->
+<div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch px-4 sm:px-6 lg:px-8">
+    
+    <!-- Tech Card 1: Lead Fleet Specialist -->
+    <div class="team-profile-card bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 group flex flex-col justify-between cursor-pointer w-full" data-tech="arun">
+        <div class="w-full flex flex-col">
+            <!-- 
+              Fluid Padded Picture Frame 
+              Replaced 'h-64' with a responsive 'w-full aspect-[4/3]' constraint layout loop.
+              This dynamically scales the image block proportionally to prevent cropping artifacts on wide monitors.
+            -->
+            <div class="relative w-full aspect-[4/3] p-4 pb-0 overflow-hidden block flex-shrink-0">
+                <div class="w-full h-full bg-slate-50 dark:bg-slate-950/60 rounded-2xl border border-slate-100 dark:border-slate-850/40 overflow-hidden relative shadow-inner">
+                    <img src="assets/te1" 
+                         alt="Arun Kumar Lead Fluid Engineer wearing a clean professional uniform" 
+                         class="w-full h-full object-cover object-top block group-hover:scale-105 transition-transform duration-500 ease-out" />
+                </div>
+                <span class="absolute top-6 left-6 text-[9px] font-mono bg-slate-950/90 text-brand border border-brand/20 px-2.5 py-0.5 rounded-md font-bold tracking-wider uppercase z-10 select-none">
+                    Badge #402
+                </span>
+            </div>
+            
+            <div class="px-6 pt-5 space-y-2 text-left">
+                <div class="space-y-0.5">
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white transition-colors duration-300">Arun Kumar</h3>
+                    <span class="text-xs text-brand font-semibold block">Lead Fluid System Engineer</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    Arun spent 8 years calibration tuning luxury blocks before scaling our mobile vacuum siphoning program. He loves explaining custom synthetic oil blend metrics.
+                </p>
+            </div>
+        </div>
+
+        <div class="px-6 pb-6 pt-4 font-mono text-[10px] text-slate-400 border-t border-slate-100 dark:border-slate-800/60 mt-6 flex justify-between items-center bg-slate-50/50 dark:bg-slate-950/30 rounded-b-3xl">
+            <div class="space-y-0.5 text-left">
+                <span class="block text-[8px] text-slate-400 dark:text-slate-500 font-sans font-medium uppercase">Experience</span>
+                <span class="text-slate-900 dark:text-slate-200 font-bold">8+ Years</span>
+            </div>
+            <div class="text-right space-y-0.5">
+                <span class="block text-[8px] text-slate-400 dark:text-slate-500 font-sans font-medium uppercase">Certification</span>
+                <span class="text-emerald-600 dark:text-emerald-500 font-bold">Master ASE Tech</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tech Card 2: Diagnostics Specialist -->
+    <div class="team-profile-card bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 group flex flex-col justify-between cursor-pointer w-full" data-tech="sanjay">
+        <div class="w-full flex flex-col">
+            <!-- Fluid Padded Picture Frame -->
+            <div class="relative w-full aspect-[4/3] p-4 pb-0 overflow-hidden block flex-shrink-0">
+                <div class="w-full h-full bg-slate-50 dark:bg-slate-950/60 rounded-2xl border border-slate-100 dark:border-slate-850/40 overflow-hidden relative shadow-inner">
+                    <img src="assets/te2" 
+                         alt="Sanjay R Senior Diagnostics Specialist standing in front of an organized service workshop layout" 
+                         class="w-full h-full object-cover object-top block group-hover:scale-105 transition-transform duration-500 ease-out" />
+                </div>
+                <span class="absolute top-6 left-6 text-[9px] font-mono bg-slate-950/90 text-brand border border-brand/20 px-2.5 py-0.5 rounded-md font-bold tracking-wider uppercase z-10 select-none">
+                    Badge #409
+                </span>
+            </div>
+            
+            <div class="px-6 pt-5 space-y-2 text-left">
+                <div class="space-y-0.5">
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white transition-colors duration-300">Sanjay R.</h3>
+                    <span class="text-xs text-brand font-semibold block">Senior Diagnostics Specialist</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    A precision tracking master who runs digital conductance scans. Sanjay specializes in calculating auxiliary battery health parameters and multi-point structural checks.
+                </p>
+            </div>
+        </div>
+
+        <div class="px-6 pb-6 pt-4 font-mono text-[10px] text-slate-400 border-t border-slate-100 dark:border-slate-800/60 mt-6 flex justify-between items-center bg-slate-50/50 dark:bg-slate-950/30 rounded-b-3xl">
+            <div class="space-y-0.5 text-left">
+                <span class="block text-[8px] text-slate-400 dark:text-slate-500 font-sans font-medium uppercase">Experience</span>
+                <span class="text-slate-900 dark:text-slate-200 font-bold">6+ Years</span>
+            </div>
+            <div class="text-right space-y-0.5">
+                <span class="block text-[8px] text-slate-400 dark:text-slate-500 font-sans font-medium uppercase">Certification</span>
+                <span class="text-emerald-600 dark:text-emerald-500 font-bold">Advanced Hybrid ISO</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tech Card 3: Fleet Operations Lead -->
+    <div class="team-profile-card bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 group flex flex-col justify-between cursor-pointer w-full" data-tech="vikram">
+        <div class="w-full flex flex-col">
+            <!-- Fluid Padded Picture Frame -->
+            <div class="relative w-full aspect-[4/3] p-4 pb-0 overflow-hidden block flex-shrink-0">
+                <div class="w-full h-full bg-slate-50 dark:bg-slate-950/60 rounded-2xl border border-slate-100 dark:border-slate-850/40 overflow-hidden relative shadow-inner">
+                    <img src="assets/te3" 
+                         alt="Vikram Shah Corporate Fleet Specialist wearing a clean uniform" 
+                         class="w-full h-full object-cover object-top block group-hover:scale-105 transition-transform duration-500 ease-out" />
+                </div>
+                <span class="absolute top-6 left-6 text-[9px] font-mono bg-slate-950/90 text-brand border border-brand/20 px-2.5 py-0.5 rounded-md font-bold tracking-wider uppercase z-10 select-none">
+                    Badge #511
+                </span>
+            </div>
+            
+            <div class="px-6 pt-5 space-y-2 text-left">
+                <div class="space-y-0.5">
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white transition-colors duration-300">Vikram Shah</h3>
+                    <span class="text-xs text-brand font-semibold block">Corporate Fleet Deployment</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    Vikram manages high-volume parallel maintenance slots for our B2B commercial accounts. He ensures zero trace containment fields are perfectly deployed.
+                </p>
+            </div>
+        </div>
+
+        <div class="px-6 pb-6 pt-4 font-mono text-[10px] text-slate-400 border-t border-slate-100 dark:border-slate-800/60 mt-6 flex justify-between items-center bg-slate-50/50 dark:bg-slate-950/30 rounded-b-3xl">
+            <div class="space-y-0.5 text-left">
+                <span class="block text-[8px] text-slate-400 dark:text-slate-500 font-sans font-medium uppercase">Experience</span>
+                <span class="text-slate-900 dark:text-slate-200 font-bold">10+ Years</span>
+            </div>
+            <div class="text-right space-y-0.5">
+                <span class="block text-[8px] text-slate-400 dark:text-slate-500 font-sans font-medium uppercase">Certification</span>
+                <span class="text-emerald-600 dark:text-emerald-500 font-bold">Heavy Sump Certified</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+        <!-- DYNAMIC CREDENTIAL VERIFICATION HUD CONTROL PANEL (User Interactive Workspace) -->
+        <div id="team-hud-panel" class="hidden mt-12 p-5 sm:p-6 rounded-2xl bg-slate-950 text-white border border-slate-800 shadow-2xl items-center justify-between gap-6 text-left animate-fade-in">
+            <div class="space-y-1 max-w-xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                    <span id="team-hud-tag" class="text-[9px] font-mono uppercase font-bold text-brand tracking-widest">PERSONNEL SECURITY SYNC</span>
+                </div>
+                <h4 id="team-hud-title" class="text-xs sm:text-sm font-bold text-white tracking-tight">Select any mechanic profile tile above to verify background clearance metrics.</h4>
+                <p id="team-hud-desc" class="text-xs text-slate-400 leading-relaxed font-normal">Our mobile logistics dispatch registry allows instant validation of field specialist safety codes, liability coverages, and active industrial credentials.</p>
+            </div>
+            <span class="text-xl opacity-20 hidden md:block select-none pointer-events-none font-mono">🛡️ VERIFIED_STAFF_HUD</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- LIVE ROSTER INTERACTIVE BLUEPRINT LOOKUP LOGIC SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const profileCards = document.querySelectorAll(".team-profile-card");
+        const teamHud = document.getElementById("team-hud-panel");
+        const hudTag = document.getElementById("team-hud-tag");
+        const hudTitle = document.getElementById("team-hud-title");
+        const hudDesc = document.getElementById("team-hud-desc");
+
+        // Centralized Employee Personnel Database Metadata Logs
+        const personnelRegistry = {
+            arun: {
+                tag: "REGISTRY LOCK // Arun Kumar #402",
+                title: "Advanced Internal Combustion Sump Extraction Credentials",
+                desc: "Arun holds comprehensive ASE certifications alongside specialized training logs for high-pressure closed circuit siphon systems. Background checks cleared for clean driveway maintenance delivery loops."
+            },
+            sanjay: {
+                tag: "REGISTRY LOCK // Sanjay R #409",
+                title: "Digital Ohm Conductance & Telemetry Architecture Standards",
+                desc: "Sanjay handles electronic monitoring arrays and complex powertrain computer scanning logic. Certified for high-voltage battery insulation safety boundaries and terminal restoration."
+            },
+            vikram: {
+                tag: "REGISTRY LOCK // Vikram Shah #511",
+                title: "Logistics Fleet Asset Operational Hazard Control",
+                desc: "Vikram is fully accredited for heavy industrial yard deployments and parallel fleet siphoning execution. Expert regulator for eco-friendly spent fuel containment recycling programs."
+            }
+        };
+
+        profileCards.forEach(card => {
+            card.addEventListener("click", () => {
+                const techKey = card.getAttribute("data-tech");
+                const staffLog = personnelRegistry[techKey];
+
+                if (!staffLog) return;
+
+                // Strip active border markers off parallel team components cleanly
+                profileCards.forEach(c => c.classList.remove("border-brand/60", "dark:border-brand/50", "bg-brand/5", "dark:bg-brand/5"));
+
+                // Lock high contrast brand parameters directly over the clicked target card
+                card.classList.add("border-brand/60", "dark:border-brand/50");
+
+                // Crossfade corresponding technical verification logs into summary container block
+                if (teamHud) {
+                    teamHud.classList.remove("hidden");
+                    teamHud.classList.add("flex");
+                    
+                    hudTag.style.opacity = "0";
+                    hudTitle.style.opacity = "0";
+                    hudDesc.style.opacity = "0";
+
+                    setTimeout(() => {
+                        hudTag.innerText = staffLog.tag;
+                        hudTitle.innerText = staffLog.title;
+                        hudDesc.innerText = staffLog.desc;
+                        
+                        hudTag.style.opacity = "1";
+                        hudTitle.style.opacity = "1";
+                        hudDesc.style.opacity = "1";
+                    }, 100);
+                }
+            });
+        });
+    });
+</script>
+ <!-- SERVICE AREA SECTION -->
+        <section id="service-coverage" class="py-12 sm:py-16 md:py-24 transition-colors duration-300 relative overflow-hidden">
+            
+            <!-- Ambient Graphic Glow Accents -->
+            <div class="absolute inset-0 z-0 select-none pointer-events-none">
+                <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:24px_24px]"></div>
+                <div class="absolute top-1/4 left-0 w-96 h-96 bg-brand/5 rounded-full blur-[130px]"></div>
+                <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-brand/5 rounded-full blur-[130px]"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+                
+                <!-- Redesigned Asymmetric Section Header Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end border-b border-slate-200/60 dark:border-slate-800/60 pb-10 text-left">
+                    <div class="lg:col-span-7 space-y-3">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                            Dynamic Dispatch Matrix
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                            We Proudly Provide Mobile Maintenance Services Across the City
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-5">
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                            No more workshop queue times or towing overheads. Our self-powered service vehicles route directly to your driveway, office parking space, or commercial depot yard.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Main Split Interface Grid Structure (12-Columns Framework) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    
+                    <!-- LEFT PANE: Sector Selector & Location Search Engine (5 Columns) -->
+                    <div class="lg:col-span-5 flex flex-col justify-between space-y-6 text-left">
+                        <div class="space-y-4">
+                            <!-- Instant Search Lookup Input Node -->
+                            <div class="relative w-full">
+                                <span class="absolute left-3.5 top-3 text-slate-400 text-xs pointer-events-none select-none">🔍</span>
+                                <input id="zone-search" type="text" placeholder="Type your district, sector, or pin code..." 
+                                    class="w-full text-xs sm:text-sm pl-10 pr-4 py-3 rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800/80 focus:outline-none focus:border-brand dark:focus:border-brand transition-all shadow-sm" />
+                            </div>
+
+                            <!-- Interactive Location List Deck -->
+                            <div id="zone-cards-deck" class="space-y-3">
+                                
+                                <!-- Zone Card 1: Downtown (Active Initially) -->
+                                <div data-zone="downtown" class="zone-card p-4 rounded-2xl bg-white dark:bg-slate-900 border border-brand/50 dark:border-brand/50 shadow-md cursor-pointer transition-all duration-300 group flex flex-col justify-between">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <span class="text-lg bg-brand/10 text-brand p-1.5 rounded-lg">City</span>
+                                            <h4 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white transition-colors group-hover:text-brand">Downtown Core & Business Avenues</h4>
+                                        </div>
+                                        <span class="text-[9px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-bold animate-pulse">4 VANS ACTIVE</span>
+                                    </div>
+                                    <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-normal mt-3 leading-relaxed">
+                                        Servicing financial hubs, corporate towers, apartment blocks, and shopping parking areas.
+                                    </p>
+                                </div>
+
+                                <!-- Zone Card 2: Suburbs -->
+                                <div data-zone="suburbs" class="zone-card p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm cursor-pointer transition-all duration-300 group flex flex-col justify-between">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <span class="text-lg bg-slate-100 dark:bg-slate-950 text-slate-400 p-1.5 rounded-lg group-hover:text-brand group-hover:bg-brand/10 transition-colors">Home</span>
+                                            <h4 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white transition-colors group-hover:text-brand">Suburbs & Residential Outer Grids</h4>
+                                        </div>
+                                        <span class="text-[9px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-bold">3 VANS ACTIVE</span>
+                                    </div>
+                                    <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-normal mt-3 leading-relaxed hidden">
+                                        Providing premium driveway care across housing communities, outer villa tracks, and private properties.
+                                    </p>
+                                </div>
+
+                                <!-- Zone Card 3: Industrial Districts -->
+                                <div data-zone="corporate" class="zone-card p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm cursor-pointer transition-all duration-300 group flex flex-col justify-between">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <span class="text-lg bg-slate-100 dark:bg-slate-950 text-slate-400 p-1.5 rounded-lg group-hover:text-brand group-hover:bg-brand/10 transition-colors">Work</span>
+                                            <h4 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white transition-colors group-hover:text-brand">Business Parks & Industrial Logistics</h4>
+                                        </div>
+                                        <span class="text-[9px] font-mono bg-amber-500/10 text-amber-500 border border-amber-500/20 px-2 py-0.5 rounded font-bold">NEXT SLOT: 25M</span>
+                                    </div>
+                                    <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-normal mt-3 leading-relaxed hidden">
+                                        Tailored fleet maintenance programs for corporate complexes, high-volume shipping hubs, and technology parks.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Secondary Info Badge Callout -->
+                        <div class="p-4 rounded-2xl bg-slate-900 text-white border border-slate-800 shadow-lg flex items-start gap-3.5 relative overflow-hidden">
+                            <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:12px_12px] pointer-events-none"></div>
+                            <span class="text-xl bg-brand/15 p-1.5 rounded-xl text-brand flex-shrink-0">🚛</span>
+                            <div class="space-y-0.5">
+                                <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider">Fleet Coverage Options</h4>
+                                <p class="text-[11px] text-slate-400 leading-normal font-normal">We manage high-volume, simultaneous multi-vehicle servicing logs directly at corporate logistics compounds with synchronized invoicing.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT PANEL: Live Interactive Geographical Dispatch Map Workspace (7 Columns) -->
+<div class="lg:col-span-7 flex flex-col justify-between space-y-4 order-1 lg:order-2 w-full">
+    <div class="w-full h-72 sm:h-96 lg:h-full min-h-[460px] relative rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 shadow-xl group transition-all duration-300">
+        
+        <!-- 
+          LIVE INTERACTIVE GEOGRAPHICAL VECTOR LAYER
+          Renders real-world styled street grids, river zones, and delivery sectors dynamically.
+          Responds on-the-fly to dark/light theme switching to mimic a real map embed.
+        -->
+        <canvas id="live-dispatch-map" class="absolute inset-0 w-full h-full z-0 cursor-grab active:cursor-grabbing opacity-100 transition-opacity duration-300"></canvas>
+
+        <!-- Dynamic Coordinate Target Interface Pins Stack -->
+        <div class="absolute inset-0 z-10 pointer-events-auto">
+            
+            <!-- Pin Alpha: Residential Active Mark -->
+            <button id="map-pin-residential" type="button" class="absolute top-[38%] left-[28%] -translate-x-1/2 -translate-y-1/2 transition-all duration-300 focus:outline-none group/pin" data-area="residential">
+                <span class="flex h-6 w-6 relative items-center justify-center">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-5 w-5 bg-brand text-[10px] font-mono text-white font-bold items-center justify-center shadow-lg shadow-brand/40 group-hover/pin:scale-110 transition-transform">R</span>
+                </span>
+            </button>
+
+            <!-- Pin Beta: Corporate Infrastructure Mark -->
+            <button id="map-pin-offices" type="button" class="absolute top-[22%] right-[32%] translate-x-1/2 focus:outline-none group/pin" data-area="offices">
+                <span class="flex h-6 w-6 relative items-center justify-center">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 dark:bg-slate-600 opacity-40 group-focus:opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-5 w-5 bg-slate-400 dark:bg-slate-600 text-[10px] font-mono text-white font-bold items-center justify-center shadow-md transition-all">O</span>
+                </span>
+            </button>
+
+            <!-- Pin Gamma: Apartment Hub Mark -->
+            <button id="map-pin-apartments" type="button" class="absolute bottom-[38%] left-[48%] -translate-x-1/2 focus:outline-none group/pin" data-area="apartments">
+                <span class="flex h-6 w-6 relative items-center justify-center">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 dark:bg-slate-600 opacity-40 group-focus:opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-5 w-5 bg-slate-400 dark:bg-slate-600 text-[10px] font-mono text-white font-bold items-center justify-center shadow-md transition-all">A</span>
+                </span>
+            </button>
+
+            <!-- Pin Delta: Commercial Logistic Mark -->
+            <button id="map-pin-fleets" type="button" class="absolute bottom-[28%] right-[22%] translate-x-1/2 focus:outline-none group/pin" data-area="fleets">
+                <span class="flex h-6 w-6 relative items-center justify-center">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 dark:bg-slate-600 opacity-40 group-focus:opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-5 w-5 bg-slate-400 dark:bg-slate-600 text-[10px] font-mono text-white font-bold items-center justify-center shadow-md transition-all">F</span>
+                </span>
+            </button>
+        </div>
+
+        <!-- Floating Real-Time Operational Telemetry Console Wrapper Overlay -->
+        <div class="absolute bottom-4 left-4 right-4 z-20 bg-white/95 dark:bg-slate-950/90 border border-slate-200 dark:border-slate-800 p-4 rounded-xl backdrop-blur-md shadow-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-left transition-all duration-300">
+            <div class="space-y-0.5">
+                <span id="area-hud-tag" class="text-[9px] font-mono tracking-wider text-brand font-bold uppercase block transition-opacity duration-200">Zoning Matrix // Active Focus</span>
+                <h3 id="area-hud-title" class="text-xs font-bold text-slate-900 dark:text-white tracking-tight transition-opacity duration-200">Residential Driveways Sector</h3>
+            </div>
+            <div class="grid grid-cols-2 gap-4 sm:flex sm:items-center sm:gap-6 font-mono text-[10px] text-slate-400 border-l border-slate-100 dark:border-slate-900 pl-0 sm:pl-6 max-sm:border-l-0 transition-colors duration-300">
+                <div class="text-left">
+                    <span class="block text-[8px] text-slate-400 dark:text-slate-500 uppercase font-sans font-bold">Van Deployment</span>
+                    <span id="area-metric-1" class="text-slate-800 dark:text-slate-200 font-bold block mt-0.5 transition-opacity duration-200">Van #04 Locked</span>
+                </div>
+                <div class="border-l border-slate-100 dark:border-slate-800 pl-4 text-left">
+                    <span class="block text-[8px] text-slate-400 dark:text-slate-500 uppercase font-sans font-bold">Fluid Safety</span>
+                    <span id="area-metric-2" class="text-emerald-600 dark:text-emerald-400 font-bold block mt-0.5 transition-opacity duration-200">100% Contained</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ambient shade linear protective layout layer gradient -->
+        <div class="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent dark:from-slate-950/40 z-0 pointer-events-none"></div>
+    </div>
+</div>
+
+<!-- REAL-TIME LIVE GPS MAP GRAPHICS ENGINE INTERACTION SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const canvasNode = document.getElementById("live-dispatch-map");
+        if (!canvasNode) return;
+        
+        const ctxEngine = canvasNode.getContext("2d");
+        const mapPinsList = document.querySelectorAll("[data-area]");
+        
+        // HUD UI Output Targets
+        const hudTagNode = document.getElementById("area-hud-tag");
+        const hudTitleNode = document.getElementById("area-hud-title");
+        const hudMetricNode1 = document.getElementById("area-metric-1");
+        const hudMetricNode2 = document.getElementById("area-metric-2");
+
+        // Spatial Vector Map Databases
+        const zoningCoordinatesLogs = {
+            residential: { tag: "Zoning Matrix // Active Focus", title: "Residential Driveways Sector", m1: "Van #04 Locked", m2: "100% Contained" },
+            offices: { tag: "Corporate Logistics // Sync", title: "Commercial Office Parks", m1: "Van #09 Dispatched", m2: "Zero Trace Set" },
+            apartments: { tag: "High Density // Grid Lock", title: "Apartment Complexes Hub", m1: "Van #12 On-Site", m2: "Siphoning Active" },
+            fleets: { tag: "Enterprise Matrix // B2B Fleet", title: "Commercial Storage Yards", m1: "Vans #01 & #02 Active", m2: "Parallel System" }
+        };
+
+        let isSystemDarkMode = document.documentElement.classList.contains("dark");
+        const themeMutationObserver = new MutationObserver(() => {
+            isSystemDarkMode = document.documentElement.classList.contains("dark");
+        });
+        themeMutationObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+        let frameWidth = 0, frameHeight = 0;
+        let animationFrameIndex = 0;
+
+        function configureCanvasProportions() {
+            const dimensionsBlock = canvasNode.getBoundingClientRect();
+            frameWidth = dimensionsBlock.width;
+            frameHeight = dimensionsBlock.height;
+            canvasNode.width = frameWidth * window.devicePixelRatio;
+            canvasNode.height = frameHeight * window.devicePixelRatio;
+            ctxEngine.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+
+        window.addEventListener("resize", configureCanvasProportions);
+        configureCanvasProportions();
+
+        // Canvas Vector Render Loop Engine (Map UI Mode Style)
+        function renderLiveVectorMap() {
+            animationFrameIndex++;
+            ctxEngine.clearRect(0, 0, frameWidth, frameHeight);
+
+            // 1. Map Theme Palette Definitions
+            const colors = {
+                bg: isSystemDarkMode ? "#0f172a" : "#f1f5f9",
+                landSecondary: isSystemDarkMode ? "#1e293b" : "#e2e8f0",
+                water: isSystemDarkMode ? "#0f2d59" : "#bae6fd",
+                parks: isSystemDarkMode ? "#143a28" : "#dcfce7",
+                majorRoads: isSystemDarkMode ? "#334155" : "#cbd5e1",
+                minorRoads: isSystemDarkMode ? "#1e293b" : "#f8fafc",
+                highway: isSystemDarkMode ? "#475569" : "#94a3b8"
+            };
+
+            // Base Background fill
+            ctxEngine.fillStyle = colors.bg;
+            ctxEngine.fillRect(0, 0, frameWidth, frameHeight);
+
+            // 2. Render Map Geometric Zones (Parks & Water Features)
+            // River/Waterway
+            ctxEngine.fillStyle = colors.water;
+            ctxEngine.beginPath();
+            ctxEngine.moveTo(0, frameHeight * 0.7);
+            ctxEngine.bezierCurveTo(frameWidth * 0.3, frameHeight * 0.65, frameWidth * 0.6, frameHeight * 0.9, frameWidth, frameHeight * 0.8);
+            ctxEngine.lineTo(frameWidth, frameHeight);
+            ctxEngine.lineTo(0, frameHeight);
+            ctxEngine.closePath();
+            ctxEngine.fill();
+
+            // City Park Green Space
+            ctxEngine.fillStyle = colors.parks;
+            ctxEngine.beginPath();
+            ctxEngine.roundRect(frameWidth * 0.55, frameHeight * 0.15, frameWidth * 0.25, frameHeight * 0.2, 16);
+            ctxEngine.fill();
+
+            // Industrial Block District Shading
+            ctxEngine.fillStyle = colors.landSecondary;
+            ctxEngine.beginPath();
+            ctxEngine.roundRect(frameWidth * 0.08, frameHeight * 0.45, frameWidth * 0.2, frameHeight * 0.15, 12);
+            ctxEngine.fill();
+
+            // 3. Draw Street Grid Infrastructures (Minor & Major Roads)
+            ctxEngine.lineWidth = 1;
+            ctxEngine.strokeStyle = isSystemDarkMode ? "rgba(51, 65, 85, 0.5)" : "rgba(226, 232, 240, 0.8)";
+            
+            // Grid Lines (Simulated Minor Streets)
+            const horizontalGridSpacing = 35;
+            for (let y = 10; y < frameHeight; y += horizontalGridSpacing) {
+                ctxEngine.beginPath();
+                ctxEngine.moveTo(0, y);
+                ctxEngine.lineTo(frameWidth, y);
+                ctxEngine.stroke();
+            }
+            const verticalGridSpacing = 45;
+            for (let x = 15; x < frameWidth; x += verticalGridSpacing) {
+                ctxEngine.beginPath();
+                ctxEngine.moveTo(x, 0);
+                ctxEngine.lineTo(x, frameHeight);
+                ctxEngine.stroke();
+            }
+
+            // Major Arterial Structural Roads (Thicker Lines)
+            ctxEngine.lineWidth = 3;
+            ctxEngine.strokeStyle = colors.majorRoads;
+            
+            // Diagonal Ring Road
+            ctxEngine.beginPath();
+            ctxEngine.moveTo(0, frameHeight * 0.2);
+            ctxEngine.lineTo(frameWidth * 0.5, frameHeight * 0.5);
+            ctxEngine.lineTo(frameWidth, frameHeight * 0.1);
+            ctxEngine.stroke();
+
+            // Main Core Cross Highway Grid Loop
+            ctxEngine.lineWidth = 4.5;
+            ctxEngine.strokeStyle = colors.highway;
+            ctxEngine.beginPath();
+            ctxEngine.moveTo(frameWidth * 0.4, 0);
+            ctxEngine.lineTo(frameWidth * 0.4, frameHeight);
+            ctxEngine.stroke();
+
+            // 4. Draw Pulse Service Routes & Real-Time Moving Projects
+            ctxEngine.lineWidth = 2;
+            ctxEngine.strokeStyle = "rgba(217, 119, 6, 0.6)";
+            ctxEngine.setLineDash([6, 4]);
+            
+            // Route vector path linking dispatch coordinates
+            ctxEngine.beginPath();
+            ctxEngine.moveTo(frameWidth * 0.28, frameHeight * 0.38); // Pin R
+            ctxEngine.lineTo(frameWidth * 0.4, frameHeight * 0.38);   // To Highway intersection
+            ctxEngine.lineTo(frameWidth * 0.4, frameHeight * 0.72);   // Down highway corridor
+            ctxEngine.lineTo(frameWidth * 0.75, frameHeight * 0.72);  // Across to business cluster
+            ctxEngine.stroke();
+            ctxEngine.setLineDash([]); // Reset line dashes clear
+
+            // Pulsing dispatch project waypoint tracker element
+            const mappingTimeScalar = (animationFrameIndex % 240) / 240;
+            let currentTrackX = 0;
+            let currentTrackY = 0;
+
+            // Interpolate tracking metrics across 3 linear legs
+            if (mappingTimeScalar < 0.3) {
+                const step = mappingTimeScalar / 0.3;
+                currentTrackX = (frameWidth * 0.28) + ((frameWidth * 0.4) - (frameWidth * 0.28)) * step;
+                currentTrackY = frameHeight * 0.38;
+            } else if (mappingTimeScalar < 0.7) {
+                const step = (mappingTimeScalar - 0.3) / 0.4;
+                currentTrackX = frameWidth * 0.4;
+                currentTrackY = (frameHeight * 0.38) + ((frameHeight * 0.72) - (frameHeight * 0.38)) * step;
+            } else {
+                const step = (mappingTimeScalar - 0.7) / 0.3;
+                currentTrackX = (frameWidth * 0.4) + ((frameWidth * 0.75) - (frameWidth * 0.4)) * step;
+                currentTrackY = frameHeight * 0.72;
+            }
+
+            // Draw shadow glow backdrop for the active projectile tracking asset
+            ctxEngine.fillStyle = "rgba(217, 119, 6, 0.3)";
+            ctxEngine.beginPath();
+            ctxEngine.arc(currentTrackX, currentTrackY, 8 + Math.sin(animationFrameIndex * 0.1) * 2, 0, Math.PI * 2);
+            ctxEngine.fill();
+
+            // Main Core Vector Unit Point
+            ctxEngine.fillStyle = "#D97706";
+            ctxEngine.beginPath();
+            ctxEngine.arc(currentTrackX, currentTrackY, 4.5, 0, Math.PI * 2);
+            ctxEngine.fill();
+
+            requestAnimationFrame(renderLiveVectorMap);
+        }
+        requestAnimationFrame(renderLiveVectorMap);
+
+        // Core Interactive HUD Switcher Action Engine Loop
+        function executeHudCoordinateShift(targetPin) {
+            const lookUpKey = targetPin.getAttribute("data-area");
+            const structuralDataRecord = zoningCoordinatesLogs[lookUpKey];
+
+            if (!structuralDataRecord) return;
+
+            // Reset surrounding buttons to idle tracking states cleanly
+            mapPinsList.forEach(pin => {
+                const innerBubble = pin.querySelector("span > span:nth-child(2)");
+                const outerPing = pin.querySelector("span > span:nth-child(1)");
+                if (innerBubble) {
+                    innerBubble.className = "relative inline-flex rounded-full h-5 w-5 bg-slate-400 dark:bg-slate-600 text-[10px] font-mono text-white font-bold flex items-center justify-center shadow-md transition-all";
+                }
+                if (outerPing) {
+                    outerPing.className = "animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 dark:bg-slate-600 opacity-0";
+                }
+            });
+
+            // Elevate targeted item styles up to active metrics status parameters
+            const targetBubble = targetPin.querySelector("span > span:nth-child(2)");
+            const targetPing = targetPin.querySelector("span > span:nth-child(1)");
+            if (targetBubble) {
+                targetBubble.className = "relative inline-flex rounded-full h-5 w-5 bg-brand text-[10px] font-mono text-white font-bold flex items-center justify-center shadow-md shadow-brand/40 scale-110 transition-transform";
+            }
+            if (targetPing) {
+                targetPing.className = "animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75";
+            }
+
+            // Crossfade content smoothly down into console readout indicators
+            const textNodesCollection = [hudTagNode, hudTitleNode, hudMetricNode1, hudMetricNode2];
+            textNodesCollection.forEach(node => { if (node) node.style.opacity = "0"; });
+
+            setTimeout(() => {
+                if (hudTagNode) hudTagNode.innerText = structuralDataRecord.tag;
+                if (hudTitleNode) hudTitleNode.innerText = structuralDataRecord.title;
+                if (hudMetricNode1) hudMetricNode1.innerText = structuralDataRecord.m1;
+                if (hudMetricNode2) hudMetricNode2.innerText = structuralDataRecord.m2;
+                textNodesCollection.forEach(node => { if (node) node.style.opacity = "1"; });
+            }, 150);
+        }
+
+        mapPinsList.forEach(pinLink => {
+            pinLink.addEventListener("click", () => executeHudCoordinateShift(pinLink));
+            pinLink.addEventListener("mouseenter", () => executeHudCoordinateShift(pinLink));
+        });
+    });
+</script>
+
+                </div>
+
+            </div>
+        </section>
+
+  <!-- CLEAN SIMPLIFIED FINAL CALL TO ACTION SECTION -->
+<section id="final-conversion" class="relative bg-slate-900 text-white py-16 sm:py-20 md:py-24 transition-colors duration-300">
+    
+    <!-- Ambient Structural Overlay Elements -->
+    <div class="absolute inset-0 z-0 select-none pointer-events-none opacity-[0.05] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:20px_20px]"></div>
+
+    <!-- Core Layout Content Wrapper -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        
+        <!-- Trust Verification Label -->
+        <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 px-3.5 py-1.5 rounded-full inline-block">
+            Get Started Now
+        </span>
+        
+        <!-- Main Core Headline (Maintains strict font boundaries 400-600) -->
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+            Ready for Stress-Free <span class="text-brand">Vehicle Maintenance?</span>
+        </h2>
+        
+        <!-- Supporting Description (Restricted to clean 400 weight layout) -->
+        <p class="text-sm sm:text-base md:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto max-sm:px-2">
+            Skip the diagnostic garage waiting queues entirely. Secure your custom mobile oil service or preventative multi-point check bundle at your preferred location coordinate today.
+        </p>
+
+        <!-- Symmetrical High-Conversion Call-To-Action Paths Layout -->
+        <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 max-w-xs sm:max-w-none mx-auto">
+            
+            <!-- Primary Action Call-To-Action Button -->
+            <a href="booknow.html" class="group flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm px-8 py-4 rounded-xl shadow-lg shadow-brand/20 transition-all duration-300 transform hover:-translate-y-0.5 active:scale-[0.995]">
+                <span>Schedule Appointment</span>
+                <svg class="w-4 h-4 text-white transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+                </svg>
+            </a>
+            
+            <!-- Secondary Action Call-To-Action Button -->
+            <a href="tel:+918005550199" class="flex items-center justify-center gap-2 bg-slate-950 hover:bg-slate-900 text-slate-200 font-semibold text-xs sm:text-sm px-8 py-4 rounded-xl border border-slate-800 hover:border-slate-700 transition-all shadow-sm">
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.387a12.035 12.035 0 0 1-7.147-7.147c-.155-.441.011-.928.387-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25z"/>
+                </svg>
+                <span>Call Now</span>
+            </a>
+            
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- INTERACTIVE CONTROL SCRIPT: Controls Theme, Layout Direction, Search Filtering and Map Sync -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // DOM Target Core Selection Nodes
+            const themeBtn = document.getElementById('auth-theme-toggle');
+            const dirBtn = document.getElementById('auth-dir-toggle');
+            const htmlElement = document.documentElement;
+
+            // Coverage Map Controller Nodes
+            const zoneCards = document.querySelectorAll(".zone-card");
+            const radarTitleText = document.getElementById("radar-title");
+            const searchInput = document.getElementById("zone-search");
+
+            // --- 1. THEME STORAGE MANAGEMENT ENGINE ---
+            function syncThemeDisplayState() {
+                const activePreference = localStorage.getItem('theme');
+                const OSPreferenceDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                
+                if (activePreference === 'dark' || (!activePreference && OSPreferenceDark)) {
+                    htmlElement.classList.add('dark');
+                    document.getElementById('theme-light-icon').classList.remove('hidden');
+                    document.getElementById('theme-dark-icon').classList.add('hidden');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    document.getElementById('theme-light-icon').classList.add('hidden');
+                    document.getElementById('theme-dark-icon').classList.remove('hidden');
+                }
+            }
+
+            themeBtn.addEventListener('click', () => {
+                const containsDarkNow = htmlElement.classList.contains('dark');
+                if (containsDarkNow) {
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+                syncThemeDisplayState();
+            });
+
+            // --- 2. LAYOUT DIRECTION STORAGE ENGINE (LTR/RTL Sync) ---
+            function syncLayoutDirection() {
+                const storedDirection = localStorage.getItem('direction') || 'ltr';
+                htmlElement.setAttribute('dir', storedDirection);
+                dirBtn.innerText = storedDirection.toUpperCase();
+            }
+
+            dirBtn.addEventListener('click', () => {
+                const currentDir = htmlElement.getAttribute('dir');
+                const switchedDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                localStorage.setItem('direction', switchedDir);
+                syncLayoutDirection();
+            });
+
+            // --- 3. DYNAMIC INTERACTIVE MAP COORDINATES SWITCHER ---
+            const zoneDatabase = {
+                downtown: { title: "Zone Checked: Downtown Core Sector", pin: "pin-downtown" },
+                suburbs: { title: "Zone Checked: Suburbs & Outer Grids", pin: "pin-suburbs" },
+                corporate: { title: "Zone Checked: Corporate Logistics Parks", pin: "pin-corporate" }
+            };
+
+            zoneCards.forEach(clickedCard => {
+                clickedCard.addEventListener("click", () => {
+                    const zoneKey = clickedCard.getAttribute("data-zone");
+                    const targetMeta = zoneDatabase[zoneKey];
+
+                    if (!targetMeta) return;
+
+                    // Strip border states off sister components
+                    zoneCards.forEach(card => {
+                        card.className = "zone-card p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm cursor-pointer transition-all duration-300 group flex flex-col justify-between";
+                        card.querySelector("p").classList.add("hidden");
+                        
+                        // Reset standard icons
+                        const iconNode = card.querySelector("span:first-child");
+                        iconNode.className = "text-lg bg-slate-100 dark:bg-slate-950 text-slate-400 p-1.5 rounded-lg group-hover:text-brand group-hover:bg-brand/10 transition-colors";
+                    });
+
+                    // Focus prominent border elements directly on clicked item card
+                    clickedCard.className = "zone-card p-4 rounded-2xl bg-white dark:bg-slate-900 border border-brand/50 dark:border-brand/50 shadow-md cursor-pointer transition-all duration-300 group flex flex-col justify-between";
+                    clickedCard.querySelector("p").classList.remove("hidden");
+                    
+                    const activeIcon = clickedCard.querySelector("span:first-child");
+                    activeIcon.className = "text-lg bg-brand/10 text-brand p-1.5 rounded-lg";
+
+                    // Update GPS header text metrics label
+                    radarTitleText.innerText = targetMeta.title;
+
+                    // Recalibrate and focus glowing van coordinates pins on vector radar map
+                    Object.values(zoneDatabase).forEach(meta => {
+                        const pinNode = document.getElementById(meta.pin);
+                        const pingIndicator = pinNode.querySelector("span");
+
+                        if (meta.pin === targetMeta.pin) {
+                            pinNode.classList.remove("opacity-30", "scale-90");
+                            pinNode.classList.add("scale-110");
+                            pingIndicator.className = "flex h-3 w-3 relative";
+                            pingIndicator.innerHTML = `
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-brand shadow-md"></span>
+                            `;
+                        } else {
+                            pinNode.classList.add("opacity-30", "scale-90");
+                            pinNode.classList.remove("scale-110");
+                            pingIndicator.className = "flex h-3 w-3 relative";
+                            pingIndicator.innerHTML = `<span class="relative inline-flex rounded-full h-3 w-3 bg-slate-500"></span>`;
+                        }
+                    });
+                });
+            });
+
+            // --- 4. REAL-TIME SEARCH FILTER LOOKUP ENGINE ---
+            if (searchInput) {
+                searchInput.addEventListener("input", (e) => {
+                    const query = e.target.value.toLowerCase().trim();
+                    zoneCards.forEach(card => {
+                        const contentText = card.innerText.toLowerCase();
+                        if (contentText.includes(query)) {
+                            card.style.display = "flex";
+                        } else {
+                            card.style.display = "none";
+                        }
+                    });
+                });
+            }
+
+            // Run Core Orchestrations on initial render configurations
+            syncThemeDisplayState();
+            syncLayoutDirection();
+        });
+    </script>
+
+
+
+    <!-- FOOTER SECTION WITH INTEGRATED NEWSLETTER -->
+<footer id="contact" class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-12 text-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-8 lg:gap-12">
+            
+            <!-- Brand Info Block -->
+            <div class="sm:col-span-2 md:col-span-4 lg:col-span-4 space-y-4">
+                <a href="index.html" class="inline-block">
+                    <div class="flex items-center gap-2">
+                        <!-- Logo Icon Container -->
+                        <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 hover:rotate-12">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <!-- Modern Droplet fused with an upward/forward motion arrow -->
+                                <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                                <path d="M12 18V10" />
+                                <path d="M9 13L12 10L15 13" />
+                            </svg>
+                        </div>
+                        <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Lube<span class="text-brand">Go</span></span>
+                    </div>
+                </a>
+                
+                <p class="text-slate-500 dark:text-slate-400 max-w-xs text-xs leading-relaxed">
+                    On-demand residential and corporate fleet diagnostics, custom oil formulation filtration changes, and structural preventative vehicular engineering.
+                </p>
+                
+                <!-- Social Icons Panel -->
+                <div class="flex items-center space-x-5 text-slate-400 dark:text-slate-500">
+                    <!-- Facebook -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="Facebook">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+
+                    <!-- X (Twitter) -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="X (formerly Twitter)">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="Instagram">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links Column 1 -->
+            <div class="lg:col-span-2">
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-4 uppercase tracking-wider text-xs">Navigation</h4>
+                <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                    <li><a href="index.html" class="hover:text-brand transition-colors">Home</a></li>
+                    <li><a href="home2.html" class="hover:text-brand transition-colors">Home2</a></li>
+                    <li><a href="aboutus.html" class="hover:text-brand transition-colors">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand transition-colors">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-brand transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links Column 2 -->
+            <div class="lg:col-span-2">
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-4 uppercase tracking-wider text-xs">Utility Pages</h4>
+                <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                    <li><a href="booknow.html" class="hover:text-brand transition-colors font-medium text-brand">Book Now</a></li>
+                    <li><a href="pricing.html" class="hover:text-brand transition-colors">Pricing Structure</a></li>
+                    <li><a href="gallery.html" class="hover:text-brand transition-colors">Media Gallery</a></li>
+                    <li><a href="404.html" class="hover:text-brand transition-colors">404 Error</a></li>
+                    <li><a href="comingsoon.html" class="hover:text-brand transition-colors">Coming Soon</a></li>
+                </ul>
+            </div>
+
+            <!-- Integrated Newsletter Block (Occupies the right side beautifully) -->
+            <div class="sm:col-span-2 md:col-span-4 lg:col-span-4 space-y-4">
+                <h4 class="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-xs">Stay Updated</h4>
+                <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
+                    Subscribe to receive seasonal preventative service discounts, maintenance road maps, and prioritized booking tiers.
+                </p>
+                <form class="space-y-2 group" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                    <div class="relative flex items-center">
+                        <input type="email" placeholder="Your work email address" required 
+                            class="w-full text-xs px-3.5 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-brand dark:focus:border-brand transition-all pr-20" />
+                        <button type="submit" 
+                            class="absolute right-1.5 bg-brand hover:bg-brand-dark text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors shadow-sm">
+                            Join
+                        </button>
+                    </div>
+                </form>
+                <p class="text-[10px] text-slate-400 dark:text-slate-600">Zero spam. Unsubscribe with a single click at any point.</p>
+            </div>
+
+        </div>
+
+        <hr class="my-8 border-slate-200 dark:border-slate-900">
+        
+        <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 dark:text-slate-600 gap-4">
+            <p>&copy; 2026 LubeGo Services Inc. All Rights Reserved.</p>
+            <p class="flex items-center gap-1">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Dispatch Systems Online
+            </p>
+        </div>
+    </div>
+</footer>
+
+   
+</body>
+</html>

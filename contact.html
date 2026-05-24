@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fully fixed and URL-encoded Inline SVG Favicon Component -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z' fill='%23D97706' fill-opacity='0.15'/%3E%3Cpath d='M12 18V10' /%3E%3Cpath d='M9 13l3-3 3 3' /%3E%3C/svg%3E" />
+    <title>LubeGo | Mobile Oil Change & Preventative Maintenance</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#D97706', /* Amber 600 - Single unique brand accent color */
+                            dark: '#B45309',
+                            light: '#FBBF24'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Cabinet Grotesk', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Stylesheet for Clean Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar to match clean theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+  <!-- NAVIGATION BAR -->
+<header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="index.html">
+                <!-- Logo & Name -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <!-- Logo Icon Container -->
+                    <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 hover:rotate-12">
+                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                            <path d="M12 18V10" />
+                            <path d="M9 13L12 10L15 13" />
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                        Lube<span class="text-brand">Go</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <nav id="desktop-nav" class="hidden lg:flex items-center space-x-8 font-medium text-sm text-slate-600 dark:text-slate-300">
+                <a href="index.html" class="hover:text-brand dark:hover:text-brand transition-colors">Home</a>
+                <a href="home2.html" class="hover:text-brand dark:hover:text-brand transition-colors">Home2</a>
+                <a href="aboutus.html" class="hover:text-brand dark:hover:text-brand transition-colors">About Us</a>
+                <a href="services.html" class="hover:text-brand dark:hover:text-brand transition-colors">Services</a>
+                <a href="contact.html" class="hover:text-brand dark:hover:text-brand transition-colors">Contact</a>
+            </nav>
+
+            <!-- Desktop Action & Utility Controls -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" aria-label="Toggle Theme" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all">
+                    <span id="theme-icon-light" class="hidden">☀️</span>
+                    <span id="theme-icon-dark">🌙</span>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button id="direction-toggle" aria-label="Toggle Layout Direction" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all">
+                    LTR
+                </button>
+                <!-- CTA Buttons -->
+                <a href="login.html" class="text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:text-slate-900 dark:bg-slate-100 dark:hover:bg-slate-50 px-5 py-2.5 rounded-lg shadow-sm hover:shadow transition-all text-center">
+                    Log In
+                </a>
+                <a href="booknow.html" class="bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow-md shadow-brand/10 hover:shadow-lg transition-all transform hover:-translate-y-0.5">Book Now</a>
+            </div>
+
+            <!-- Mobile & Tablet Menu Button -->
+            <div class="flex lg:hidden items-center gap-3">
+                <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED MOBILE OVERLAY DRAWER -->
+    <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 z-50 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-4 pb-6 space-y-4 shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <nav id="mobile-nav" class="flex flex-col space-y-3 font-medium text-slate-600 dark:text-slate-300">
+            <a href="index.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Home</a>
+            <a href="home2.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Home2</a>
+            <a href="aboutus.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">About Us</a>
+            <a href="services.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Services</a>
+            <a href="contact.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Contact</a>
+        </nav>
+        <hr class="border-slate-200 dark:border-slate-800">
+        <div class="flex flex-wrap items-center gap-3">
+            <!-- Direction Toggle Mobile -->
+            <button id="direction-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                LTR
+            </button>
+            <!-- Theme Toggle Mobile Quick Access -->
+            <button id="theme-toggle-mobile" aria-label="Toggle Theme" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                <span id="theme-icon-light-mob" class="hidden">☀️</span>
+                <span id="theme-icon-dark-mob">🌙</span>
+            </button>
+            <!-- Mobile Log In Button CTA -->
+            <a href="login.html" class="flex-1 text-center font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:text-slate-900 dark:bg-slate-100 dark:hover:bg-slate-50 py-2.5 rounded-lg text-sm transition-colors shadow-sm">
+                Log In
+            </a>
+            <a href="booknow.html" class="flex-1 text-center bg-brand text-white font-semibold py-2.5 rounded-lg text-sm shadow-md">Book Now</a>
+        </div>
+    </div>
+</header>
+
+<!-- INTERACTIVE NAVIGATION CONTROLLER ACTIONS SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const pathFileName = window.location.pathname.split("/").pop();
+        
+        // --- 1. ROUTE MANAGEMENT LOGIC TRACKS ---
+        const dNavNode = document.getElementById("desktop-nav");
+        if (dNavNode) {
+            const dLinks = dNavNode.querySelectorAll("a");
+            let isMatched = false;
+            dLinks.forEach(link => {
+                if (link.getAttribute("href") === pathFileName) {
+                    link.className = "text-brand dark:text-brand font-semibold transition-colors";
+                    isMatched = true;
+                } else {
+                    link.className = "text-slate-600 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-colors";
+                }
+            });
+            if (!isMatched && (pathFileName === "" || pathFileName === "index.html") && dLinks.length > 0) {
+                dLinks[0].className = "text-brand dark:text-brand font-semibold transition-colors";
+            }
+        }
+
+        const mNavNode = document.getElementById("mobile-nav");
+        if (mNavNode) {
+            const mLinks = mNavNode.querySelectorAll("a");
+            let isMatched = false;
+            mLinks.forEach(link => {
+                if (link.getAttribute("href") === pathFileName) {
+                    link.className = "px-3 py-2 rounded-lg bg-brand/10 text-brand dark:text-brand font-semibold transition-colors";
+                    isMatched = true;
+                } else {
+                    link.className = "px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors";
+                }
+            });
+            if (!isMatched && (pathFileName === "" || pathFileName === "index.html") && mLinks.length > 0) {
+                mLinks[0].className = "px-3 py-2 rounded-lg bg-brand/10 text-brand dark:text-brand font-semibold transition-colors";
+            }
+        }
+
+        // --- 2. DRAWER INTERACTIVE ACTION TOGGLES ---
+        const mobileTrigger = document.getElementById("mobile-menu-btn");
+        const mobileDrawer = document.getElementById("mobile-menu");
+        const vectorIconPath = document.getElementById("menu-icon");
+
+        if (mobileTrigger && mobileDrawer) {
+            mobileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isExpanded = !mobileDrawer.classList.contains("hidden");
+                
+                if (isExpanded) {
+                    mobileDrawer.classList.add("hidden");
+                    if (vectorIconPath) vectorIconPath.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+                } else {
+                    mobileDrawer.classList.remove("hidden");
+                    if (vectorIconPath) vectorIconPath.setAttribute("d", "M6 18L18 6M6 6l12 12");
+                }
+            });
+
+            mobileDrawer.addEventListener("click", (e) => e.stopPropagation());
+
+            document.addEventListener("click", () => {
+                mobileDrawer.classList.add("hidden");
+                if (vectorIconPath) vectorIconPath.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+            });
+        }
+
+        // --- 3. THEME TOGGLE ENGINE CONTROLS ---
+        const themeBtnDesktop = document.getElementById("theme-toggle");
+        const themeBtnMobile = document.getElementById("theme-toggle-mobile");
+        
+        const lightIconD = document.getElementById("theme-icon-light");
+        const darkIconD = document.getElementById("theme-icon-dark");
+        const lightIconM = document.getElementById("theme-icon-light-mob");
+        const darkIconM = document.getElementById("theme-icon-dark-mob");
+
+        function applyThemeState(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                lightIconD?.classList.remove('hidden');
+                darkIconD?.classList.add('hidden');
+                lightIconM?.classList.remove('hidden');
+                darkIconM?.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                lightIconD?.classList.add('hidden');
+                darkIconD?.classList.remove('hidden');
+                lightIconM?.classList.add('hidden');
+                darkIconM?.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check persistent memory or layout system media settings
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initDarkState = storedTheme === 'dark' || (!storedTheme && systemPrefersDark);
+        applyThemeState(initDarkState);
+
+        [themeBtnDesktop, themeBtnMobile].forEach(btn => {
+            btn?.addEventListener("click", () => {
+                const currentDarkStatus = document.documentElement.classList.contains('dark');
+                applyThemeState(!currentDarkStatus);
+            });
+        });
+
+        // --- 4. DIRECTION ARABIC LTR / RTL CONTROLS ---
+        const dirBtnDesktop = document.getElementById("direction-toggle");
+        const dirBtnMobile = document.getElementById("direction-toggle-mobile");
+
+        function applyLayoutDirection(isRTL) {
+            if (isRTL) {
+                document.documentElement.setAttribute('dir', 'rtl');
+                if (dirBtnDesktop) dirBtnDesktop.innerText = "RTL";
+                if (dirBtnMobile) dirBtnMobile.innerText = "RTL";
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                if (dirBtnDesktop) dirBtnDesktop.innerText = "LTR";
+                if (dirBtnMobile) dirBtnMobile.innerText = "LTR";
+            }
+        }
+
+        [dirBtnDesktop, dirBtnMobile].forEach(btn => {
+            btn?.addEventListener("click", () => {
+                const isCurrentRTL = document.documentElement.getAttribute('dir') === 'rtl';
+                applyLayoutDirection(!isCurrentRTL);
+            });
+        });
+    });
+</script>
+
+
+<main class="flex-grow w-full">
+        
+        <!-- SECTION 1: HERO SECTION -->
+        <section class="relative bg-slate-900 text-white py-16 sm:py-20 overflow-hidden">
+            <!-- Ambient Glow Graphic Layers -->
+            <div class="absolute inset-0 opacity-20 pointer-events-none select-none">
+                <div class="absolute -top-40 right-10 w-96 h-96 bg-brand rounded-full filter blur-[120px]"></div>
+            </div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 border border-brand/20 px-3.5 py-1.5 rounded-full inline-block">
+                    Central Communications Hub
+                </span>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white max-w-3xl mx-auto leading-tight">
+                    We Are Ready to Keep Your Fleet Moving smoothly
+                </h1>
+                <p class="text-xs sm:text-sm md:text-base text-slate-400 font-normal max-w-lg mx-auto leading-relaxed">
+                    Have any operational service queries, custom enterprise partnership requests, or emergency dispatcher support needs? Contact our dispatch desks.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- SECTION 2: FORMS & DETAILS MERGED LAYOUT GRID -->
+        <section class="py-12 sm:py-16 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+                
+                <!-- Left Sub-Grid: Live Channel Details Panel (5 Columns) -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-6 text-left">
+                    <div class="space-y-4">
+                        <div class="space-y-1">
+                            <h2 class="text-xl sm:text-2xl text-center font-bold text-slate-900 dark:text-white">Direct Communication Logs</h2>
+                            <p class="text-xs sm:text-sm text-slate-500 text-center dark:text-slate-400 font-normal">Skip standard automated bots and connect directly to human asset teams.</p>
+                        </div>
+
+                        <!-- Info Card Blocks (Restricting fonts cleanly between 400 and 600 weight parameters) -->
+                        <div class="space-y-3 pt-2">
+                            <!-- Detail Block 1: Phone -->
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/80 shadow-sm flex items-start gap-4">
+                                <span class="text-xl bg-brand/10 p-2 rounded-lg text-brand">📞</span>
+                                <div class="space-y-0.5">
+                                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Emergency Fleet Line</h4>
+                                    <p class="text-sm font-semibold text-slate-900 dark:text-white mt-1">+91 800 555 0199</p>
+                                    <p class="text-[11px] text-slate-500 font-normal">Active daily from 07:00 AM – 09:00 PM</p>
+                                </div>
+                            </div>
+
+                            <!-- Detail Block 2: Email -->
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/80 shadow-sm flex items-start gap-4">
+                                <span class="text-xl bg-brand/10 p-2 rounded-lg text-brand">✉️</span>
+                                <div class="space-y-0.5">
+                                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Corporate Help Support</h4>
+                                    <p class="text-sm font-semibold text-slate-900 dark:text-white mt-1">dispatch@lubegomobile.in</p>
+                                    <p class="text-[11px] text-slate-500 font-normal">Ticketing response loops active under 2 hours</p>
+                                </div>
+                            </div>
+
+                            <!-- Detail Block 3: HQ Location -->
+                            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/80 shadow-sm flex items-start gap-4">
+                                <span class="text-xl bg-brand/10 p-2 rounded-lg text-brand">🏢</span>
+                                <div class="space-y-0.5">
+                                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Central Depot Headquarters</h4>
+                                    <p class="text-sm font-semibold text-slate-900 dark:text-white mt-1">Alpha Fleet Tech Complex, Sector 4</p>
+                                    <p class="text-[11px] text-slate-500 font-normal">Chennai, Tamil Nadu, Pin 600032</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Dispatch Status Feed Alert Widget -->
+                    <div class="p-4 rounded-2xl bg-slate-900 text-slate-300 border border-slate-800 shadow-lg flex items-center gap-3.5">
+                        <span class="flex h-2 w-2 relative flex-shrink-0">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <p class="text-xs font-medium text-slate-300 leading-normal">
+                            <span class="font-bold text-white">Central Operations Feed:</span> All mobile service vans are actively routed across standard city sectors.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Sub-Grid: Interactive Contact Form Panel (7 Columns) -->
+                <div class="lg:col-span-7 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+                    <form class="space-y-4" onsubmit="event.preventDefault(); triggerMessageSubmission();">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1.5 text-left">
+                                <label for="sender-name" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Your Name</label>
+                                <input id="sender-name" type="text" required placeholder="John Doe" 
+                                    class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800/80 focus:outline-none focus:border-brand transition-all" />
+                            </div>
+                            <div class="space-y-1.5 text-left">
+                                <label for="sender-phone" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Contact Number</label>
+                                <input id="sender-phone" type="tel" required placeholder="+91 90000 00000" 
+                                    class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800/80 focus:outline-none focus:border-brand transition-all" />
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5 text-left">
+                            <label for="sender-email" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Email Address</label>
+                            <input id="sender-email" type="email" required placeholder="name@company.com" 
+                                class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800/80 focus:outline-none focus:border-brand transition-all" />
+                        </div>
+
+                        <div class="space-y-1.5 text-left">
+                            <label for="msg-text" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Message Description</label>
+                            <textarea id="msg-text" required rows="4" placeholder="Detail your custom logistics tracking criteria, fleet size, or service request coordinates..." 
+                                class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800/80 focus:outline-none focus:border-brand transition-all resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm py-3.5 rounded-xl transition-all shadow-md shadow-brand/10 hover:shadow-lg transform active:scale-[0.995]">
+                            Transmit Secure Message
+                        </button>
+                    </form>
+                    
+                    <!-- Dynamic form completion notification banner context hidden initially -->
+                    <p id="form-success-alert" class="text-xs text-emerald-500 font-medium text-center hidden items-center justify-center gap-1.5 mt-4 animate-fade-in">
+                        <span>✓</span> Transmission verified. Our dispatch managers will coordinate a phone track back under 30 minutes.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+<!-- FULL-WIDTH RESPONSIVE MAP COMPONENT SECTION -->
+<section class="w-full pb-16">
+    <!-- 
+      Fluid Interactive Map Frame Outer Layout Box Matrix
+      Maintains clear height scales: 320px on small screens up to 450px on desktops.
+    -->
+    <div class="w-full h-80 sm:h-96 md:h-[420px] lg:h-[450px] relative overflow-hidden bg-slate-100 dark:bg-slate-950 flex flex-col justify-end lg:block">
+        
+        <!-- 
+          LIVE INTERACTIVE MAP CONTAINER LAYER
+          Utilizes an open-source Leaflet/OpenStreetMap embed engine layer.
+          The 'dark:invert dark:hue-rotate-180' handles light/dark mode color conversion natively.
+        -->
+        <iframe 
+            id="live-service-map"
+            class="absolute inset-0 w-full h-full z-0 border-0 dark:invert-[0.9] dark:hue-rotate-180 dark:opacity-85 dark:contrast-[1.2] transition-all duration-300"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=78.0500%2C9.8500%2C78.2000%2C10.0000&amp;layer=mapnik&amp;marker=9.9252%2C78.1193"
+            allowfullscreen>
+        </iframe>
+
+        <!-- Front Glass Decorative HUD Frame Mask (Intercepts accidental mousewheel scroll traps) -->
+        <div class="absolute inset-0 z-10 pointer-events-none border-t border-b border-black/5 dark:border-white/5"></div>
+
+        <!-- 
+          RESPONSIVE HUD INTERACTION ZONE LAYER
+          Arranges content layout fluidly below the canvas frame on small mobile screens (<640px) 
+          and handles floating absolute layers on larger breakpoint viewports.
+        -->
+        <div class="relative z-20 w-full flex flex-col gap-3 p-4 bg-white/95 dark:bg-slate-900/95 sm:bg-transparent sm:dark:bg-transparent border-t border-slate-200 dark:border-slate-800 sm:border-t-0 sm:p-0 pointer-events-none">
+            
+            <!-- Real-time HUD Map Info Panel Header Overlay -->
+            <div class="sm:absolute sm:top-6 sm:left-6 max-w-full sm:max-w-sm w-full bg-slate-50 dark:bg-slate-950 sm:bg-white/95 sm:dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800 p-3.5 rounded-xl sm:backdrop-blur-md flex items-center justify-between shadow-md sm:shadow-lg pointer-events-auto text-left">
+                <div class="space-y-0.5 pr-4 truncate">
+                    <span class="text-[9px] sm:text-[10px] text-brand uppercase font-bold tracking-widest block">HQ Navigation Coordinates</span>
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white truncate">Madurai Depot Complex Node</h3>
+                </div>
+                <span class="text-[9px] bg-brand/10 dark:bg-brand/20 text-brand font-mono px-2 py-0.5 rounded font-bold whitespace-nowrap">GRID LIVE</span>
+            </div>
+
+            <!-- Floating Interactive Zoom/Reset Helper Badge Overlay -->
+            <div class="sm:absolute sm:bottom-6 sm:right-6 max-w-full sm:max-w-none bg-slate-950 text-white font-mono text-[10px] px-3 py-2 rounded-xl border border-slate-800 shadow-xl backdrop-blur-sm flex items-center justify-center sm:justify-start gap-2 pointer-events-auto select-none">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-slate-300 font-normal">Map Layer Feed: Synchronized</span>
+            </div>
+
+            <!-- Map Legend Bottom Panel Frame -->
+            <div class="sm:absolute sm:bottom-6 sm:left-6 max-w-full sm:max-w-xs w-full text-[11px] text-slate-700 dark:text-slate-300 font-medium flex items-center justify-between bg-slate-50 dark:bg-slate-950 sm:bg-white/90 sm:dark:bg-slate-900/90 p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 backdrop-blur-sm pointer-events-auto select-none text-left">
+                <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand"></span> Operational Coverage Radius</span>
+                <span class="text-[10px] text-slate-400 font-mono hidden sm:inline">100% Active</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+        
+
+    </main>
+ 
+    <!-- FOOTER SECTION WITH INTEGRATED NEWSLETTER -->
+<footer id="contact" class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-12 text-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-8 lg:gap-12">
+            
+            <!-- Brand Info Block -->
+            <div class="sm:col-span-2 md:col-span-4 lg:col-span-4 space-y-4">
+                <a href="index.html" class="inline-block">
+                    <div class="flex items-center gap-2">
+                        <!-- Logo Icon Container -->
+                        <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 hover:rotate-12">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <!-- Modern Droplet fused with an upward/forward motion arrow -->
+                                <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                                <path d="M12 18V10" />
+                                <path d="M9 13L12 10L15 13" />
+                            </svg>
+                        </div>
+                        <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Lube<span class="text-brand">Go</span></span>
+                    </div>
+                </a>
+                
+                <p class="text-slate-500 dark:text-slate-400 max-w-xs text-xs leading-relaxed">
+                    On-demand residential and corporate fleet diagnostics, custom oil formulation filtration changes, and structural preventative vehicular engineering.
+                </p>
+                
+                <!-- Social Icons Panel -->
+                <div class="flex items-center space-x-5 text-slate-400 dark:text-slate-500">
+                    <!-- Facebook -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="Facebook">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+
+                    <!-- X (Twitter) -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="X (formerly Twitter)">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="Instagram">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links Column 1 -->
+            <div class="lg:col-span-2">
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-4 uppercase tracking-wider text-xs">Navigation</h4>
+                <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                    <li><a href="index.html" class="hover:text-brand transition-colors">Home</a></li>
+                    <li><a href="home2.html" class="hover:text-brand transition-colors">Home2</a></li>
+                    <li><a href="aboutus.html" class="hover:text-brand transition-colors">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand transition-colors">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-brand transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links Column 2 -->
+            <div class="lg:col-span-2">
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-4 uppercase tracking-wider text-xs">Utility Pages</h4>
+                <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                    <li><a href="booknow.html" class="hover:text-brand transition-colors font-medium text-brand">Book Now</a></li>
+                    <li><a href="pricing.html" class="hover:text-brand transition-colors">Pricing Structure</a></li>
+                    <li><a href="gallery.html" class="hover:text-brand transition-colors">Media Gallery</a></li>
+                    <li><a href="404.html" class="hover:text-brand transition-colors">404 Error</a></li>
+                    <li><a href="comingsoon.html" class="hover:text-brand transition-colors">Coming Soon</a></li>
+                </ul>
+            </div>
+
+            <!-- Integrated Newsletter Block (Occupies the right side beautifully) -->
+            <div class="sm:col-span-2 md:col-span-4 lg:col-span-4 space-y-4">
+                <h4 class="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-xs">Stay Updated</h4>
+                <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
+                    Subscribe to receive seasonal preventative service discounts, maintenance road maps, and prioritized booking tiers.
+                </p>
+                <form class="space-y-2 group" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                    <div class="relative flex items-center">
+                        <input type="email" placeholder="Your work email address" required 
+                            class="w-full text-xs px-3.5 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-brand dark:focus:border-brand transition-all pr-20" />
+                        <button type="submit" 
+                            class="absolute right-1.5 bg-brand hover:bg-brand-dark text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors shadow-sm">
+                            Join
+                        </button>
+                    </div>
+                </form>
+                <p class="text-[10px] text-slate-400 dark:text-slate-600">Zero spam. Unsubscribe with a single click at any point.</p>
+            </div>
+
+        </div>
+
+        <hr class="my-8 border-slate-200 dark:border-slate-900">
+        
+        <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 dark:text-slate-600 gap-4">
+            <p>&copy; 2026 LubeGo Services Inc. All Rights Reserved.</p>
+            <p class="flex items-center gap-1">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Dispatch Systems Online
+            </p>
+        </div>
+    </div>
+</footer>
+
+  
+</body>
+</html>

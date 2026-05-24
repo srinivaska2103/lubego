@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\<!-- Fully fixed and URL-encoded Inline SVG Favicon Component -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z' fill='%23D97706' fill-opacity='0.15'/%3E%3Cpath d='M12 18V10' /%3E%3Cpath d='M9 13l3-3 3 3' /%3E%3C/svg%3E" />
+    <title>Log In | LubeGo Services</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#D97706', /* Single unique branding color accent: Amber 600 */
+                            dark: '#B45309',
+                            light: '#FBBF24'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between transition-colors duration-300">
+
+    <!-- TOP CONTROL HEADER: Brand redirection and localized controls -->
+    <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between z-50">
+        <!-- Brand Name & Custom Droplet SVG Logo - Top Left Corner Redirect to Home -->
+        <a href="index.html" class="flex items-center gap-2 group focus:outline-none" aria-label="Redirect to Homepage">
+            <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 group-hover:rotate-12">
+                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                    <path d="M12 18V10" />
+                    <path d="M9 13L12 10L15 13" />
+                </svg>
+            </div>
+            <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                Lube<span class="text-brand">Go</span>
+            </span>
+        </a>
+
+        <!-- Top Right Utility Buttons (Maintained to be identical height/width) -->
+        <div class="flex items-center space-x-3">
+            <!-- Theme Toggle -->
+            <button id="auth-theme-toggle" aria-label="Toggle Theme Mode" class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all shadow-sm">
+                <span id="theme-light-icon" class="hidden">☀️</span>
+                <span id="theme-dark-icon">🌙</span>
+            </button>
+            <!-- Layout Direction Toggle -->
+            <button id="auth-dir-toggle" aria-label="Toggle Layout Direction" class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all shadow-sm">
+                LTR
+            </button>
+        </div>
+    </header>
+
+    <!-- CORE AUTH INTERFACE PANEL: Optimized for 360px up to widescreen viewing models -->
+    <main class="flex-grow flex items-center justify-center px-4 py-8 relative">
+        <!-- Structural background ambient decorative glow mask -->
+        <div class="absolute w-72 h-72 bg-brand/5 dark:bg-brand/10 rounded-full blur-[80px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"></div>
+
+        <!-- Main Form Grid Card Module Container -->
+        <div class="w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-xl dark:shadow-2xl/40 relative z-10 transition-colors duration-300">
+            
+            <!-- Context Welcoming Stack Header -->
+            <div class="space-y-2 mb-8 text-center sm:text-left dir-dependant-text">
+                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Welcome back</h1>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal">Enter your credentials to manage dashboard schedules.</p>
+            </div>
+
+            <!-- Standard Auth Form Framework -->
+            <form class="space-y-5" onsubmit="event.preventDefault(); alert('Authentication processing simulation activated.');">
+                
+                <!-- Email Address Input Node -->
+                <div class="space-y-1.5 text-left">
+                    <label for="email" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Work Email Address</label>
+                    <div class="relative flex items-center">
+                        <span class="absolute left-3.5 text-slate-400 text-xs select-none">✉️</span>
+                        <input id="email" type="email" required placeholder="name@company.com" 
+                            class="w-full text-xs sm:text-sm pl-10 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800/80 focus:outline-none focus:border-brand dark:focus:border-brand transition-all" />
+                    </div>
+                </div>
+
+                <!-- Password Input Node with Integrated Interactive Password Toggle Icon -->
+                <div class="space-y-1.5 text-left relative">
+                    <label for="password" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Security Password</label>
+                    <div class="relative flex items-center">
+                        <span class="absolute left-3.5 text-slate-400 text-xs select-none">🔑</span>
+                        <input id="password" type="password" required placeholder="••••••••" 
+                            class="w-full text-xs sm:text-sm pl-10 pr-11 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800/80 focus:outline-none focus:border-brand dark:focus:border-brand transition-all" />
+                        
+                        <!-- Interactive Eye Toggle Button (Perfect width/height handling for fingers or mouse pointers) -->
+                        <button id="password-toggle" type="button" aria-label="Reveal or hide security text strings" class="absolute right-1.5 w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 dark:text-slate-500 hover:text-brand dark:hover:text-brand transition-colors focus:outline-none">
+                            <!-- SVG Render for Eye Open State -->
+                            <svg id="eye-open-svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <!-- SVG Render for Eye Closed State (Hidden initially) -->
+                            <svg id="eye-closed-svg" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 17.772 17.772M15.212 15.212a3.376 3.376 0 0 1-3.212-3.212m5.343 1.905A3.371 3.371 0 0 0 14.25 10.5M9.886 9.886A3.374 3.374 0 0 0 10.5 14.25"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Auxiliary Action Panel: Remember Me + Forgot Password Split Layout -->
+                <div class="flex items-center justify-between text-xs sm:text-sm font-medium pt-1">
+                    <!-- Remember Me Checklist Element -->
+                    <label class="flex items-center gap-2 cursor-pointer text-slate-600 dark:text-slate-400 select-none group">
+                        <input type="checkbox" id="remember-me" class="w-4 h-4 rounded-md accent-brand border-slate-300 dark:border-slate-800 cursor-pointer" />
+                        <span class="group-hover:text-slate-900 dark:group-hover:text-slate-200 transition-colors">Remember me</span>
+                    </label>
+                    <!-- Forgot Password Link -->
+                    <a href="forgot-password.html" class="text-brand hover:text-brand-dark transition-colors underline decoration-brand/20 underline-offset-4">
+                        Forgot password?
+                    </a>
+                </div>
+
+                <!-- Primary Core Form Submission Action Button -->
+                <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm py-3.5 rounded-xl transition-all duration-300 transform active:scale-[0.99] shadow-md shadow-brand/10 hover:shadow-lg">
+                    Sign In to Portal
+                </button>
+            </form>
+
+            <!-- Text Divider Stack Module -->
+            <div class="relative my-6 flex items-center justify-center">
+                <div class="absolute inset-0 w-full h-0.5 bg-slate-100 dark:bg-slate-800/80"></div>
+                <span class="relative z-10 px-3 bg-white dark:bg-slate-900 text-[11px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-widest">or continue with</span>
+            </div>
+
+            <!-- Social Authentication Buttons Layer: Google, Facebook, Apple Vector Badges -->
+            <div class="grid grid-cols-3 gap-3">
+                <!-- Google Badge -->
+                <button type="button" aria-label="Authenticate with Google Accounts" class="flex items-center justify-center py-3 px-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900 transition-all group">
+                    <svg class="w-4 h-4 transition-transform group-hover:scale-105" viewBox="0 0 24 24">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                </button>
+                
+                <!-- Facebook Badge -->
+                <button type="button" aria-label="Authenticate with Facebook Accounts" class="flex items-center justify-center py-3 px-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900 transition-all group">
+                    <svg class="w-4 h-4 text-slate-700 dark:text-slate-300 transition-transform group-hover:scale-105" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+                    </svg>
+                </button>
+
+                <!-- Apple Badge -->
+                <button type="button" aria-label="Authenticate with Apple Accounts" class="flex items-center justify-center py-3 px-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900 transition-all group">
+                    <svg class="w-4 h-4 text-slate-700 dark:text-slate-300 transition-transform group-hover:scale-105" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-.1 3.77.46 1.48.55 2.59 1.49 3.16 2.57-2.91 1.71-2.43 5.42.54 6.67-.63 1.57-1.42 3.13-2.47 4.52zM15.97 4.17c.61-.74 1.03-1.77.91-2.79-.88.04-1.95.59-2.58 1.33-.55.63-1.03 1.68-.9 2.68.98.08 1.96-.48 2.57-1.22z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Account Structural Conversion Action Node (Sign Up Link) -->
+            <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-center">
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal">
+                    New to our doorstep maintenance systems? 
+                    <a href="signup.html" class="font-bold text-brand hover:text-brand-dark transition-colors inline-block ml-1 underline decoration-brand/20 underline-offset-4">
+                        Create an account
+                    </a>
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER PANEL OVERLAY REGULATION -->
+    <footer class="w-full h-14 border-t border-slate-200/60 dark:border-slate-900 text-center flex items-center justify-center text-[11px] text-slate-400 select-none">
+        &copy; 2026 LubeGo Services Inc. All connection ports protected via secure token tracking.
+    </footer>
+
+    <!-- INTERACTIVE CONTROL SCRIPT: Controls Theme, Layout Direction, and Password Visibility Elements -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // DOM Target Core Selection Nodes
+            const themeBtn = document.getElementById('auth-theme-toggle');
+            const dirBtn = document.getElementById('auth-dir-toggle');
+            const passwordInput = document.getElementById('password');
+            const passwordToggleBtn = document.getElementById('password-toggle');
+            const eyeOpenSvg = document.getElementById('eye-open-svg');
+            const eyeClosedSvg = document.getElementById('eye-closed-svg');
+            const htmlElement = document.documentElement;
+
+            // --- 1. THEME STORAGE MANAGEMENT ENGINE ---
+            function syncThemeDisplayState() {
+                const activePreference = localStorage.getItem('theme');
+                const OSPreferenceDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                
+                if (activePreference === 'dark' || (!activePreference && OSPreferenceDark)) {
+                    htmlElement.classList.add('dark');
+                    document.getElementById('theme-light-icon').classList.remove('hidden');
+                    document.getElementById('theme-dark-icon').classList.add('hidden');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    document.getElementById('theme-light-icon').classList.add('hidden');
+                    document.getElementById('theme-dark-icon').classList.remove('hidden');
+                }
+            }
+
+            themeBtn.addEventListener('click', () => {
+                const containsDarkNow = htmlElement.classList.contains('dark');
+                if (containsDarkNow) {
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+                syncThemeDisplayState();
+            });
+
+            // --- 2. LAYOUT DIRECTION STORAGE ENGINE (LTR/RTL Sync) ---
+            function syncLayoutDirection() {
+                const storedDirection = localStorage.getItem('direction') || 'ltr';
+                htmlElement.setAttribute('dir', storedDirection);
+                dirBtn.innerText = storedDirection.toUpperCase();
+            }
+
+            dirBtn.addEventListener('click', () => {
+                const currentDir = htmlElement.getAttribute('dir');
+                const switchedDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                localStorage.setItem('direction', switchedDir);
+                syncLayoutDirection();
+            });
+
+            // --- 3. INTERACTIVE PASSWORD MASKING ENGINE ---
+            passwordToggleBtn.addEventListener('click', () => {
+                const activeFieldType = passwordInput.getAttribute('type');
+                
+                if (activeFieldType === 'password') {
+                    passwordInput.setAttribute('type', 'text');
+                    eyeOpenSvg.classList.add('hidden');
+                    eyeClosedSvg.classList.remove('hidden');
+                } else {
+                    passwordInput.setAttribute('type', 'password');
+                    eyeOpenSvg.classList.remove('hidden');
+                    eyeClosedSvg.classList.add('hidden');
+                }
+            });
+
+            // Run Core Orchestrations on initial render configurations
+            syncThemeDisplayState();
+            syncLayoutDirection();
+        });
+    </script>
+</body>
+</html>

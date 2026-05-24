@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fully fixed and URL-encoded Inline SVG Favicon Component -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z' fill='%23D97706' fill-opacity='0.15'/%3E%3Cpath d='M12 18V10' /%3E%3Cpath d='M9 13l3-3 3 3' /%3E%3C/svg%3E" />
+    <title>Book Service | LubeGo Mobile Mechanics</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#D97706', /* Single unique branding color accent: Amber 600 */
+                            dark: '#B45309',
+                            light: '#FBBF24'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Custom radio reset styling for cleaner interface flow */
+        input[type="radio"]:checked + label {
+            border-color: #D97706;
+            background-color: rgba(217, 119, 6, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between transition-colors duration-300">
+
+    <!-- TOP NAVIGATION CONTROL HEADER -->
+    <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between z-50 bg-transparent">
+        <!-- Brand Name & Custom Droplet SVG Logo - Top Left Corner Redirect to Home -->
+        <a href="index.html" class="flex items-center gap-2 group focus:outline-none" aria-label="Redirect to Homepage">
+            <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 group-hover:rotate-12">
+                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                    <path d="M12 18V10" />
+                    <path d="M9 13L12 10L15 13" />
+                </svg>
+            </div>
+            <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                Lube<span class="text-brand">Go</span>
+            </span>
+        </a>
+
+        <!-- Top Right Utility Buttons (Maintained to be identical height/width) -->
+        <div class="flex items-center space-x-3">
+            <!-- Theme Toggle -->
+            <button id="auth-theme-toggle" aria-label="Toggle Theme Mode" class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all shadow-sm">
+                <span id="theme-light-icon" class="hidden">☀️</span>
+                <span id="theme-dark-icon">🌙</span>
+            </button>
+            <!-- Layout Direction Toggle -->
+            <button id="auth-dir-toggle" aria-label="Toggle Layout Direction" class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all shadow-sm">
+                LTR
+            </button>
+        </div>
+    </header>
+
+    <!-- CORE INTERACTIVE APPOINTMENT FORM HUB -->
+    <main class="flex-grow flex items-center justify-center px-4 py-8 relative">
+        <!-- Floating ambient glowing mask layers background design -->
+        <div class="absolute w-96 h-96 bg-brand/5 dark:bg-brand/10 rounded-full blur-[120px] top-10 right-10 pointer-events-none select-none"></div>
+        <div class="absolute w-80 h-80 bg-brand/5 dark:bg-brand/5 rounded-full blur-[100px] bottom-10 left-10 pointer-events-none select-none"></div>
+
+        <!-- Asymmetric Split Layout Workspace Container (12-Column Grid Matrix) -->
+        <div class="w-full max-w-5xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl shadow-xl dark:shadow-2xl/40 relative z-10 grid grid-cols-1 lg:grid-cols-12 overflow-hidden transition-colors duration-300">
+            
+            <!-- LEFT INPUT REGISTRATION FIELD FRAMEWORK (7 Columns) -->
+            <div class="lg:col-span-7 p-6 sm:p-8 space-y-6">
+                <!-- Section Welcoming Block Header -->
+                <div class="space-y-1.5 text-center sm:text-left dir-dependant-text">
+                    <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Schedule Car Care</h1>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal">Configure dispatch parameters for clean-tech service delivery.</p>
+                </div>
+
+                <form id="booking-form" class="space-y-5" onsubmit="event.preventDefault(); triggerBookingSuccess();">
+                    
+                    <!-- 1. Vehicle Tier Segment Selector Module -->
+                    <div class="space-y-2 text-left">
+                        <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">1. Select Vehicle Sizing segment</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <!-- Option A -->
+                            <div class="relative">
+                                <input type="radio" id="segment-sedan" name="vehicle-segment" value="sedan" checked class="sr-only peer" />
+                                <label for="segment-sedan" class="flex flex-col p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl cursor-pointer hover:border-brand/40 transition-all select-none">
+                                    <span class="text-xl">🚗</span>
+                                    <span class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mt-2">Sedan / Hatchback</span>
+                                    <span class="text-[10px] text-slate-400 font-normal mt-0.5">Base Rate Baseline</span>
+                                </label>
+                            </div>
+                            <!-- Option B -->
+                            <div class="relative">
+                                <input type="radio" id="segment-suv" name="vehicle-segment" value="suv" class="sr-only peer" />
+                                <label for="segment-suv" class="flex flex-col p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl cursor-pointer hover:border-brand/40 transition-all select-none">
+                                    <span class="text-xl">🚙</span>
+                                    <span class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mt-2">SUV / Crossover</span>
+                                    <span class="text-[10px] text-slate-400 font-normal mt-0.5">+ ₹150 Capacity Fee</span>
+                                </label>
+                            </div>
+                            <!-- Option C -->
+                            <div class="relative">
+                                <input type="radio" id="segment-truck" name="vehicle-segment" value="truck" class="sr-only peer" />
+                                <label for="segment-truck" class="flex flex-col p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl cursor-pointer hover:border-brand/40 transition-all select-none">
+                                    <span class="text-xl">🚛</span>
+                                    <span class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mt-2">Heavy Commercial</span>
+                                    <span class="text-[10px] text-slate-400 font-normal mt-0.5">+ ₹300 Volume Fee</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Lubricant Service Grade Selection Module -->
+                    <div class="space-y-1.5 text-left">
+                        <label for="fluid-package" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">2. Maintenance Configuration Package</label>
+                        <select id="fluid-package" required class="w-full text-xs sm:text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-3 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-brand cursor-pointer transition-colors font-medium">
+                            <option value="synthetic" data-base="2999" selected>Full Synthetic Advanced Fluid Plan — ₹2,999</option>
+                            <option value="blend" data-base="1999">Synthetic Blend Eco-Grade Plan — ₹1,999</option>
+                            <option value="conventional" data-base="1499">Conventional Standard Protective Plan — ₹1,499</option>
+                        </select>
+                    </div>
+
+                    <!-- 3. Dispatch Target Geometry (Street Address + Postal Field Split) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 text-left">
+                        <div class="sm:col-span-8 space-y-1.5">
+                            <label for="address" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">3. Doorstep Street Address</label>
+                            <input id="address" type="text" required placeholder="Driveway location, street name, office block" 
+                                class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800/80 focus:outline-none focus:border-brand transition-all" />
+                        </div>
+                        <div class="sm:col-span-4 space-y-1.5">
+                            <label for="zipcode" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Zip / PIN Code</label>
+                            <input id="zipcode" type="text" required placeholder="600001" max-length="6"
+                                class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800/80 focus:outline-none focus:border-brand transition-all" />
+                        </div>
+                    </div>
+
+                    <!-- 4. Chronological Scheduling Matrices (Date picker + Time Block select) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                        <div class="space-y-1.5">
+                            <label for="date-picker" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">4. Service Target Date</label>
+                            <input id="date-picker" type="date" required 
+                                class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800/80 focus:outline-none focus:border-brand transition-all cursor-text" />
+                        </div>
+                        <div class="space-y-1.5">
+                            <label for="time-slot" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Preferred Time Window</label>
+                            <select id="time-slot" required class="w-full text-xs sm:text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-3 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-brand cursor-pointer transition-colors font-medium">
+                                <option value="morning">Morning Track: 08:00 AM - 12:00 PM</option>
+                                <option value="afternoon">Afternoon Track: 12:00 PM - 04:00 PM</option>
+                                <option value="evening">Evening Track: 04:00 PM - 08:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Primary Dispatch Generation Form Button -->
+                    <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm py-4 rounded-xl transition-all duration-300 transform active:scale-[0.99] shadow-md shadow-brand/10 hover:shadow-lg">
+                        Confirm Doorstep Dispatch Window
+                    </button>
+                </form>
+            </div>
+
+            <!-- RIGHT DYNAMIC ACCOUNT SUMMARY & DISPATCH HUBS BLOCK (5 Columns) -->
+            <div class="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-8 border-t lg:border-t-0 lg:border-l border-slate-800 flex flex-col justify-between space-y-8 relative overflow-hidden">
+                <!-- Background structural mesh lining decoration for dashboard consistency -->
+                <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:12px_12px] pointer-events-none"></div>
+
+                <div class="space-y-6 relative z-10 text-left">
+                    <div class="border-b border-slate-800 pb-4">
+                        <span class="text-[10px] uppercase font-bold text-brand tracking-widest block">Live Quote Summary</span>
+                        <h3 class="text-base font-bold text-white tracking-tight mt-0.5">Invoice Breakdown</h3>
+                    </div>
+
+                    <!-- Real-time dynamic calculation breakdown lists -->
+                    <div class="space-y-3.5 font-mono text-xs text-slate-400">
+                        <div class="flex justify-between">
+                            <span>Base Service Fluids Rate:</span>
+                            <span id="summary-base" class="text-slate-200 font-bold">₹2,999</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Vehicle Size Capacity Adjust:</span>
+                            <span id="summary-adjust" class="text-slate-200 font-bold">₹0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Home/Office Field Dispatch Fee:</span>
+                            <span class="text-emerald-400 font-bold">FREE INCLUDED</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Eco-Lubricant Recycling Tax:</span>
+                            <span class="text-emerald-400 font-bold">FREE INCLUDED</span>
+                        </div>
+                        
+                        <hr class="border-slate-800 my-2">
+                        
+                        <div class="flex justify-between text-sm pt-1">
+                            <span class="font-sans font-semibold text-white">Total Baseline Projection:</span>
+                            <span class="text-brand font-bold text-base tracking-tight">
+                                ₹<span id="summary-total">2,999</span>*
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom operational context verification guidelines -->
+                <div class="space-y-4 relative z-10 text-left">
+                    <div class="p-4 bg-slate-950/80 border border-slate-800 rounded-xl flex items-start gap-3.5 backdrop-blur-sm">
+                        <span class="text-xl">🛡️</span>
+                        <div class="space-y-0.5">
+                            <h4 class="text-xs font-bold text-slate-200">Doorstep Clean-Tech Protocol</h4>
+                            <p class="text-[11px] text-slate-500 leading-normal font-normal">Our vacuum drainage units extract old motor oils directly into closed structural containers. Zero fluid contact with your driveway ground surface, guaranteed.</p>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-slate-600 leading-relaxed italic text-center w-full">
+                        *Baseline projections exclude localized regional taxes or model filters requiring proprietary replacement markup tokens.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SUCCESS OVERLAY MODAL CARD (Hidden by default, slides out seamlessly on completion checks) -->
+        <div id="success-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 max-w-sm w-full rounded-3xl p-6 text-center space-y-4 shadow-2xl scale-95 transform transition-transform duration-300" id="success-modal-card">
+                <div class="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-xl mx-auto font-bold shadow-inner">
+                    ✓
+                </div>
+                <div class="space-y-1.5">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Dispatch Window Reserved</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                        Your mobile car care tracker log has been mapped to our dispatch dashboard. Check your email for secure service verification tokens.
+                    </p>
+                </div>
+                <a href="index.html" class="block bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm py-3 rounded-xl transition-colors shadow-sm">
+                    Return to Home Systems
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER PANEL OVERLAY REGULATION -->
+    <footer class="w-full h-14 border-t border-slate-200/60 dark:border-slate-900 text-center flex items-center justify-center text-[11px] text-slate-400 select-none">
+        &copy; 2026 LubeGo Services Inc. Operational grid capacity monitored dynamically.
+    </footer>
+
+    <!-- INTERACTIVE CONTROL SCRIPT: Theme, Direction, and Real-Time Billing Recalculator Matrix -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // DOM Target Core Selection Nodes
+            const themeBtn = document.getElementById('auth-theme-toggle');
+            const dirBtn = document.getElementById('auth-dir-toggle');
+            const htmlElement = document.documentElement;
+
+            // Form element parameters for calculations
+            const formNode = document.getElementById('booking-form');
+            const fluidSelect = document.getElementById('fluid-package');
+            const baseSummary = document.getElementById('summary-base');
+            const adjustSummary = document.getElementById('summary-adjust');
+            const totalSummary = document.getElementById('summary-total');
+
+            // --- 1. THEME STORAGE MANAGEMENT ENGINE ---
+            function syncThemeDisplayState() {
+                const activePreference = localStorage.getItem('theme');
+                const OSPreferenceDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                
+                if (activePreference === 'dark' || (!activePreference && OSPreferenceDark)) {
+                    htmlElement.classList.add('dark');
+                    document.getElementById('theme-light-icon').classList.remove('hidden');
+                    document.getElementById('theme-dark-icon').classList.add('hidden');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    document.getElementById('theme-light-icon').classList.add('hidden');
+                    document.getElementById('theme-dark-icon').classList.remove('hidden');
+                }
+            }
+
+            themeBtn.addEventListener('click', () => {
+                const containsDarkNow = htmlElement.classList.contains('dark');
+                if (containsDarkNow) {
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+                syncThemeDisplayState();
+            });
+
+            // --- 2. LAYOUT DIRECTION STORAGE ENGINE (LTR/RTL Sync) ---
+            function syncLayoutDirection() {
+                const storedDirection = localStorage.getItem('direction') || 'ltr';
+                htmlElement.setAttribute('dir', storedDirection);
+                dirBtn.innerText = storedDirection.toUpperCase();
+            }
+
+            dirBtn.addEventListener('click', () => {
+                const currentDir = htmlElement.getAttribute('dir');
+                const switchedDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                localStorage.setItem('direction', switchedDir);
+                syncLayoutDirection();
+            });
+
+            // --- 3. DYNAMIC INLINE QUOTATION RECALCULATOR MESH ---
+            function runInvoiceRecalculation() {
+                // Fetch selection values from fluid selector
+                const activeFluidOption = fluidSelect.options[fluidSelect.selectedIndex];
+                const basePrice = parseInt(activeFluidOption.getAttribute('data-base'), 10) || 2999;
+                
+                // Fetch selection values from active vehicle sizing arrays
+                const activeSegmentValue = document.querySelector('input[name="vehicle-segment"]:checked').value;
+                
+                let sizingAdjust = 0;
+                if (activeSegmentValue === 'suv') sizingAdjust = 150;
+                if (activeSegmentValue === 'truck') sizingAdjust = 300;
+
+                // Push text values cleanly to summary display panels
+                baseSummary.innerText = "₹" + basePrice.toLocaleString();
+                adjustSummary.innerText = "₹" + sizingAdjust.toLocaleString();
+                totalSummary.innerText = (basePrice + sizingAdjust).toLocaleString();
+            }
+
+            // Bind calculation event observers across inputs
+            fluidSelect.addEventListener('change', runInvoiceRecalculation);
+            document.querySelectorAll('input[name="vehicle-segment"]').forEach(radio => {
+                radio.addEventListener('change', runInvoiceRecalculation);
+            });
+
+            // --- 4. SECURE APPOINTMENT SUBMISSION OVERLAY DIALOGUE ---
+            window.triggerBookingSuccess = function() {
+                const modal = document.getElementById("success-modal");
+                const card = document.getElementById("success-modal-card");
+                
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+                
+                setTimeout(() => {
+                    modal.classList.remove("opacity-0");
+                    card.classList.remove("scale-95");
+                }, 50);
+            };
+
+            // Set dynamic baseline min parameter threshold boundaries on HTML date calendar structures
+            const dateInput = document.getElementById('date-picker');
+            if(dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+
+            // Run Core Orchestrations on initial render configurations
+            syncThemeDisplayState();
+            syncLayoutDirection();
+            runInvoiceRecalculation();
+        });
+    </script>
+</body>
+</html>

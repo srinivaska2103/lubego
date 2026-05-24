@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fully fixed and URL-encoded Inline SVG Favicon Component -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D97706' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z' fill='%23D97706' fill-opacity='0.15'/%3E%3Cpath d='M12 18V10' /%3E%3Cpath d='M9 13l3-3 3 3' /%3E%3C/svg%3E" />
+    <title>LubeGo | Mobile Oil Change & Preventative Maintenance</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#D97706', /* Amber 600 - Single unique brand accent color */
+                            dark: '#B45309',
+                            light: '#FBBF24'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Cabinet Grotesk', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Stylesheet for Clean Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar to match clean theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- NAVIGATION BAR -->
+<header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="index.html">
+                <!-- Logo & Name -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <!-- Logo Icon Container -->
+                    <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 hover:rotate-12">
+                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                            <path d="M12 18V10" />
+                            <path d="M9 13L12 10L15 13" />
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                        Lube<span class="text-brand">Go</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <nav id="desktop-nav" class="hidden lg:flex items-center space-x-8 font-medium text-sm text-slate-600 dark:text-slate-300">
+                <a href="index.html" class="hover:text-brand dark:hover:text-brand transition-colors">Home</a>
+                <a href="home2.html" class="hover:text-brand dark:hover:text-brand transition-colors">Home2</a>
+                <a href="aboutus.html" class="hover:text-brand dark:hover:text-brand transition-colors">About Us</a>
+                <a href="services.html" class="hover:text-brand dark:hover:text-brand transition-colors">Services</a>
+                <a href="contact.html" class="hover:text-brand dark:hover:text-brand transition-colors">Contact</a>
+            </nav>
+
+            <!-- Desktop Action & Utility Controls -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" aria-label="Toggle Theme" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all">
+                    <span id="theme-icon-light" class="hidden">☀️</span>
+                    <span id="theme-icon-dark">🌙</span>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button id="direction-toggle" aria-label="Toggle Layout Direction" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-all">
+                    LTR
+                </button>
+                <!-- CTA Buttons -->
+                <a href="login.html" class="text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:text-slate-900 dark:bg-slate-100 dark:hover:bg-slate-50 px-5 py-2.5 rounded-lg shadow-sm hover:shadow transition-all text-center">
+                    Log In
+                </a>
+                <a href="booknow.html" class="bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow-md shadow-brand/10 hover:shadow-lg transition-all transform hover:-translate-y-0.5">Book Now</a>
+            </div>
+
+            <!-- Mobile & Tablet Menu Button -->
+            <div class="flex lg:hidden items-center gap-3">
+                <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED MOBILE OVERLAY DRAWER -->
+    <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 z-50 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-4 pb-6 space-y-4 shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <nav id="mobile-nav" class="flex flex-col space-y-3 font-medium text-slate-600 dark:text-slate-300">
+            <a href="index.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Home</a>
+            <a href="home2.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Home2</a>
+            <a href="aboutus.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">About Us</a>
+            <a href="services.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Services</a>
+            <a href="contact.html" class="px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors">Contact</a>
+        </nav>
+        <hr class="border-slate-200 dark:border-slate-800">
+        <div class="flex flex-wrap items-center gap-3">
+            <!-- Direction Toggle Mobile -->
+            <button id="direction-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                LTR
+            </button>
+            <!-- Theme Toggle Mobile Quick Access -->
+            <button id="theme-toggle-mobile" aria-label="Toggle Theme" class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                <span id="theme-icon-light-mob" class="hidden">☀️</span>
+                <span id="theme-icon-dark-mob">🌙</span>
+            </button>
+            <!-- Mobile Log In Button CTA -->
+            <a href="login.html" class="flex-1 text-center font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:text-slate-900 dark:bg-slate-100 dark:hover:bg-slate-50 py-2.5 rounded-lg text-sm transition-colors shadow-sm">
+                Log In
+            </a>
+            <a href="booknow.html" class="flex-1 text-center bg-brand text-white font-semibold py-2.5 rounded-lg text-sm shadow-md">Book Now</a>
+        </div>
+    </div>
+</header>
+
+<!-- INTERACTIVE NAVIGATION CONTROLLER ACTIONS SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const pathFileName = window.location.pathname.split("/").pop();
+        
+        // --- 1. ROUTE MANAGEMENT LOGIC TRACKS ---
+        const dNavNode = document.getElementById("desktop-nav");
+        if (dNavNode) {
+            const dLinks = dNavNode.querySelectorAll("a");
+            let isMatched = false;
+            dLinks.forEach(link => {
+                if (link.getAttribute("href") === pathFileName) {
+                    link.className = "text-brand dark:text-brand font-semibold transition-colors";
+                    isMatched = true;
+                } else {
+                    link.className = "text-slate-600 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-colors";
+                }
+            });
+            if (!isMatched && (pathFileName === "" || pathFileName === "index.html") && dLinks.length > 0) {
+                dLinks[0].className = "text-brand dark:text-brand font-semibold transition-colors";
+            }
+        }
+
+        const mNavNode = document.getElementById("mobile-nav");
+        if (mNavNode) {
+            const mLinks = mNavNode.querySelectorAll("a");
+            let isMatched = false;
+            mLinks.forEach(link => {
+                if (link.getAttribute("href") === pathFileName) {
+                    link.className = "px-3 py-2 rounded-lg bg-brand/10 text-brand dark:text-brand font-semibold transition-colors";
+                    isMatched = true;
+                } else {
+                    link.className = "px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand transition-colors";
+                }
+            });
+            if (!isMatched && (pathFileName === "" || pathFileName === "index.html") && mLinks.length > 0) {
+                mLinks[0].className = "px-3 py-2 rounded-lg bg-brand/10 text-brand dark:text-brand font-semibold transition-colors";
+            }
+        }
+
+        // --- 2. DRAWER INTERACTIVE ACTION TOGGLES ---
+        const mobileTrigger = document.getElementById("mobile-menu-btn");
+        const mobileDrawer = document.getElementById("mobile-menu");
+        const vectorIconPath = document.getElementById("menu-icon");
+
+        if (mobileTrigger && mobileDrawer) {
+            mobileTrigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isExpanded = !mobileDrawer.classList.contains("hidden");
+                
+                if (isExpanded) {
+                    mobileDrawer.classList.add("hidden");
+                    if (vectorIconPath) vectorIconPath.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+                } else {
+                    mobileDrawer.classList.remove("hidden");
+                    if (vectorIconPath) vectorIconPath.setAttribute("d", "M6 18L18 6M6 6l12 12");
+                }
+            });
+
+            mobileDrawer.addEventListener("click", (e) => e.stopPropagation());
+
+            document.addEventListener("click", () => {
+                mobileDrawer.classList.add("hidden");
+                if (vectorIconPath) vectorIconPath.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+            });
+        }
+
+        // --- 3. THEME TOGGLE ENGINE CONTROLS ---
+        const themeBtnDesktop = document.getElementById("theme-toggle");
+        const themeBtnMobile = document.getElementById("theme-toggle-mobile");
+        
+        const lightIconD = document.getElementById("theme-icon-light");
+        const darkIconD = document.getElementById("theme-icon-dark");
+        const lightIconM = document.getElementById("theme-icon-light-mob");
+        const darkIconM = document.getElementById("theme-icon-dark-mob");
+
+        function applyThemeState(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                lightIconD?.classList.remove('hidden');
+                darkIconD?.classList.add('hidden');
+                lightIconM?.classList.remove('hidden');
+                darkIconM?.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                lightIconD?.classList.add('hidden');
+                darkIconD?.classList.remove('hidden');
+                lightIconM?.classList.add('hidden');
+                darkIconM?.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check persistent memory or layout system media settings
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initDarkState = storedTheme === 'dark' || (!storedTheme && systemPrefersDark);
+        applyThemeState(initDarkState);
+
+        [themeBtnDesktop, themeBtnMobile].forEach(btn => {
+            btn?.addEventListener("click", () => {
+                const currentDarkStatus = document.documentElement.classList.contains('dark');
+                applyThemeState(!currentDarkStatus);
+            });
+        });
+
+        // --- 4. DIRECTION ARABIC LTR / RTL CONTROLS ---
+        const dirBtnDesktop = document.getElementById("direction-toggle");
+        const dirBtnMobile = document.getElementById("direction-toggle-mobile");
+
+        function applyLayoutDirection(isRTL) {
+            if (isRTL) {
+                document.documentElement.setAttribute('dir', 'rtl');
+                if (dirBtnDesktop) dirBtnDesktop.innerText = "RTL";
+                if (dirBtnMobile) dirBtnMobile.innerText = "RTL";
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                if (dirBtnDesktop) dirBtnDesktop.innerText = "LTR";
+                if (dirBtnMobile) dirBtnMobile.innerText = "LTR";
+            }
+        }
+
+        [dirBtnDesktop, dirBtnMobile].forEach(btn => {
+            btn?.addEventListener("click", () => {
+                const isCurrentRTL = document.documentElement.getAttribute('dir') === 'rtl';
+                applyLayoutDirection(!isCurrentRTL);
+            });
+        });
+    });
+</script>
+ 
+<!-- PRICING HERO SECTION WITH LIVE VALUE ACCORDION TRACKER -->
+<section class="relative min-h-[60vh] sm:min-h-[50vh] lg:min-h-[55vh] flex items-center bg-slate-900 text-white overflow-hidden py-16 sm:py-20 md:py-24 transition-colors duration-300">
+    
+    <!-- 1. Layered Fluid Grid Geometric Background -->
+    <div class="absolute inset-0 z-0 select-none pointer-events-none">
+        <!-- Radial Dot Grid Network Overlay -->
+        <div class="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        
+        <!-- Isolated Single Light Spotlight Mask -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/10 rounded-full blur-[140px]"></div>
+    </div>
+
+    <!-- 2. Core Structural Layout Grid Matrix -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <!-- Left Text Content Pane (7 Columns) -->
+            <div class="lg:col-span-7 text-center sm:text-left space-y-6 max-w-2xl mx-auto sm:mx-0">
+                
+                <!-- Micro Header Trust Verification Tag -->
+                <div class="inline-flex items-center gap-2 py-1.5 px-3.5 rounded-xl bg-brand/15 border border-brand/20 text-brand text-xs font-semibold tracking-wide backdrop-blur-md animate-fade-in">
+                    <span class="flex h-1.5 w-1.5 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand"></span>
+                    </span>
+                    <span>No Surprise Bills. No Hidden Processing Fees.</span>
+                </div>
+                
+                <!-- Main Core Title Pitching Transparencies -->
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-white">
+                    Honest On-Demand Rates <span class="text-brand block sm:inline">Built for Any Drive Cycle</span>
+                </h1>
+                
+                <!-- Responsive Supporting Value Paragraph (Maintains 400 Weight Constraint) -->
+                <p class="text-sm sm:text-base md:text-lg text-slate-300 font-normal leading-relaxed max-w-xl max-sm:px-2">
+                    Select a maintenance bracket scaled precisely around your model parameters. We bring certified technicians, factory filters, and clean vacuum drainage units straight to your slot.
+                </p>
+
+                <!-- High Conversion Multi-Action Path Routers -->
+                <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 max-w-xs sm:max-w-none">
+                    <a href="#gallery" class="group flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm px-6 py-4 rounded-xl shadow-lg shadow-brand/20 transition-all duration-300 transform hover:-translate-y-0.5">
+                        <span>View Gallery</span>
+                        <svg class="w-4 h-4 transform group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"/>
+                        </svg>
+                    </a>
+                    <a href="contact.html" class="flex items-center justify-center bg-slate-900 hover:bg-slate-850 text-slate-200 font-semibold text-xs sm:text-sm px-6 py-4 rounded-xl border border-slate-800 hover:border-slate-700 transition-all shadow-sm">
+                        Request Enterprise Fleet Rates
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Interactive Value Micro-Widget Panel (5 Columns) -->
+            <div class="lg:col-span-5 relative mt-4 lg:mt-0">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand/15 to-transparent rounded-2xl filter blur-xl opacity-40"></div>
+                
+                <!-- Interactive Inclusion Blueprint Console -->
+                <div class="relative bg-slate-950/80 border border-slate-800/80 rounded-2xl p-5 sm:p-6 backdrop-blur-md shadow-2xl">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3.5 mb-4">
+                        <div class="space-y-0.5">
+                            <h3 class="text-[10px] font-bold uppercase tracking-widest text-brand">Cost Analysis Matrix</h3>
+                            <p class="text-slate-400 text-[11px]">Click standard lines to verify overhead value</p>
+                        </div>
+                        <span class="text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-mono font-bold tracking-wider">
+                            SAVINGS ACTIVE
+                        </span>
+                    </div>
+
+                    <!-- Interactive List Tree Stack -->
+                    <div class="space-y-2 text-left select-none">
+                        
+                        <!-- Line 1 -->
+                        <div data-meta="travel" class="pricing-hero-item p-3 rounded-xl bg-slate-900 border border-brand/40 shadow-sm cursor-pointer transition-all duration-300">
+                            <div class="flex items-center justify-between text-xs font-semibold text-white">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="text-brand">🏡</span>
+                                    <span>Home & Office Dispatch Fee</span>
+                                </div>
+                                <span class="text-emerald-400">₹0 INCLUDED</span>
+                            </div>
+                            <p class="text-[11px] text-slate-400 mt-1.5 pl-7 leading-relaxed font-normal">
+                                We completely wave standard call-out fuel variables. The rates you select reflect direct mechanical delivery labor allocations.
+                            </p>
+                        </div>
+
+                        <!-- Line 2 -->
+                        <div data-meta="disposal" class="pricing-hero-item p-3 rounded-xl bg-transparent border border-slate-900 hover:border-slate-800/80 cursor-pointer transition-all duration-300">
+                            <div class="flex items-center justify-between text-xs font-medium text-slate-400 group">
+                                <div class="flex items-center gap-2.5 text-slate-300">
+                                    <span>🌱</span>
+                                    <span>Eco Environmental Oil Disposal</span>
+                                </div>
+                                <span class="text-emerald-400/80 font-semibold">₹0 INCLUDED</span>
+                            </div>
+                            <p class="text-[11px] text-slate-400 mt-1.5 pl-7 leading-relaxed font-normal hidden">
+                                Safe extraction containment tracing and eco-friendly oil filtration lifecycle management is processed completely free of charge.
+                            </p>
+                        </div>
+
+                        <!-- Line 3 -->
+                        <div data-meta="diagnostics" class="pricing-hero-item p-3 rounded-xl bg-transparent border border-slate-900 hover:border-slate-800/80 cursor-pointer transition-all duration-300">
+                            <div class="flex items-center justify-between text-xs font-medium text-slate-400">
+                                <div class="flex items-center gap-2.5 text-slate-300">
+                                    <span>🛡️</span>
+                                    <span>Multi-Point Health Dashboard Log</span>
+                                </div>
+                                <span class="text-emerald-400/80 font-semibold">₹0 INCLUDED</span>
+                            </div>
+                            <p class="text-[11px] text-slate-400 mt-1.5 pl-7 leading-relaxed font-normal hidden">
+                                Full digital diagnostic scan overlays covering tire pressures, critical fluid densities, and battery cold-cranking amp checks are bundled into every single package.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- REAL-TIME PRICING HERO ACCORDION SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const items = document.querySelectorAll(".pricing-hero-item");
+
+        items.forEach(clickedItem => {
+            clickedItem.addEventListener("click", () => {
+                // Collapse and reset structural classes on sibling list nodes
+                items.forEach(item => {
+                    item.classList.remove("bg-slate-900", "border-brand/40");
+                    item.classList.add("bg-transparent", "border-slate-900");
+                    
+                    const descText = item.querySelector("p");
+                    if (descText) descText.classList.add("hidden");
+                    
+                    const headerRow = item.querySelector("div");
+                    headerRow.classList.remove("text-white", "font-semibold");
+                    headerRow.classList.add("text-slate-400", "font-medium");
+                });
+
+                // Inject high contrast focus rules into clicked node parameters
+                clickedItem.classList.remove("bg-transparent", "border-slate-900");
+                clickedItem.classList.add("bg-slate-900", "border-brand/40");
+                
+                const currentDesc = clickedItem.querySelector("p");
+                if (currentDesc) currentDesc.classList.remove("hidden");
+                
+                const currentHeader = clickedItem.querySelector("div");
+                currentHeader.classList.remove("text-slate-400", "font-medium");
+                currentHeader.classList.add("text-white", "font-semibold");
+            });
+        });
+    });
+</script>
+
+<!-- LIVE INTERACTIVE IMAGE ROTATION LOGIC CONTROL SYSTEM -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        
+        // Element target nodes selection matrices
+        const btnOil = document.getElementById("filter-oil");
+        const btnMaint = document.getElementById("filter-maintenance");
+        const btnCust = document.getElementById("filter-customers");
+
+        const imgOil = document.getElementById("img-layer-oil");
+        const imgMaint = document.getElementById("img-layer-maintenance");
+        const imgCust = document.getElementById("img-layer-customers");
+
+        const hudCaption = document.getElementById("hud-caption");
+        const buttons = [btnOil, btnMaint, btnCust];
+        const images = [imgOil, imgMaint, imgCust];
+
+        const captionMap = {
+            oil: "Action: Vacuum Oil Extraction Loop",
+            maintenance: "Check: Multi-Point System Health Scan",
+            customers: "Status: Driveway Handover Complete"
+        };
+
+        function switchHeroLayerState(activeKey, activeBtn, activeImg) {
+            // Reset active style patterns on choice button arrays
+            buttons.forEach(btn => {
+                btn.className = "gallery-hero-btn text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-slate-950 text-slate-400 hover:text-white border border-slate-800";
+            });
+
+            // Inject high contrast branding focus constraints into active control
+            activeBtn.className = "gallery-hero-btn text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-brand text-white shadow-md shadow-brand/10";
+
+            // Loop and cross fade layers securely via opacity and micro transforms
+            images.forEach(img => {
+                img.classList.remove("opacity-100", "scale-100");
+                img.classList.add("opacity-0", "scale-95", "pointer-events-none");
+            });
+
+            activeImg.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+            activeImg.classList.add("opacity-100", "scale-100");
+
+            // Update overlay captions
+            if (hudCaption) {
+                hudCaption.innerText = captionMap[activeKey];
+            }
+        }
+
+        // Bind interactive click trigger loops
+        if(btnOil && imgOil) btnOil.addEventListener("click", () => switchHeroLayerState("oil", btnOil, imgOil));
+        if(btnMaint && imgMaint) btnMaint.addEventListener("click", () => switchHeroLayerState("maintenance", btnMaint, imgMaint));
+        if(btnCust && imgCust) btnCust.addEventListener("click", () => switchHeroLayerState("customers", btnCust, imgCust));
+    });
+</script>
+<!-- SERVICES SECTION WITH DYNAMIC FILTERING & RICH MEDIA ECOSYSTEM -->
+<section id="services" class="py-16 md:py-24 bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                Premium Car Care Hub
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+                Professional Maintenance Delivered to Your Doorstep
+            </h2>
+            <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-normal max-w-2xl mx-auto">
+                Select from our specialized field procedures. Clean-tech tools, premium components, and certified engineers brought directly to your vehicle location.
+            </p>
+
+            <!-- User Interactive Segment Filter Tabs -->
+            <div class="pt-4 flex items-center justify-center gap-2">
+                <button id="filter-all" class="text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-brand text-white shadow-md shadow-brand/10">
+                    All Procedures
+                </button>
+                <button id="filter-oil" class="text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:text-brand dark:hover:text-brand">
+                    Engine & Fluids
+                </button>
+                <button id="filter-safety" class="text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:text-brand dark:hover:text-brand">
+                    Safety & Electrical
+                </button>
+            </div>
+        </div>
+
+        <!-- 3-6 Services Dynamic Card Grid Matrix (Responsive for 360px up to wide desktop layouts) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            
+            <!-- Card 1: Mobile Oil Change -->
+            <div class="service-card group relative bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 flex flex-col" data-category="oil">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="assets/Mobile Oil Change" alt="Engine oil pouring into a vehicle engine block during oil service change" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 dark:opacity-80" />
+                    <span class="absolute top-3 right-3 text-xs font-bold px-3 py-1 bg-slate-900/80 backdrop-blur-md text-white rounded-lg border border-slate-700/50 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span> Starting from ₹1,499
+                    </span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-brand">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.656 48.656 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3M3 12l-3-3m3 3l3-3M3 12c0 1.232.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7 48.656 48.656 0 0 0 7.324 0 4.006 4.006 0 0 0 3.7-3.7c.017-.22.032-.441.046-.662M19.5 12l3 3m-3-3l-3 3M3 12l-3 3m3-3l3 3"/></svg>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Mobile Oil Change</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                            Conventional drainage of depleted engine lubricants paired with eco-friendly oil filter replacement elements to lower internal friction grids.
+                        </p>
+                    </div>
+                    <a href="booknow.html" class="inline-flex items-center justify-between text-xs font-semibold bg-white hover:bg-brand dark:bg-slate-900 dark:hover:bg-brand text-slate-800 dark:text-slate-200 hover:text-white px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-transparent dark:hover:border-transparent transition-all w-full group/btn shadow-inner">
+                        <span>Select Configuration</span>
+                        <svg class="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2: Full Synthetic Oil Service -->
+            <div class="service-card group relative bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 flex flex-col" data-category="oil">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="assets/Full Synthetic Oil Service" alt="High performance motor oil pouring detailing complex mechanics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 dark:opacity-80" />
+                    <span class="absolute top-3 right-3 text-xs font-bold px-3 py-1 bg-slate-900/80 backdrop-blur-md text-white rounded-lg border border-slate-700/50 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span> Starting from ₹2,999
+                    </span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-brand">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 1 3 2.48Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 0 0 .495-7.467 5.99 5.99 0 0 0-1.925 3.546 5.974 5.974 0 0 1-2.133-1A3.75 3.75 0 0 0 12 18Z"/></svg>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Full Synthetic Oil Service</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                            Premium advanced multi-grade synthetic molecules optimized for extreme temperature boundaries, performance extensions, and maximum engine longevity.
+                        </p>
+                    </div>
+                    <a href="booknow.html" class="inline-flex items-center justify-between text-xs font-semibold bg-white hover:bg-brand dark:bg-slate-900 dark:hover:bg-brand text-slate-800 dark:text-slate-200 hover:text-white px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-transparent dark:hover:border-transparent transition-all w-full group/btn shadow-inner">
+                        <span>Select Configuration</span>
+                        <svg class="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3: Brake Inspection -->
+            <div class="service-card group relative bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 flex flex-col" data-category="safety">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="assets/Brake Inspection" alt="Brake pad calipers structure showing mechanic inspection setup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 dark:opacity-80" />
+                    <span class="absolute top-3 right-3 text-xs font-bold px-3 py-1 bg-slate-900/80 backdrop-blur-md text-white rounded-lg border border-slate-700/50 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span> Starting from ₹499
+                    </span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-brand">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" /></svg>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Brake Inspection</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                            Comprehensive micrometric thickness checks on brake rotors, lining integrity, pad degradation scales, and physical hydraulic leakage diagnostics.
+                        </p>
+                    </div>
+                    <a href="booknow.html" class="inline-flex items-center justify-between text-xs font-semibold bg-white hover:bg-brand dark:bg-slate-900 dark:hover:bg-brand text-slate-800 dark:text-slate-200 hover:text-white px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-transparent dark:hover:border-transparent transition-all w-full group/btn shadow-inner">
+                        <span>Select Configuration</span>
+                        <svg class="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 4: Battery Check & Replacement -->
+            <div class="service-card group relative bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 flex flex-col" data-category="safety">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="assets/Battery Check & Replacement" alt="Engine bay battery electrical terminals check setup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 dark:opacity-80" />
+                    <span class="absolute top-3 right-3 text-xs font-bold px-3 py-1 bg-slate-900/80 backdrop-blur-md text-white rounded-lg border border-slate-700/50 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span> Starting from ₹349
+                    </span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-brand">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor"/><path d="M6 6V4h4v2M14 6V4h4v2M7 13h4M15 13h2m-1-1v2"/></svg>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Battery Check</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                            Digital cold-cranking amp conductance profiling, alternator loading analysis, and certified installation of fresh heavy-duty backup batteries.
+                        </p>
+                    </div>
+                    <a href="booknow.html" class="inline-flex items-center justify-between text-xs font-semibold bg-white hover:bg-brand dark:bg-slate-900 dark:hover:bg-brand text-slate-800 dark:text-slate-200 hover:text-white px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-transparent dark:hover:border-transparent transition-all w-full group/btn shadow-inner">
+                        <span>Select Configuration</span>
+                        <svg class="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 5: Tire Pressure & Rotation -->
+            <div class="service-card group relative bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 flex flex-col" data-category="safety">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="assets/Tire Rotation & Pressure" alt="Automobile performance tire structure detailing tread patterns" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 dark:opacity-80" />
+                    <span class="absolute top-3 right-3 text-xs font-bold px-3 py-1 bg-slate-900/80 backdrop-blur-md text-white rounded-lg border border-slate-700/50 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span> Starting from ₹599
+                    </span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-brand">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke="currentColor"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Tire Rotation & Pressure</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                            Cross-axle structural pattern rotation procedures designed to neutralize uneven rubber tread decay scales while resetting accurate PSI configurations.
+                        </p>
+                    </div>
+                    <a href="booknow.html" class="inline-flex items-center justify-between text-xs font-semibold bg-white hover:bg-brand dark:bg-slate-900 dark:hover:bg-brand text-slate-800 dark:text-slate-200 hover:text-white px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-transparent dark:hover:border-transparent transition-all w-full group/btn shadow-inner">
+                        <span>Select Configuration</span>
+                        <svg class="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 6: Fluid Top-up Service -->
+            <div class="service-card group relative bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 flex flex-col" data-category="oil">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="assets/Fluid Top-up Service" alt="Sleek mechanics checking automotive car parameters inside structural system" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 dark:opacity-80" />
+                    <span class="absolute top-3 right-3 text-xs font-bold px-3 py-1 bg-slate-900/80 backdrop-blur-md text-white rounded-lg border border-slate-700/50 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span> Starting from ₹299
+                    </span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-brand">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Fluid Top-up Service</h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                            Meticulous level stabilization across crucial performance ecosystems including windshield cleaning solutions, cooling fluids, power steering reservoirs, and safety.
+                        </p>
+                    </div>
+                    <a href="booknow.html" class="inline-flex items-center justify-between text-xs font-semibold bg-white hover:bg-brand dark:bg-slate-900 dark:hover:bg-brand text-slate-800 dark:text-slate-200 hover:text-white px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-transparent dark:hover:border-transparent transition-all w-full group/btn shadow-inner">
+                        <span>Select Configuration</span>
+                        <svg class="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SERVICE CARD LIVE INLINE FILTER CONTROLLER ENGINE -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const btnAll = document.getElementById("filter-all");
+        const btnOil = document.getElementById("filter-oil");
+        const btnSafety = document.getElementById("filter-safety");
+        const cards = document.querySelectorAll(".service-card");
+
+        function filterSelection(category, activeBtn) {
+            // Reset active button state styles
+            [btnAll, btnOil, btnSafety].forEach(btn => {
+                btn.classList.remove("bg-brand", "text-white", "shadow-md", "shadow-brand/10");
+                btn.classList.add("bg-slate-100", "text-slate-600", "dark:bg-slate-800", "dark:text-slate-300");
+            });
+            // Apply active styles to clicked node
+            activeBtn.classList.add("bg-brand", "text-white", "shadow-md", "shadow-brand/10");
+            activeBtn.classList.remove("bg-slate-100", "text-slate-600", "dark:bg-slate-800", "dark:text-slate-300");
+
+            // Loop and filter cards via inline class transforms
+            cards.forEach(card => {
+                if (category === "all" || card.getAttribute("data-category") === category) {
+                    card.style.display = "flex";
+                    // Add micro scaling transition
+                    setTimeout(() => card.classList.remove("opacity-0", "scale-95"), 10);
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        btnAll.addEventListener("click", () => filterSelection("all", btnAll));
+        btnOil.addEventListener("click", () => filterSelection("oil", btnOil));
+        btnSafety.addEventListener("click", () => filterSelection("safety", btnSafety));
+    });
+</script>
+<!-- MOBILE SERVICE VAN SHOWCASE WITH INTERACTIVE HUD EQUIPMENT CONSOLE -->
+<section id="van-showcase" class="py-16 md:py-24 bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header Panel Context -->
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                On-Site Hardware Infrastructure
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+                Our Mobile Workshop, Deployed Anywhere
+            </h2>
+            <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-normal max-w-xl mx-auto">
+                Take a closer look at the advanced equipment systems inside our field trucks. We bring certified tech, vacuum containment, and digital diagnostic arrays straight to your parking spot.
+            </p>
+
+            <!-- Custom Interactive Tab Controllers -->
+            <div class="pt-6 flex flex-wrap items-center justify-center gap-2 max-sm:px-2 select-none">
+                <button id="tab-van" class="van-showcase-btn text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-brand text-white shadow-md shadow-brand/10">
+                    🚚 1. Branded Van Fleet
+                </button>
+                <button id="tab-tools" class="van-showcase-btn text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-slate-50 text-slate-600 dark:bg-slate-950 dark:text-slate-300 hover:text-brand border border-slate-200 dark:border-slate-800">
+                    🔧 2. Precision Tools
+                </button>
+                <button id="tab-setup" class="van-showcase-btn text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-slate-50 text-slate-600 dark:bg-slate-950 dark:text-slate-300 hover:text-brand border border-slate-200 dark:border-slate-800">
+                    🏡 3. On-Site Setup
+                </button>
+            </div>
+        </div>
+
+        <!-- Master Showcase Split-Screen Display Module (12-Column Matrix Framework) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-5xl mx-auto">
+            
+            <!-- LEFT SIDE PANEL: Live Aspect Photo Viewport Window (7 Columns) -->
+            <div class="lg:col-span-7 relative w-full h-64 sm:h-80 md:h-[400px] rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 shadow-xl group">
+                
+                <!-- Photo Layer 1: Branded Van (Active initially) -->
+                <img id="showcase-img-van" src="assets/branded" 
+                    alt="Branded self-powered mobile workshop fleet van dispatched to neighborhood" 
+                    class="showcase-img-layer w-full h-full object-cover absolute inset-0 opacity-100 transition-all duration-500 scale-100" />
+                
+                <!-- Photo Layer 2: Specialized Custom Tools -->
+                <img id="showcase-img-tools" src="assets/Industrial Tools & Component" 
+                    alt="Pneumatic pumps, digital safety sensors and tools inside service truck" 
+                    class="showcase-img-layer w-full h-full object-cover absolute inset-0 opacity-0 transition-all duration-500 scale-95 pointer-events-none" />
+                
+                <!-- Photo Layer 3: Live Customer Driveway Deployment Setup -->
+                <img id="showcase-img-setup" src="assets/Driveway Workspace Setup" 
+                    alt="Certified technician extracting engine fluids cleanly on a driveway setup" 
+                    class="showcase-img-layer w-full h-full object-cover absolute inset-0 opacity-0 transition-all duration-500 scale-95 pointer-events-none" />
+
+                <!-- Decorative overlay mask grid system layout gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60"></div>
+            </div>
+
+            <!-- RIGHT SIDE PANEL: Technical Specification Blueprint (5 Columns) -->
+            <div class="lg:col-span-5 bg-slate-950 text-white border border-slate-800 rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden text-left shadow-xl">
+                <!-- Abstract radar background decoration vector line lines -->
+                <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+
+                <div class="space-y-6 relative z-10">
+                    <div class="border-b border-slate-800 pb-3.5">
+                        <span id="spec-category" class="text-[10px] uppercase font-bold text-brand tracking-widest block">Infrastructure Verification</span>
+                        <h3 id="spec-title" class="text-base font-bold text-white tracking-tight mt-0.5">Branded Service Vehicles</h3>
+                    </div>
+
+                    <!-- Dynamic Spec Summary Parameter List -->
+                    <p id="spec-desc" class="text-xs sm:text-sm text-slate-400 font-normal leading-relaxed">
+                        Every customized LubeGo van is a self-powered mobile workshop. They carry custom fluid extraction pumps, clean waste storage systems, and dedicated onboard electricity generators to run setups cleanly without tapping your home outlets.
+                    </p>
+
+                    <!-- Real-Time Blueprint Metrics Log Block -->
+                    <div class="space-y-3 font-mono text-[11px] pt-2 text-slate-400">
+                        <div class="flex justify-between border-b border-slate-900/60 pb-1.5">
+                            <span>Power Supply Profile:</span>
+                            <span id="metric-power" class="text-slate-200 font-bold">Independent 240V Sump Generator</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-900/60 pb-1.5">
+                            <span>Spill Containment System:</span>
+                            <span id="metric-spill" class="text-emerald-400 font-bold">Closed Vacuum Sealed [100%]</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Hardware Certification:</span>
+                            <span id="metric-cert" class="text-slate-200 font-bold">CE & ISO Industrial Approved</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom trust verification micro layout badge -->
+                <div class="pt-6 border-t border-slate-900 relative z-10 flex items-center gap-3">
+                    <span class="text-xl">🛡️</span>
+                    <p class="text-[10px] text-slate-500 font-normal leading-normal">
+                        Our equipment layouts meet full regional environmental standards. Zero trace fluid disposal guaranteed on any parking surface.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- LIVE SHOWCASE TAB SWITCHER APPLICATION CODE INTERACTION -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Source button controls selection arrays
+        const tabVan = document.getElementById("tab-van");
+        const tabTools = document.getElementById("tab-tools");
+        const tabSetup = document.getElementById("tab-setup");
+
+        // Photo structural layer containers
+        const imgVan = document.getElementById("showcase-img-van");
+        const imgTools = document.getElementById("showcase-img-tools");
+        const imgSetup = document.getElementById("showcase-img-setup");
+
+        // Data field text targets parameters
+        const specCategory = document.getElementById("spec-category");
+        const specTitle = document.getElementById("spec-title");
+        const specDesc = document.getElementById("spec-desc");
+        const metricPower = document.getElementById("metric-power");
+        const metricSpill = document.getElementById("metric-spill");
+        const metricCert = document.getElementById("metric-cert");
+
+        const buttons = [tabVan, tabTools, tabSetup];
+        const images = [imgVan, imgTools, imgSetup];
+
+        // Structural Content Matrix Dictionary Data Logs
+        const dataset = {
+            van: {
+                category: "Infrastructure Verification",
+                title: "Branded Service Vehicles",
+                desc: "Every customized LubeGo van is a self-powered mobile workshop. They carry custom fluid extraction pumps, clean waste storage systems, and dedicated onboard electricity generators to run setups cleanly without tapping your home outlets.",
+                power: "Independent 240V Sump Generator",
+                spill: "Closed Vacuum Sealed [100%]",
+                cert: "CE & ISO Industrial Approved"
+            },
+            tools: {
+                category: "Precision Engineering Equipment",
+                title: "Industrial Tools & Components",
+                desc: "We skip messy floor jacks and drain pans entirely. Our vans use advanced micrometric vacuum extraction suction tubes to draw old oils straight from dipsticks into closed, isolated container reservoirs inside the truck cabin.",
+                power: "High-PSI Air Pressure Pumps",
+                spill: "Dry-Coupling Nozzle Safety Gates",
+                cert: "Factory Spec Certified Calibration"
+            },
+            setup: {
+                category: "Doorstep Safety Coordination",
+                title: "Driveway Workspace Setup",
+                desc: "Once parked, our technician sets up a clear, compact service area safely enclosed by high-visibility marker cones. We require less layout clearance space than a standard parallel parking bay to finish the procedures cleanly.",
+                power: "Zero Home Grid Interaction",
+                spill: "Under-Engine Floor Capture Drop Sheet",
+                cert: "Eco Guard Operational Standard"
+            }
+        };
+
+        function switchVanShowcaseState(key, activeBtn, activeImg) {
+            // Reset regular unselected control appearance metrics safely
+            buttons.forEach(btn => {
+                btn.className = "van-showcase-btn text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-slate-50 text-slate-600 dark:bg-slate-950 dark:text-slate-300 hover:text-brand border border-slate-200 dark:border-slate-800";
+            });
+
+            // Set high contrast orange brand layout styles into selected button active item
+            activeBtn.className = "van-showcase-btn text-xs font-semibold px-4 py-2.5 rounded-xl transition-all bg-brand text-white shadow-md shadow-brand/10";
+
+            // Crossfade photo frames out smoothly via micro scale loops
+            images.forEach(img => {
+                img.classList.remove("opacity-100", "scale-100");
+                img.classList.add("opacity-0", "scale-95", "pointer-events-none");
+            });
+
+            activeImg.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+            activeImg.classList.add("opacity-100", "scale-100");
+
+            // Update text documentation labels inside technical blueprint panel smoothly
+            const selectedLog = dataset[key];
+            specCategory.innerText = selectedLog.category;
+            specTitle.innerText = selectedLog.title;
+            specDesc.innerText = selectedLog.desc;
+            metricPower.innerText = selectedLog.power;
+            metricSpill.innerText = selectedLog.spill;
+            metricCert.innerText = selectedLog.cert;
+        }
+
+        // Bind interactive event tracking triggers over control panels
+        if (tabVan && imgVan) tabVan.addEventListener("click", () => switchVanShowcaseState("van", tabVan, imgVan));
+        if (tabTools && imgTools) tabTools.addEventListener("click", () => switchVanShowcaseState("tools", tabTools, imgTools));
+        if (tabSetup && imgSetup) tabSetup.addEventListener("click", () => switchVanShowcaseState("setup", tabSetup, imgSetup));
+    });
+</script>
+<!-- REDESIGNED ACTION SHOWCASE WITH INTEGRATED PHOTO STACK MATRIX AND HUD TELEMETRY -->
+<section id="action-shots" class="py-16 md:py-24 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 border-t border-b border-slate-200/60 dark:border-slate-900/60 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Ambient Background Branding Accents -->
+    <div class="absolute top-1/4 left-0 w-96 h-96 bg-brand/5 dark:bg-brand/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-brand/5 dark:bg-brand/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Redesigned Asymmetric Block Header Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end border-b border-slate-200/60 dark:border-slate-800/60 pb-10 mb-12 text-left">
+            <div class="lg:col-span-7 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                    Precision Execution Logs
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Our Operational Standards, Captured Live
+                </h2>
+            </div>
+            <div class="lg:col-span-5">
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    Witness our mobile mechanics executing clean-room car care workflows straight on client driveways. High-visibility uniforms, bright task lighting, and fully isolated tool matrices come standard.
+                </p>
+            </div>
+        </div>
+
+        <!-- Master Presentation Workspace Container (12-Column Grid) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            <!-- LEFT MODULE: INTERACTIVE CONTROLLERS & DATA OVERLAYS (5 Columns) -->
+            <div class="lg:col-span-5 flex flex-col justify-between space-y-6 Order-2 lg:order-1">
+                
+                <!-- Vertical Timeline Track Selector Deck -->
+                <div class="space-y-2.5 select-none">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 tracking-wider block text-left mb-1">Select Process Checkpoint</span>
+                    
+                    <!-- Step 1 Button -->
+                    <button id="action-btn-1" class="action-shots-ctrl w-full text-left p-4 rounded-2xl bg-white dark:bg-slate-900 border border-brand/40 dark:border-brand/40 shadow-sm transition-all duration-300 flex items-center justify-between group">
+                        <div class="flex items-center gap-3.5">
+                            <span class="action-step-badge w-7 h-7 rounded-lg bg-brand text-white font-mono text-xs font-bold flex items-center justify-center transition-colors">01</span>
+                            <div class="space-y-0.5">
+                                <span class="action-step-title text-xs font-bold text-slate-900 dark:text-white transition-colors">Fluid Extraction Loop</span>
+                                <p class="text-[11px] text-slate-400 font-normal group-hover:text-slate-500 dark:group-hover:text-slate-300 transition-colors">Vacuum extraction lines down sumps.</p>
+                            </div>
+                        </div>
+                        <span class="action-chevron-icon text-brand transition-transform duration-300 transform rotate-90 lg:rotate-0">➔</span>
+                    </button>
+
+                    <!-- Step 2 Button -->
+                    <button id="action-btn-2" class="action-shots-ctrl w-full text-left p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 flex items-center justify-between group">
+                        <div class="flex items-center gap-3.5">
+                            <span class="action-step-badge w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-950 text-slate-500 dark:text-slate-400 font-mono text-xs font-bold flex items-center justify-center transition-colors">02</span>
+                            <div class="space-y-0.5">
+                                <span class="action-step-title text-xs font-semibold text-slate-600 dark:text-slate-400 transition-colors">Filter Swap Operation</span>
+                                <p class="text-[11px] text-slate-400 font-normal group-hover:text-slate-500 dark:group-hover:text-slate-300 transition-colors">Factory component replacements.</p>
+                            </div>
+                        </div>
+                        <span class="action-chevron-icon text-slate-400 transition-transform duration-300 transform rotate-90 lg:rotate-0">➔</span>
+                    </button>
+
+                    <!-- Step 3 Button -->
+                    <button id="action-btn-3" class="action-shots-ctrl w-full text-left p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 flex items-center justify-between group">
+                        <div class="flex items-center gap-3.5">
+                            <span class="action-step-badge w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-950 text-slate-500 dark:text-slate-400 font-mono text-xs font-bold flex items-center justify-center transition-colors">03</span>
+                            <div class="space-y-0.5">
+                                <span class="action-step-title text-xs font-semibold text-slate-600 dark:text-slate-400 transition-colors">Multi-Point Diagnostic</span>
+                                <p class="text-[11px] text-slate-400 font-normal group-hover:text-slate-500 dark:group-hover:text-slate-300 transition-colors">Digital health log metrics feed.</p>
+                            </div>
+                        </div>
+                        <span class="action-chevron-icon text-slate-400 transition-transform duration-300 transform rotate-90 lg:rotate-0">➔</span>
+                    </button>
+
+                    <!-- Step 4 Button -->
+                    <button id="action-btn-4" class="action-shots-ctrl w-full text-left p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 flex items-center justify-between group">
+                        <div class="flex items-center gap-3.5">
+                            <span class="action-step-badge w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-950 text-slate-500 dark:text-slate-400 font-mono text-xs font-bold flex items-center justify-center transition-colors">04</span>
+                            <div class="space-y-0.5">
+                                <span class="action-step-title text-xs font-semibold text-slate-600 dark:text-slate-400 transition-colors">Hardware Calibration</span>
+                                <p class="text-[11px] text-slate-400 font-normal group-hover:text-slate-500 dark:group-hover:text-slate-300 transition-colors">Laser-foam shadow board arrays.</p>
+                            </div>
+                        </div>
+                        <span class="action-chevron-icon text-slate-400 transition-transform duration-300 transform rotate-90 lg:rotate-0">➔</span>
+                    </button>
+                </div>
+
+                <!-- Live Technical HUD Readout Box Component -->
+                <div class="bg-slate-950 text-white border border-slate-800 rounded-2xl p-5 text-left font-sans space-y-4 shadow-xl relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:12px_12px] pointer-events-none"></div>
+                    <div class="border-b border-slate-800 pb-2.5 flex items-center justify-between">
+                        <span id="action-spec-category" class="text-[10px] font-mono uppercase font-bold text-brand tracking-widest">Step 01 // Extraction Track</span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    </div>
+                    <p id="action-spec-desc" class="text-xs text-slate-400 leading-relaxed font-normal">
+                        Our technicians arrive in fresh custom uniforms, dropping high-visibility workspace markers around the service bay. We lock down high-suction vacuum hoses into the motor block, drawing old fluid lines out cleanly into sealed vehicle canisters.
+                    </p>
+                </div>
+            </div>
+
+            <!-- RIGHT MODULE: CRISP REAL-WORLD ACTION IMAGE FRAME (7 Columns) -->
+            <div class="lg:col-span-7 flex flex-col justify-between space-y-4 order-1 lg:order-2">
+                <div class="w-full h-72 sm:h-96 lg:h-full min-h-[320px] lg:min-h-[440px] relative rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800/80 bg-slate-950 shadow-xl group">
+                    
+                    <!-- Action Image Layer 1: Extraction -->
+                    <img id="action-layer-1" src="assets/Full Synthetic Oil Service1" 
+                        alt="Uniformed mobile mechanic deploying a clean vacuum oil extraction unit on site" 
+                        class="action-img-frame w-full h-full object-cover absolute inset-0 opacity-100 transition-all duration-500 scale-100" />
+                    
+                    <!-- Action Image Layer 2: Filter Swap -->
+                    <img id="action-layer-2" src="assets/f" 
+                        alt="Technician wearing clean uniform replacing secondary oil filter elements with factory components" 
+                        class="action-img-frame w-full h-full object-cover absolute inset-0 opacity-0 transition-all duration-500 scale-95 pointer-events-none" />
+                    
+                    <!-- Action Image Layer 3: Multi-Point Check -->
+                    <img id="action-layer-3" src="assets/Battery Check & Replacement1" 
+                        alt="Automotive specialist executing multi point structural review under clear bright shop work lighting" 
+                        class="action-img-frame w-full h-full object-cover absolute inset-0 opacity-0 transition-all duration-500 scale-95 pointer-events-none" />
+
+                    <!-- Action Image Layer 4: Tool Calibration -->
+                    <img id="action-layer-4" src="assets/Tire Rotation & Pressure1" 
+                        alt="Organized technician workspace configuration panel with professional calibration gear inside van" 
+                        class="action-img-frame w-full h-full object-cover absolute inset-0 opacity-0 transition-all duration-500 scale-95 pointer-events-none" />
+
+                    <!-- Telemetry Spec Floating Banner Overlay -->
+                    <div class="absolute bottom-4 left-4 right-4 z-20 bg-slate-950/90 border border-slate-800 p-4 rounded-xl backdrop-blur-md shadow-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-left">
+                        <div class="space-y-0.5">
+                            <span class="text-[9px] font-mono tracking-wider text-brand font-bold uppercase block">Active Metric System Parameters</span>
+                            <h3 id="action-spec-title" class="text-xs font-bold text-white tracking-tight">Changing Engine Oil</h3>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 sm:flex sm:items-center sm:gap-4 font-mono text-[10px] text-slate-400">
+                            <div class="border-r border-slate-800 pr-2 lg:pr-4">
+                                <span class="block text-[9px] text-slate-500 uppercase font-sans font-medium">Uniform</span>
+                                <span id="metric-item-1" class="text-slate-200 font-bold">Anti-Static</span>
+                            </div>
+                            <div class="border-r border-slate-800 pr-2 lg:pr-4">
+                                <span class="block text-[9px] text-slate-500 uppercase font-sans font-medium">Task Light</span>
+                                <span id="metric-item-2" class="text-emerald-400 font-bold">1200 Lumens</span>
+                            </div>
+                            <div>
+                                <span class="block text-[9px] text-slate-500 uppercase font-sans font-medium">Sorting</span>
+                                <span id="metric-item-3" class="text-slate-200 font-bold">Magnetic</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ambient linear depth shade layout gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 z-10 pointer-events-none"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- REAL-TIME TIMELINE ROTATION LOGIC CONTROL SYSTEM -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Selector Timeline Tab Elements
+        const btn1 = document.getElementById("action-btn-1");
+        const btn2 = document.getElementById("action-btn-2");
+        const btn3 = document.getElementById("action-btn-3");
+        const btn4 = document.getElementById("action-btn-4");
+
+        // Photo Canvas Layer Viewports
+        const layer1 = document.getElementById("action-layer-1");
+        const layer2 = document.getElementById("action-layer-2");
+        const layer3 = document.getElementById("action-layer-3");
+        const layer4 = document.getElementById("action-layer-4");
+
+        // UI Readout Documentation Fields
+        const catText = document.getElementById("action-spec-category");
+        const titleText = document.getElementById("action-spec-title");
+        const descText = document.getElementById("action-spec-desc");
+        const m1 = document.getElementById("metric-item-1");
+        const m2 = document.getElementById("metric-item-2");
+        const m3 = document.getElementById("metric-item-3");
+
+        const buttons = [btn1, btn2, btn3, btn4];
+        const layers = [layer1, layer2, layer3, layer4];
+
+        // Central Asset Content Data Logs Map
+        const operationalLogs = {
+            step1: {
+                cat: "Step 01 // Extraction Track",
+                title: "Changing Engine Oil",
+                desc: "Our technicians arrive in fresh custom uniforms, dropping high-visibility workspace markers around the service bay. We lock down high-suction vacuum hoses into the motor block, drawing old fluid lines out cleanly into sealed vehicle canisters.",
+                m1: "Anti-Static",
+                m2: "1200 Lumens",
+                m3: "Magnetic"
+            },
+            step2: {
+                cat: "Step 02 // Component Swap",
+                title: "Replacing Oil Filters",
+                desc: "Old contaminated filter elements are removed using specialized dry-coupling torque wrenches. The housing units are sanitarily wiped down before a brand new, factory-specification eco-filter capsule is locked back into place.",
+                m1: "Nitrile Shield",
+                m2: "Overhead Bars",
+                m3: "Direct Capture"
+            },
+            step3: {
+                cat: "Step 03 // Telemetry Review",
+                title: "Inspecting Vehicles",
+                desc: "Technicians perform a structural multi-point health review on your vehicle. We test brake pad wear depths, examine auxiliary drive belt tensions, and run electronic battery voltage conductance scans via centralized dashboard logging links.",
+                m1: "Certified Badge",
+                m2: "LED Pods",
+                m3: "Digital Input"
+            },
+            step4: {
+                cat: "Step 04 // Asset Organization",
+                title: "Using Professional Tools",
+                desc: "Every single tool inside our mobile van is securely mapped to custom laser-cut foam inserts. This strict level of sorting prevents tool misplacement, guarantees precise metric calibration, and ensures the driveway space stays totally clean.",
+                m1: "ISO 9001 Spec",
+                m2: "Shadow Free",
+                m3: "Shadow Boards"
+            }
+        };
+
+        function executeShowcaseTransition(targetKey, clickedBtn, targetLayer) {
+            // Revert all control buttons back to pristine standard dark/light styles
+            buttons.forEach(btn => {
+                btn.className = "action-shots-ctrl w-full text-left p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 hover:border-brand/40 dark:hover:border-brand/40 transition-all duration-300 flex items-center justify-between group";
+                
+                // Reset internal text and badge weight elements
+                const badge = btn.querySelector(".action-step-badge");
+                badge.className = "action-step-badge w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-950 text-slate-500 dark:text-slate-400 font-mono text-xs font-bold flex items-center justify-center transition-colors";
+                
+                const title = btn.querySelector(".action-step-title");
+                title.className = "action-step-title text-xs font-semibold text-slate-600 dark:text-slate-400 transition-colors";
+
+                const arrow = btn.querySelector(".action-chevron-icon");
+                arrow.className = "action-chevron-icon text-slate-400 transition-transform duration-300 transform rotate-90 lg:rotate-0";
+            });
+
+            // Apply high-contrast brand focus boundaries over selected card trigger
+            clickedBtn.className = "action-shots-ctrl w-full text-left p-4 rounded-2xl bg-white dark:bg-slate-900 border border-brand/40 dark:border-brand/40 shadow-sm transition-all duration-300 flex items-center justify-between group";
+            
+            const activeBadge = clickedBtn.querySelector(".action-step-badge");
+            activeBadge.className = "action-step-badge w-7 h-7 rounded-lg bg-brand text-white font-mono text-xs font-bold flex items-center justify-center transition-colors";
+            
+            const activeTitle = clickedBtn.querySelector(".action-step-title");
+            activeTitle.className = "action-step-title text-xs font-bold text-slate-900 dark:text-white transition-colors";
+
+            const activeArrow = clickedBtn.querySelector(".action-chevron-icon");
+            activeArrow.className = "action-chevron-icon text-brand transition-transform duration-300 transform translate-x-0.5 rotate-90 lg:rotate-0";
+
+            // Orchestrate visual layer crossfades smoothly
+            layers.forEach(lyr => {
+                lyr.classList.remove("opacity-100", "scale-100");
+                lyr.classList.add("opacity-0", "scale-95", "pointer-events-none");
+            });
+
+            targetLayer.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+            targetLayer.classList.add("opacity-100", "scale-100");
+
+            // Extract values safely from dataset dictionary and update text metrics tags
+            const telemetryRecord = operationalLogs[targetKey];
+            catText.innerText = telemetryRecord.cat;
+            titleText.innerText = telemetryRecord.title;
+            descText.innerText = telemetryRecord.desc;
+            m1.innerText = telemetryRecord.m1;
+            m2.innerText = telemetryRecord.m2;
+            m3.innerText = telemetryRecord.m3;
+        }
+
+        // Initialize click tracking observers safely
+        if (btn1 && layer1) btn1.addEventListener("click", () => executeShowcaseTransition("step1", btn1, layer1));
+        if (btn2 && layer2) btn2.addEventListener("click", () => executeShowcaseTransition("step2", btn2, layer2));
+        if (btn3 && layer3) btn3.addEventListener("click", () => executeShowcaseTransition("step3", btn3, layer3));
+        if (btn4 && layer4) btn4.addEventListener("click", () => executeShowcaseTransition("step4", btn4, layer4));
+    });
+</script>
+<!-- CORPORATE FLEET SERVICE GALLERY WITH REAL-TIME TELEMETRY CARD INSPECTOR -->
+<section id="fleet-gallery" class="py-16 md:py-24 bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 relative overflow-hidden">
+    
+    <!-- Subtle Geometric Ambient Grid Overlay -->
+    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none select-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Section Header Layout Matrix -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end border-b border-slate-100 dark:border-slate-800 pb-10 mb-12 text-left">
+            <div class="lg:col-span-7 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand bg-brand/10 dark:bg-brand/15 px-3.5 py-1.5 rounded-full inline-block">
+                    Enterprise Asset Portfolio
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Commercial Fleet Support Logs
+                </h2>
+            </div>
+            <div class="lg:col-span-5">
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                    Review snapshots of our parallel mobile teams deploying preventative car care protocols at enterprise facilities, logistics warehouses, and corporate parking lots.
+                </p>
+            </div>
+        </div>
+
+        <!-- Interactive Grid / Card Matrix (Scales perfectly down to 360px up to widescreen viewports) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            
+            <!-- Asset Card 1: Mobile Workshops / Vans -->
+            <div class="fleet-asset-card bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex flex-col justify-between" data-asset="vans">
+                <div class="relative h-48 overflow-hidden bg-slate-900">
+                    <img src="assets/Mobile Service Vans" 
+                        alt="Branded custom fluid extraction service vans deployed on site" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span class="absolute bottom-3 left-3 text-[10px] font-mono bg-slate-950/90 text-brand border border-brand/20 px-2.5 py-0.5 rounded-md font-bold tracking-wider uppercase">
+                        Service Vans
+                    </span>
+                </div>
+                <div class="p-5 text-left space-y-1">
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white">Mobile Service Vans</h3>
+                    <p class="text-xs text-slate-400 font-normal leading-normal">Fully self-contained, vacuum-equipped custom fluid routing frameworks.</p>
+                </div>
+            </div>
+
+            <!-- Asset Card 2: Delivery Vehicles -->
+            <div class="fleet-asset-card bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex flex-col justify-between" data-asset="delivery">
+                <div class="relative h-48 overflow-hidden bg-slate-900">
+                    <img src="assets/Delivery Vehicles" 
+                        alt="Commercial freight and delivery vans tracking maintenance loops" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span class="absolute bottom-3 left-3 text-[10px] font-mono bg-slate-950/90 text-brand border border-brand/20 px-2.5 py-0.5 rounded-md font-bold tracking-wider uppercase">
+                        Logistics Pools
+                    </span>
+                </div>
+                <div class="p-5 text-left space-y-1">
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white">Delivery Vehicles</h3>
+                    <p class="text-xs text-slate-400 font-normal leading-normal">High-frequency interval checkups for last-mile freight courier fleets.</p>
+                </div>
+            </div>
+
+            <!-- Asset Card 3: Company Cars -->
+            <div class="fleet-asset-card bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex flex-col justify-between" data-asset="company">
+                <div class="relative h-48 overflow-hidden bg-slate-900">
+                    <img src="assets/Company Sedans" 
+                        alt="Corporate sedans and management executive cars lined up for inspection" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span class="absolute bottom-3 left-3 text-[10px] font-mono bg-slate-950/90 text-brand border border-brand/20 px-2.5 py-0.5 rounded-md font-bold tracking-wider uppercase">
+                        Executive Cars
+                    </span>
+                </div>
+                <div class="p-5 text-left space-y-1">
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white">Company Sedans</h3>
+                    <p class="text-xs text-slate-400 font-normal leading-normal">Routine multi-point logging and synthetic fluid drops for sales teams.</p>
+                </div>
+            </div>
+
+            <!-- Asset Card 4: Multiple Vehicle Servicing -->
+            <div class="fleet-asset-card bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:border-brand/40 dark:hover:border-brand/40 group flex flex-col justify-between" data-asset="multi">
+                <div class="relative h-48 overflow-hidden bg-slate-900">
+                    <img src="assets/Simultaneous Servicing" 
+                        alt="Parallel car care processing inside centralized logistics depot centers" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span class="absolute bottom-3 left-3 text-[10px] font-mono bg-slate-950/90 text-brand border border-brand/20 px-2.5 py-0.5 rounded-md font-bold tracking-wider uppercase">
+                        Parallel Servicing
+                    </span>
+                </div>
+                <div class="p-5 text-left space-y-1">
+                    <h3 class="text-sm font-bold text-slate-900 dark:text-white">Simultaneous Servicing</h3>
+                    <p class="text-xs text-slate-400 font-normal leading-normal">Multi-van parallel deployment grids minimizing depot yard downtime.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- B2B Conversion Context Overlay Banner -->
+        <div class="mt-12 p-6 sm:p-8 rounded-3xl bg-slate-950 text-white border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-6 text-left shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:10px_10px] pointer-events-none"></div>
+            <div class="space-y-1 relative z-10 max-w-xl">
+                <span class="text-[10px] uppercase font-bold text-brand font-mono tracking-widest block">Uptime Optimization Program</span>
+                <h3 class="text-base font-bold text-white tracking-tight">Need Parallel Maintenance Slots for Your Logistics Operations?</h3>
+                <p class="text-xs text-slate-400 font-normal leading-relaxed">
+                    We coordinate customized programmatic scheduling matrix logs for corporate vehicle assets. Secure centralized monthly digital ledger accounts with fixed price safeguards.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 relative z-10 flex-shrink-0">
+                <a href="#contact" class="flex items-center justify-center bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all shadow-md shadow-brand/10 transform active:scale-[0.995]">
+                    Request Custom Fleet Quote
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- REAL-TIME ASSET VIEWPORT HOVER TRACKER SCRIPT -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".fleet-asset-card");
+
+        // Subtle pop and dynamic micro-border styling framework on components
+        cards.forEach(card => {
+            card.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
+            card.addEventListener("mouseenter", () => {
+                card.classList.add("scale-[1.015]");
+            });
+            card.addEventListener("mouseleave", () => {
+                card.classList.remove("scale-[1.015]");
+            });
+        });
+    });
+</script>
+ 
+    <!-- FOOTER SECTION WITH INTEGRATED NEWSLETTER -->
+<footer id="contact" class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-12 text-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-8 lg:gap-12">
+            
+            <!-- Brand Info Block -->
+            <div class="sm:col-span-2 md:col-span-4 lg:col-span-4 space-y-4">
+                <a href="index.html" class="inline-block">
+                    <div class="flex items-center gap-2">
+                        <!-- Logo Icon Container -->
+                        <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 transition-transform duration-300 hover:rotate-12">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <!-- Modern Droplet fused with an upward/forward motion arrow -->
+                                <path d="M12 22C16.4183 22 20 18.4183 20 14C20 8 12 2 12 2C12 2 4 8 4 14C4 18.4183 7.58172 22 12 22Z" fill="currentColor" fill-opacity="0.15"/>
+                                <path d="M12 18V10" />
+                                <path d="M9 13L12 10L15 13" />
+                            </svg>
+                        </div>
+                        <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Lube<span class="text-brand">Go</span></span>
+                    </div>
+                </a>
+                
+                <p class="text-slate-500 dark:text-slate-400 max-w-xs text-xs leading-relaxed">
+                    On-demand residential and corporate fleet diagnostics, custom oil formulation filtration changes, and structural preventative vehicular engineering.
+                </p>
+                
+                <!-- Social Icons Panel -->
+                <div class="flex items-center space-x-5 text-slate-400 dark:text-slate-500">
+                    <!-- Facebook -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="Facebook">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+
+                    <!-- X (Twitter) -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="X (formerly Twitter)">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="Instagram">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="#social" class="hover:text-brand dark:hover:text-brand transition-colors transform hover:-translate-y-0.5 duration-200" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links Column 1 -->
+            <div class="lg:col-span-2">
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-4 uppercase tracking-wider text-xs">Navigation</h4>
+                <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                    <li><a href="index.html" class="hover:text-brand transition-colors">Home</a></li>
+                    <li><a href="home2.html" class="hover:text-brand transition-colors">Home2</a></li>
+                    <li><a href="aboutus.html" class="hover:text-brand transition-colors">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand transition-colors">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-brand transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links Column 2 -->
+            <div class="lg:col-span-2">
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-4 uppercase tracking-wider text-xs">Utility Pages</h4>
+                <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                    <li><a href="booknow.html" class="hover:text-brand transition-colors font-medium text-brand">Book Now</a></li>
+                    <li><a href="pricing.html" class="hover:text-brand transition-colors">Pricing Structure</a></li>
+                    <li><a href="gallery.html" class="hover:text-brand transition-colors">Media Gallery</a></li>
+                    <li><a href="404.html" class="hover:text-brand transition-colors">404 Error</a></li>
+                    <li><a href="comingsoon.html" class="hover:text-brand transition-colors">Coming Soon</a></li>
+                </ul>
+            </div>
+
+            <!-- Integrated Newsletter Block (Occupies the right side beautifully) -->
+            <div class="sm:col-span-2 md:col-span-4 lg:col-span-4 space-y-4">
+                <h4 class="font-semibold text-slate-900 dark:text-white uppercase tracking-wider text-xs">Stay Updated</h4>
+                <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
+                    Subscribe to receive seasonal preventative service discounts, maintenance road maps, and prioritized booking tiers.
+                </p>
+                <form class="space-y-2 group" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                    <div class="relative flex items-center">
+                        <input type="email" placeholder="Your work email address" required 
+                            class="w-full text-xs px-3.5 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-brand dark:focus:border-brand transition-all pr-20" />
+                        <button type="submit" 
+                            class="absolute right-1.5 bg-brand hover:bg-brand-dark text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors shadow-sm">
+                            Join
+                        </button>
+                    </div>
+                </form>
+                <p class="text-[10px] text-slate-400 dark:text-slate-600">Zero spam. Unsubscribe with a single click at any point.</p>
+            </div>
+
+        </div>
+
+        <hr class="my-8 border-slate-200 dark:border-slate-900">
+        
+        <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 dark:text-slate-600 gap-4">
+            <p>&copy; 2026 LubeGo Services Inc. All Rights Reserved.</p>
+            <p class="flex items-center gap-1">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Dispatch Systems Online
+            </p>
+        </div>
+    </div>
+</footer>
+
+  
+</body>
+</html>
