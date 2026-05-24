@@ -270,89 +270,50 @@
     });
 </script>
 
-<!-- CLEAN SIMPLIFIED HERO SECTION WITH FULL-BLEED BACKGROUND IMAGE Overlay -->
-<section id="homepage-hero" class="relative min-h-[80vh] sm:min-h-[70vh] lg:min-h-[75vh] flex items-center bg-slate-950 text-white overflow-hidden py-20 sm:py-24 md:py-32 transition-colors duration-300">
+<section id="homepage-hero" class="relative min-h-[80vh] sm:min-h-[70vh] lg:min-h-[75vh] flex items-center bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white overflow-hidden py-20 sm:py-24 md:py-32 transition-colors duration-300">
     
-    <!-- 1. Full-Bleed Background Imagery & Graduated Contrast Shading Layer -->
-   <div class="absolute inset-0 z-0 select-none pointer-events-none bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
-    
-    <!-- 
-      1. OPTIMIZED HIGH-VISIBILITY IMAGE ELEMENT
-      Transparency has been significantly reduced (opacity increased) to make details pop.
-      Light mode: opacity-85 gives rich clarity.
-      Dark mode: opacity-50 balances image detail with high text legibility.
-    -->
-    <img src="assets/home2hero" 
-         alt="Premium on-site automotive diagnostics and service vehicle setup" 
-         class="w-full h-full object-cover object-center opacity-85 dark:opacity-50 scale-100 transition-all duration-700 filter contrast-[1.05] dark:contrast-125" />
-    
-    <!-- 
-      2. REBALANCED CONTRAST MASK OVERLAY
-      Softened from 90/95% down to 60/70% to let the underlying image show through beautifully, 
-      while using cross-media color mapping to protect your layout text.
-    -->
-    <div class="absolute inset-0 bg-gradient-to-r from-white/70 via-white/40 to-transparent dark:from-slate-950/80 dark:via-slate-950/50 dark:to-transparent max-md:bg-gradient-to-t max-md:from-white/80 max-md:via-white/50 max-md:to-transparent max-md:dark:from-slate-950/90 max-md:dark:via-slate-950/60 max-md:dark:to-transparent transition-all duration-300"></div>
-    
-    <!-- 3. AMBIENT BRAND BACKLIGHT GLOW -->
-    <div class="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/10 dark:bg-brand/15 rounded-full blur-[130px] transition-all duration-300 mix-blend-multiply dark:mix-blend-screen"></div>
-</div>
-
-    <!-- 2. Clean Centered Framework Layout (Maintains strict 360px portrait stability up to widescreen desktops) -->
-   <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center space-y-6">
+    <!-- 1. Full-Bleed Background Imagery -->
+    <div class="absolute inset-0 z-0">
+        <img src="assets/home2hero" 
+             alt="Premium on-site automotive diagnostics and service vehicle setup" 
+             class="w-full h-full object-cover object-center opacity-80 dark:opacity-50 transition-opacity duration-700 brightness-[0.85] dark:brightness-[0.7]" />
         
-    <!-- 
-      Operational Registry Status Micro Badge Component 
-      Utilizes an adaptive transparent background with high-contrast text rendering.
-    -->
-    <div class="inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full bg-brand/10 dark:bg-brand/15 border border-brand/20 text-brand text-xs font-semibold tracking-wide backdrop-blur-md animate-fade-in">
-        <span class="flex h-1.5 w-1.5 relative">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand"></span>
-        </span>
-        <span>Self-Powered Mobile Workshop Vans Active</span>
-    </div>
-    
-    <!-- 
-      Core Value Headline
-      Changes seamlessly from deep slate-900 charcoal (Light Mode) 
-      straight into brilliant crisp white (Dark Mode).
-    -->
-    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-slate-900 dark:text-white max-w-3xl mx-auto transition-colors duration-300">
-        Skip the Shop. We Service <span class="text-brand block sm:inline">Your Car Anywhere.</span>
-    </h1>
-    
-    <!-- 
-      Supporting Subtext Descriptive Summary Paragraph
-      Calibrated to slate-600 for safe contrast over light views 
-      and slate-300 to remain scannable on dark ground matrices.
-    -->
-<!-- Fully visible text element optimized for perfect contrast in both themes -->
-<p class="text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto max-sm:px-2 transition-colors duration-300">
-    Professional mobile auto services designed for busy drivers who value convenience, quality, and time savings.
-</p>
-    <!-- Symmetrical High-Conversion Call-To-Action Paths Layout -->
-    <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 max-w-xs sm:max-w-none mx-auto">
+        <!-- Refined Gradient: Sharper contrast, less 'wash-out' -->
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-50/60 via-slate-50/20 to-slate-50/80 dark:from-slate-950/70 dark:via-slate-950/40 dark:to-slate-950/90 transition-all duration-300"></div>
         
-        <!-- Primary Action Route Element -->
-        <a href="booknow.html" class="group flex items-center justify-center gap-2.5 bg-brand hover:bg-brand-dark text-white font-semibold text-xs sm:text-sm px-8 py-4 rounded-xl shadow-xl shadow-brand/20 transition-all duration-300 transform hover:-translate-y-0.5 active:scale-[0.995]">
-            <span>Book Appointment</span>
-            <svg class="w-4 h-4 text-white transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
-            </svg>
-        </a>
-        
-        <!-- 
-          Secondary Action Route Element
-          Alters button surfaces from a light, subtle silver plate border 
-          into a slate charcoal anchor frame block in dark mode views.
-        -->
-        <a href="contact.html" class="flex items-center justify-center bg-slate-100/80 hover:bg-slate-200/80 dark:bg-slate-900/80 dark:hover:bg-slate-900 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm px-8 py-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 backdrop-blur-sm transition-all shadow-sm">
-            Get Instant Quote
-        </a>
-        
+        <!-- Ambient Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand/10 dark:bg-brand/20 rounded-full blur-[150px]"></div>
     </div>
 
-</div>
+    <!-- 2. Main Content -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center space-y-6">
+        
+        <div class="inline-flex items-center gap-2.5 py-1.5 px-4 rounded-full bg-white/50 dark:bg-black/30 border border-brand/30 text-brand text-xs font-bold tracking-widest uppercase backdrop-blur-sm shadow-sm">
+            <span class="flex h-2 w-2 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+            </span>
+            Self-Powered Mobile Workshops Active
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-slate-900 dark:text-white drop-shadow-sm transition-colors duration-300">
+            Skip the Shop. We Service <span class="text-brand block sm:inline">Your Car Anywhere.</span>
+        </h1>
+        
+        <p class="text-base sm:text-lg md:text-xl text-slate-800 dark:text-slate-100 font-medium leading-relaxed max-w-2xl mx-auto px-4 drop-shadow-sm transition-colors duration-300">
+            Professional mobile auto services designed for busy drivers who value convenience, quality, and time savings.
+        </p>
+
+        <div class="pt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 max-w-xs sm:max-w-none mx-auto">
+            <a href="booknow.html" class="flex items-center justify-center gap-2.5 bg-brand hover:bg-brand-dark text-white font-bold text-sm px-8 py-4 rounded-xl shadow-lg shadow-brand/30 transition-all duration-300 hover:scale-105 active:scale-95">
+                Book Appointment
+            </a>
+            
+            <a href="contact.html" class="flex items-center justify-center bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-900 dark:text-white font-bold text-sm px-8 py-4 rounded-xl border border-slate-300 dark:border-slate-700 transition-all shadow-sm">
+                Get Instant Quote
+            </a>
+        </div>
+    </div>
 </section>
 <!-- PRODUCTION-READY QUICK BOOKING BAR (INTEGRATES IMMEDIATELY BELOW HERO) -->
 <section id="quick-booking-bar" class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-10 md:-mt-12">
