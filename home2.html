@@ -270,25 +270,27 @@
     });
 </script>
 
-<section id="homepage-hero" class="relative min-h-[80vh] sm:min-h-[70vh] lg:min-h-[75vh] flex items-center bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white overflow-hidden py-20 sm:py-24 md:py-32 transition-colors duration-300">
+<section id="homepage-hero" class="relative min-h-[80vh] sm:min-h-[70vh] lg:min-h-[75vh] flex items-center bg-slate-950 text-white overflow-hidden py-20 sm:py-24 md:py-32 transition-colors duration-300">
     
-    <!-- 1. Full-Bleed Background Imagery -->
+    <!-- 1. Background Layer -->
     <div class="absolute inset-0 z-0">
+        <!-- Image: Darkened significantly to provide a rich base -->
         <img src="assets/home2hero" 
              alt="Premium on-site automotive diagnostics and service vehicle setup" 
-             class="w-full h-full object-cover object-center opacity-80 dark:opacity-50 transition-opacity duration-700 brightness-[0.85] dark:brightness-[0.7]" />
+             class="w-full h-full object-cover object-center opacity-50 transition-opacity duration-700 brightness-[0.4]" />
         
-        <!-- Refined Gradient: Sharper contrast, less 'wash-out' -->
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-50/60 via-slate-50/20 to-slate-50/80 dark:from-slate-950/70 dark:via-slate-950/40 dark:to-slate-950/90 transition-all duration-300"></div>
+        <!-- Black Overlay: Dark gradient that ensures white text always pops -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30 transition-all duration-300"></div>
         
-        <!-- Ambient Glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand/10 dark:bg-brand/20 rounded-full blur-[150px]"></div>
+        <!-- Ambient Glow: Subtle brand touch behind the black overlay -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand/10 rounded-full blur-[150px]"></div>
     </div>
 
     <!-- 2. Main Content -->
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center space-y-6">
         
-        <div class="inline-flex items-center gap-2.5 py-1.5 px-4 rounded-full bg-white/50 dark:bg-black/30 border border-brand/30 text-brand text-xs font-bold tracking-widest uppercase backdrop-blur-sm shadow-sm">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2.5 py-1.5 px-4 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-sm">
             <span class="flex h-2 w-2 relative">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
@@ -296,20 +298,23 @@
             Self-Powered Mobile Workshops Active
         </div>
         
-        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-slate-900 dark:text-white drop-shadow-sm transition-colors duration-300">
+        <!-- Headline: Pure white -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-white drop-shadow-lg">
             Skip the Shop. We Service <span class="text-brand block sm:inline">Your Car Anywhere.</span>
         </h1>
         
-        <p class="text-base sm:text-lg md:text-xl text-slate-800 dark:text-slate-100 font-medium leading-relaxed max-w-2xl mx-auto px-4 drop-shadow-sm transition-colors duration-300">
+        <!-- Subtext: Soft white for readability -->
+        <p class="text-base sm:text-lg md:text-xl text-slate-200 font-medium leading-relaxed max-w-2xl mx-auto px-4 drop-shadow-md">
             Professional mobile auto services designed for busy drivers who value convenience, quality, and time savings.
         </p>
 
+        <!-- CTA Section -->
         <div class="pt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 max-w-xs sm:max-w-none mx-auto">
             <a href="booknow.html" class="flex items-center justify-center gap-2.5 bg-brand hover:bg-brand-dark text-white font-bold text-sm px-8 py-4 rounded-xl shadow-lg shadow-brand/30 transition-all duration-300 hover:scale-105 active:scale-95">
                 Book Appointment
             </a>
             
-            <a href="contact.html" class="flex items-center justify-center bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-900 dark:text-white font-bold text-sm px-8 py-4 rounded-xl border border-slate-300 dark:border-slate-700 transition-all shadow-sm">
+            <a href="contact.html" class="flex items-center justify-center bg-transparent hover:bg-white/10 text-white font-bold text-sm px-8 py-4 rounded-xl border border-white/20 transition-all shadow-sm">
                 Get Instant Quote
             </a>
         </div>
